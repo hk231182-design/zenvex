@@ -59,15 +59,48 @@ footer{text-align:center;padding:25px;color:#718078;font-size:11px}
         <option>AUD/USD</option>
         <option>USD/CAD</option>
       </select>
-    </div>
-    <div class="chart">
-      Chart preview<br>Live market data will be connected later
-    </div>
-    <div class="row" style="margin-top:18px">
-      <span class="label">TRADE DURATION</span>
-      <select id="duration">
-        <option value="60">1 Minute</option>
-        <option value="300">5 Minutes</option>
+   
+      <div>
+        <div class="label">TRADING ASSET</div>
+        <h2 id="assetName" style="margin-top:7px">EUR/USD</h2>
+      </div>
+      <select id="asset" onchange="document.getElementById('assetName').textContent=this.value">
+        <optgroup label="FOREX MAJORS">
+          <option value="EUR/USD">EUR/USD</option>
+          <option value="GBP/USD">GBP/USD</option>
+          <option value="USD/JPY">USD/JPY</option>
+          <option value="AUD/USD">AUD/USD</option>
+          <option value="USD/CAD">USD/CAD</option>
+          <option value="NZD/USD">NZD/USD</option>
+          <option value="USD/CHF">USD/CHF</option>
+        </optgroup>
+        <optgroup label="FOREX CROSSES">
+          <option value="EUR/GBP">EUR/GBP</option>
+          <option value="EUR/JPY">EUR/JPY</option>
+          <option value="GBP/JPY">GBP/JPY</option>
+          <option value="EUR/AUD">EUR/AUD</option>
+          <option value="GBP/AUD">GBP/AUD</option>
+          <option value="AUD/JPY">AUD/JPY</option>
+        </optgroup>
+        <optgroup label="METALS">
+          <option value="XAU/USD — Gold">XAU/USD — Gold</option>
+          <option value="XAG/USD — Silver">XAG/USD — Silver</option>
+        </optgroup>
+        <optgroup label="CRYPTO">
+          <option value="BTC/USD">BTC/USD</option>
+          <option value="ETH/USD">ETH/USD</option>
+          <option value="LTC/USD">LTC/USD</option>
+          <option value="XRP/USD">XRP/USD</option>
+        </optgroup>
+        <optgroup label="COMMODITIES">
+          <option value="Crude Oil">Crude Oil</option>
+          <option value="Natural Gas">Natural Gas</option>
+        </optgroup>
+        <optgroup label="INDICES">
+          <option value="S&P 500">S&P 500</option>
+          <option value="NASDAQ 100">NASDAQ 100</option>
+          <option value="Dow Jones">Dow Jones</option>
+        </optgroup>
       </select>
     </div>
     <div class="actions">

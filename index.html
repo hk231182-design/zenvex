@@ -2,187 +2,134 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZENVEX — Trading Terminal</title>
-<meta name="theme-color" content="#07110f">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZENVEX — Digital Trading</title>
+<meta name="theme-color" content="#101528">
 <style>
-:root{--bg:#07110f;--panel:#0c1916;--panel2:#10221d;--line:#1c342d;--text:#e8f4ef;--muted:#829a90;--green:#00d897;--red:#ff5268;--gold:#d9b76e;--radius:15px}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
-button,input,select{font:inherit}button{cursor:pointer;border:0}button:disabled{opacity:.45;cursor:not-allowed}
-.app{min-height:100vh;display:grid;grid-template-columns:220px minmax(0,1fr)}.sidebar{border-right:1px solid var(--line);background:#091411;padding:22px 14px;display:flex;flex-direction:column;gap:25px}.brand{display:flex;align-items:center;gap:10px;padding:0 8px;font-size:20px;font-weight:850;letter-spacing:1.5px}.brandmark{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#00edaa,#168c68);display:grid;place-items:center;color:#042018;font-weight:1000}.eyebrow{font-size:10px;letter-spacing:1.5px;color:#638076;font-weight:800;padding:0 10px;margin-bottom:8px}.nav{display:grid;gap:5px}.nav button{background:transparent;color:var(--muted);text-align:left;padding:12px;border-radius:10px;display:flex;gap:11px;align-items:center}.nav button.active,.nav button:hover{background:#11271f;color:var(--green)}.side-bottom{margin-top:auto}.demo-tag{margin:0 4px;padding:13px;border:1px solid #22513f;border-radius:12px;background:#0d2119}.demo-tag strong{display:block;color:var(--green);font-size:12px}.demo-tag span{display:block;color:var(--muted);font-size:11px;margin-top:5px}
-main{min-width:0}.topbar{height:74px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 24px;gap:16px}.top-left{display:flex;align-items:center;gap:12px}.hamb{display:none;background:transparent;color:var(--text);font-size:22px}.page-title{font-weight:750;font-size:16px}.live-pill{display:inline-flex;align-items:center;gap:7px;background:#10281f;color:var(--green);padding:6px 9px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:.7px}.dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 9px var(--green)}.top-actions{display:flex;align-items:center;gap:10px}.demo-balance{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:10px}.demo-balance small{display:block;color:var(--muted);font-size:10px}.demo-balance strong{font-size:14px}.avatar{height:35px;width:35px;border-radius:50%;background:#18382b;border:1px solid #2e5b47;color:var(--green);font-weight:800}
-.content{padding:20px;max-width:1700px;margin:auto}.notice{background:#171e15;border:1px solid #66552d;color:#e7d29a;padding:10px 13px;border-radius:10px;margin-bottom:17px;font-size:12px}.grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:17px;align-items:start}.maincol{min-width:0;display:grid;gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}.card-head{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line);gap:12px}.card-head h2,.card-head h3{font-size:13px;margin:0;font-weight:750}.subtle{color:var(--muted);font-size:11px}.asset-head{display:flex;align-items:center;gap:12px;min-width:0}.asset-icon{height:42px;width:42px;border-radius:13px;display:grid;place-items:center;background:#173429;color:var(--green);font-weight:900;font-size:12px}.asset-name{font-size:15px;font-weight:800}.asset-desc{font-size:11px;color:var(--muted);margin-top:3px}.price-row{display:flex;align-items:center;gap:10px}.price{font-size:23px;font-weight:800;letter-spacing:-.5px}.change{font-size:11px;color:var(--green);background:#0f2c20;padding:5px 7px;border-radius:7px}
-.chart-toolbar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line)}.chart-toolbar button{background:#12231d;color:var(--muted);border:1px solid transparent;border-radius:7px;padding:7px 10px;font-size:11px}.chart-toolbar button.active{color:var(--green);border-color:#245640;background:#10271d}.chart-toolbar .spacer{flex:1}.chart-area{height:340px;position:relative;background:radial-gradient(ellipse at 50% 100%,#10241c 0,transparent 60%),#091410;overflow:hidden}.chart-area svg{width:100%;height:100%;display:block}.chart-legend{position:absolute;top:12px;left:14px;display:flex;gap:12px;font-size:10px;color:var(--muted)}.chart-legend b{color:var(--text)}.chart-foot{padding:10px 16px;display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:10px;border-top:1px solid var(--line)}
-.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px}.stat{background:#0a1512;border:1px solid #172c24;border-radius:11px;padding:12px}.stat span{font-size:10px;color:var(--muted);display:block}.stat strong{font-size:19px;display:block;margin-top:5px}.green{color:var(--green)}.red{color:var(--red)}
-.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:11px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid #172a23}th{color:var(--muted);font-weight:650;font-size:10px}tbody tr:last-child td{border-bottom:0}.empty{text-align:center;color:var(--muted);padding:25px}
-.trade-panel{position:sticky;top:15px}.trade-panel .card-head{padding:16px}.form-body{padding:16px;display:grid;gap:16px}.field label{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin-bottom:8px}.field select,.field input{width:100%;border:1px solid #244137;background:#091511;color:var(--text);border-radius:9px;padding:12px;outline:none}.field select:focus,.field input:focus{border-color:#00b87d}.amount-box{display:grid;grid-template-columns:38px 1fr 38px;gap:6px}.amount-box button{border:1px solid #244137;border-radius:8px;background:#13251e;color:var(--green);font-size:18px}.amount-box input{text-align:center;font-weight:800}.quick-amounts{display:flex;gap:6px;margin-top:7px}.quick-amounts button{flex:1;background:#12251e;color:var(--muted);border:1px solid #20382e;border-radius:6px;padding:6px 0;font-size:10px}.quick-amounts button:hover{color:var(--green)}.payout{display:flex;justify-content:space-between;align-items:center;background:#0a1712;border:1px solid #1d382c;padding:12px;border-radius:9px}.payout span{font-size:11px;color:var(--muted)}.payout strong{font-size:15px;color:var(--green)}.trade-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}.trade-btn{padding:15px 8px;border-radius:10px;color:white;font-weight:850;letter-spacing:.5px;display:grid;gap:5px;justify-items:center}.trade-btn small{font-size:10px;font-weight:600;opacity:.9}.call{background:linear-gradient(135deg,#00b77e,#008b61);box-shadow:0 7px 20px #00a66c22}.put{background:linear-gradient(135deg,#fa5267,#c92f4d);box-shadow:0 7px 20px #d9365022}.risk-note{font-size:10px;color:var(--muted);text-align:center;line-height:1.6}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#18352a;border:1px solid #2a664b;color:var(--text);padding:12px 18px;border-radius:10px;box-shadow:0 10px 35px #0008;z-index:50;display:none;max-width:90vw}.toast.show{display:block}.mobile-nav{display:none}
-@media(max-width:1050px){.app{grid-template-columns:74px minmax(0,1fr)}.sidebar{padding:20px 9px}.brand{justify-content:center;padding:0}.brand-name,.eyebrow,.nav-label,.demo-tag{display:none}.nav button{justify-content:center;font-size:18px;padding:13px 5px}.grid{grid-template-columns:minmax(0,1fr) 270px}.content{padding:14px}}
-@media(max-width:760px){.app{display:block}.sidebar{display:none;position:fixed;z-index:30;left:0;top:0;bottom:0;width:235px;padding:22px 14px;box-shadow:10px 0 35px #0007}.sidebar.open{display:flex}.brand{justify-content:flex-start}.brand-name,.eyebrow,.nav-label,.demo-tag{display:block}.nav button{justify-content:flex-start;padding:12px}.hamb{display:block}.topbar{height:64px;padding:0 13px}.page-title{font-size:14px}.live-pill{display:none}.demo-balance{padding:6px 8px}.demo-balance strong{font-size:12px}.avatar{width:31px;height:31px}.content{padding:11px}.grid{grid-template-columns:1fr}.trade-panel{position:static;grid-row:1}.trade-panel .form-body{grid-template-columns:1fr 1fr;gap:12px}.trade-panel .card-head{padding:13px}.trade-panel .risk-note,.trade-panel .payout,.trade-panel .trade-btns{grid-column:1/-1}.maincol{gap:11px}.chart-area{height:260px}.bottom-grid{grid-template-columns:1fr}.price{font-size:19px}.asset-head{gap:8px}.asset-icon{height:37px;width:37px}.card-head{padding:13px}.stat-grid{padding:10px;gap:7px}.stat{padding:9px}.stat strong{font-size:17px}}
-@media(max-width:430px){.trade-panel .form-body{grid-template-columns:1fr 1fr}.price-row{display:block;text-align:right}.price{font-size:17px}.change{display:inline-block;margin-top:4px}.chart-toolbar{padding:9px}.chart-toolbar button{padding:6px 8px}.chart-area{height:230px}.top-actions{gap:6px}.demo-balance small{font-size:9px}}
+:root{--bg:#111629;--top:#171e35;--panel:#1a223b;--panel2:#202b48;--border:#303c5c;--text:#f6f8ff;--muted:#9ba8c8;--blue:#4d83ff;--cyan:#36d7f5;--green:#16d9a0;--red:#ff5478;--yellow:#ffcf5a;--purple:#9a72ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}button,select,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}
+.topbar{height:68px;background:var(--top);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 18px;gap:16px}.brand{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:950;letter-spacing:1px;min-width:200px}.logo{width:35px;height:35px;display:grid;place-items:center;border-radius:11px;background:linear-gradient(135deg,#29e7c1,#3782ff 70%,#a16bff);color:white;font-weight:1000;box-shadow:0 0 24px #3b86ff44}.brand em{font-style:normal;color:#50dfff}.top-center{display:flex;gap:7px;align-items:center}.top-pill{border:1px solid var(--border);border-radius:9px;padding:8px 12px;color:var(--muted);background:#12192c;font-size:11px;font-weight:800}.top-pill.active{color:white;border-color:#4b83ff;background:#263d75}.right-head{display:flex;align-items:center;gap:10px}.balance{padding:7px 12px;border:1px solid #2f9d83;border-radius:10px;background:#133b3a}.balance small{display:block;color:#91dcca;font-size:10px}.balance strong{color:#fff;font-size:14px}.deposit{background:linear-gradient(135deg,#16d9a0,#00a97c);color:#06271f;border-radius:9px;padding:10px 14px;font-size:12px;font-weight:900}.avatar{width:35px;height:35px;border-radius:50%;background:linear-gradient(135deg,#865bff,#2c9fff);color:white;font-weight:900;border:2px solid #5c7de9}
+.notice{margin:12px 15px 0;padding:8px 12px;border-radius:8px;background:#382b25;border:1px solid #6e4a35;color:#ffdcad;font-size:11px}
+.workspace{display:grid;grid-template-columns:220px minmax(300px,1fr) 270px;gap:12px;padding:12px;min-height:calc(100vh - 100px)}.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;min-width:0;overflow:hidden}.panel-head{height:49px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);font-weight:850;font-size:12px}.muted{color:var(--muted);font-size:10px}.leftcol{display:flex;flex-direction:column;gap:12px}.market-search{padding:11px}.market-search input{width:100%;background:#12192d;border:1px solid var(--border);border-radius:8px;color:white;padding:10px;outline:none}.category-row{display:flex;gap:5px;padding:0 10px 10px;overflow:auto}.category-row button{flex-shrink:0;border:1px solid var(--border);border-radius:7px;background:#141b30;color:var(--muted);font-size:10px;padding:7px 9px}.category-row button.active{background:#314f99;border-color:#628cff;color:white}.asset-list{max-height:calc(100vh - 280px);overflow:auto}.asset{width:100%;display:flex;align-items:center;gap:9px;text-align:left;background:transparent;border:0;border-top:1px solid #293451;color:var(--text);padding:11px 10px}.asset:hover{background:#252f4e}.asset.selected{background:linear-gradient(90deg,#253c75,#202b48);box-shadow:inset 3px 0 #5e91ff}.coin{width:34px;height:34px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:950;color:white;background:linear-gradient(135deg,#458cff,#7a62f8)}.coin.gold{background:linear-gradient(135deg,#ffdd67,#e18c20);color:#38230a}.coin.crypto{background:linear-gradient(135deg,#ff9b54,#f34e80)}.asset-text{min-width:0;flex:1}.asset-text strong{display:block;font-size:11px}.asset-text small{color:var(--muted);font-size:9px}.asset-percent{font-size:11px;font-weight:900;color:var(--green)}.asset-percent.low{color:var(--yellow)}
+.centercol{display:flex;flex-direction:column;gap:12px;min-width:0}.market-head{padding:13px 15px;display:flex;align-items:center;justify-content:space-between;gap:12px}.pair{display:flex;align-items:center;gap:11px}.pair-icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#365eff,#28c9e9);font-weight:950}.pair-name{font-size:16px;font-weight:950}.pair-desc{color:var(--muted);font-size:10px;margin-top:4px}.live-price{text-align:right}.live-price strong{font-size:21px;letter-spacing:-.5px}.live-price small{display:block;color:var(--green);font-size:11px;margin-top:3px}.chart-toolbar{display:flex;align-items:center;gap:6px;padding:10px 12px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);flex-wrap:wrap}.chart-toolbar button{background:#131a2d;border:1px solid transparent;border-radius:6px;color:var(--muted);padding:7px 10px;font-size:10px}.chart-toolbar button.active{background:#2c4a91;color:white;border-color:#4c7fff}.chart-toolbar .push{flex:1}.chart-label{font-size:9px;color:#8494b9;letter-spacing:.5px}.chart{height:min(53vh,500px);min-height:300px;position:relative;background:linear-gradient(180deg,#17203a,#131b30)}.chart svg{width:100%;height:100%;display:block}.legend{position:absolute;left:13px;top:12px;display:flex;gap:10px;flex-wrap:wrap;color:#a8b5d4;font-size:10px;pointer-events:none}.legend b{color:white}.chart-bottom{display:flex;justify-content:space-between;padding:10px 13px;color:var(--muted);font-size:10px;border-top:1px solid var(--border)}.below{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:10px}.stat{background:#141b30;border:1px solid #2b3553;border-radius:8px;padding:10px}.stat span{display:block;font-size:9px;color:var(--muted)}.stat strong{display:block;font-size:17px;margin-top:4px}.positive{color:var(--green)}.negative{color:var(--red)}
+.rightcol{display:flex;flex-direction:column;gap:12px}.trade-head{background:linear-gradient(100deg,#243d79,#382c70);padding:15px;display:flex;justify-content:space-between;align-items:center}.trade-head strong{font-size:13px}.demo-label{font-size:9px;font-weight:950;letter-spacing:.7px;background:#ffcf5a;color:#3e2c00;padding:5px 7px;border-radius:5px}.trade-body{padding:14px;display:grid;gap:14px}.field label{display:flex;justify-content:space-between;color:#a8b5d4;font-size:10px;margin-bottom:7px}.field select,.field input{width:100%;background:#11182c;border:1px solid #394666;border-radius:8px;color:white;padding:11px;outline:none}.field select:focus,.field input:focus{border-color:#5d91ff}.amount{display:grid;grid-template-columns:34px 1fr 34px;gap:5px}.amount button{background:#283656;color:#e8efff;border:1px solid #405176;border-radius:7px;font-size:18px}.amount input{text-align:center;font-weight:900}.quick{display:flex;gap:5px;margin-top:7px}.quick button{flex:1;padding:6px 0;background:#222d49;border:1px solid #354464;border-radius:6px;color:#c8d4f2;font-size:10px}.payout{display:flex;justify-content:space-between;align-items:center;padding:11px;background:#142e37;border:1px solid #216d71;border-radius:8px}.payout span{font-size:10px;color:#b0d7dd}.payout strong{font-size:18px;color:#50edcb}.trade-buttons{display:grid;gap:9px}.trade-btn{border-radius:9px;color:white;font-size:14px;font-weight:950;letter-spacing:.4px;padding:14px 10px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 5px 15px #0002}.trade-btn span{display:flex;align-items:center;gap:8px}.trade-btn small{font-size:10px;font-weight:750;opacity:.9}.call{background:linear-gradient(100deg,#00c993,#00a97f);box-shadow:0 6px 20px #00cb9833}.put{background:linear-gradient(100deg,#ff527b,#e53563);box-shadow:0 6px 20px #ff527b2b}.arrow{font-size:18px}.risk{font-size:9px;color:#8998b8;line-height:1.6;text-align:center}.positions{margin-top:auto}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:10px}th,td{text-align:left;padding:10px;border-bottom:1px solid #2b3551}th{font-size:9px;color:#93a1c3}td{color:#e5ebff}.empty{text-align:center;color:#8795b7;padding:20px}.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:99;background:#273b66;border:1px solid #6185e5;border-radius:10px;padding:12px 18px;display:none;box-shadow:0 12px 40px #0007;max-width:90vw}.toast.show{display:block}
+@media(max-width:1120px){.workspace{grid-template-columns:185px minmax(260px,1fr) 245px;gap:8px;padding:8px}.brand{min-width:170px}.topbar{padding:0 12px}.top-center{display:none}.asset-percent{display:none}.asset{padding:9px 7px}.chart{height:400px}}
+@media(max-width:800px){.topbar{height:60px}.brand{min-width:0;font-size:19px}.brand .logo{width:31px;height:31px}.right-head{gap:6px}.balance{padding:6px 8px}.balance strong{font-size:12px}.deposit{padding:9px 10px}.workspace{display:flex;flex-direction:column}.rightcol{order:1}.centercol{order:2}.leftcol{order:3}.trade-body{grid-template-columns:1fr 1fr;gap:11px}.trade-body .trade-buttons,.trade-body .payout,.trade-body .risk{grid-column:1/-1}.chart{height:360px}.asset-list{max-height:280px}.leftcol .panel:first-child{max-height:none}.below{grid-template-columns:1fr}.market-head{padding:11px}.live-price strong{font-size:18px}}
+@media(max-width:450px){.brand{font-size:17px;gap:7px}.brand .logo{width:29px;height:29px}.balance small{font-size:8px}.balance strong{font-size:11px}.deposit{font-size:10px;padding:9px 8px}.avatar{display:none}.notice{margin:8px;font-size:10px}.workspace{padding:7px;gap:8px}.trade-body{padding:10px;gap:10px}.chart{height:300px;min-height:260px}.pair-name{font-size:14px}.live-price strong{font-size:16px}.chart-toolbar{padding:8px}.chart-toolbar button{padding:7px 8px}.market-head{gap:5px}.pair-icon{width:36px;height:36px}.stats{gap:5px;padding:7px}.stat{padding:8px}.stat strong{font-size:15px}}
 </style>
 </head>
 <body>
-<div class="app">
-  <aside class="sidebar" id="sidebar">
-    <div class="brand"><div class="brandmark">Z</div><span class="brand-name">ZENVEX</span></div>
-    <div><div class="eyebrow">TRADING</div><nav class="nav">
-      <button class="active" data-view="terminal"><span>◫</span><span class="nav-label">Trading Terminal</span></button>
-      <button data-view="assets"><span>◈</span><span class="nav-label">Markets</span></button>
-      <button data-view="history"><span>▤</span><span class="nav-label">Trade History</span></button>
-      <button data-view="account"><span>◉</span><span class="nav-label">My Account</span></button>
-    </nav></div>
-    <div class="side-bottom"><div class="eyebrow">ACCOUNT MODE</div><div class="demo-tag"><strong>● DEMO ACCOUNT</strong><span>Practice with virtual funds. No real money is used.</span></div></div>
+<header class="topbar">
+  <div class="brand"><div class="logo">Z</div><span>ZENVEX<em>·</em></span></div>
+  <div class="top-center"><button class="top-pill active">DIGITAL</button><button class="top-pill">TOURNAMENTS</button><button class="top-pill">LEADERBOARD</button></div>
+  <div class="right-head"><div class="balance"><small>DEMO BALANCE</small><strong id="balance">$10,000.00</strong></div><button class="deposit" id="reset">↻ Reset demo</button><button class="avatar" title="Demo account">Z</button></div>
+</header>
+<div class="notice">⚠ DEMO ONLY — Prices and trade outcomes are simulated for practice. No real market feed, real-money trading, deposits, or withdrawals are connected.</div>
+<div class="workspace">
+  <aside class="leftcol">
+    <section class="panel">
+      <div class="panel-head"><span>🌐 Markets</span><span class="muted" id="marketCount">24 ASSETS</span></div>
+      <div class="market-search"><input id="search" placeholder="⌕  Search assets..." aria-label="Search assets"></div>
+      <div class="category-row"><button class="active" data-category="All">All</button><button data-category="Forex">Forex</button><button data-category="Metals">Metals</button><button data-category="Crypto">Crypto</button><button data-category="Other">Other</button></div>
+      <div class="asset-list" id="assetList"></div>
+    </section>
+    <section class="panel"><div class="panel-head"><span>⚡ Session stats</span><span class="muted">DEMO</span></div><div class="stats"><div class="stat"><span>Trades</span><strong id="trades">0</strong></div><div class="stat"><span>Wins</span><strong class="positive" id="wins">0</strong></div><div class="stat"><span>Win rate</span><strong id="rate">0%</strong></div></div></section>
   </aside>
-  <main>
-    <header class="topbar">
-      <div class="top-left"><button class="hamb" id="hamb" aria-label="Open menu">☰</button><div class="page-title" id="pageTitle">Trading Terminal</div><span class="live-pill"><i class="dot"></i> DEMO MODE</span></div>
-      <div class="top-actions"><div class="demo-balance"><small>DEMO BALANCE</small><strong id="topBalance">$10,000.00</strong></div><button class="avatar" id="profileBtn" title="Demo profile">Z</button></div>
-    </header>
-    <div class="content">
-      <div class="notice">⚠ DEMO PLATFORM — Trades and balance are simulated in this browser. No real orders, deposits, withdrawals, or profits are generated.</div>
-      <div class="grid">
-        <section class="maincol">
-          <article class="card">
-            <div class="card-head">
-              <div class="asset-head"><div class="asset-icon" id="assetIcon">EU</div><div><div class="asset-name" id="assetTitle">EUR/USD</div><div class="asset-desc" id="assetDesc">Euro / US Dollar · Forex</div></div></div>
-              <div class="price-row"><div class="price" id="currentPrice">1.08452</div><div class="change" id="priceChange">+0.12%</div></div>
-            </div>
-            <div class="chart-toolbar">
-              <button class="active" data-time="1m">1m</button><button data-time="5m">5m</button><button data-time="15m">15m</button><button data-time="1h">1h</button>
-              <span class="spacer"></span><span class="subtle">SIMULATED CHART</span>
-            </div>
-            <div class="chart-area"><div class="chart-legend"><span><b id="legendAsset">EUR/USD</b></span><span>O <b id="ohlcO">1.08410</b></span><span>H <b id="ohlcH">1.08520</b></span><span>L <b id="ohlcL">1.08390</b></span><span>C <b id="ohlcC">1.08452</b></span></div><svg id="chartSvg" viewBox="0 0 900 340" preserveAspectRatio="none" role="img" aria-label="Simulated candlestick chart"></svg></div>
-            <div class="chart-foot"><span>Market: <b>Demo simulation</b></span><span>Last update <b id="lastUpdate">--:--:--</b></span><span>UTC+5:30</span></div>
-          </article>
-          <div class="bottom-grid">
-            <article class="card"><div class="card-head"><h3>Performance Overview</h3><span class="subtle">THIS SESSION</span></div><div class="stat-grid"><div class="stat"><span>Total trades</span><strong id="totalTrades">0</strong></div><div class="stat"><span>Wins</span><strong class="green" id="totalWins">0</strong></div><div class="stat"><span>Win rate</span><strong id="winRate">0%</strong></div></div></article>
-            <article class="card"><div class="card-head"><h3>Open Positions</h3><span class="subtle" id="openCount">0 ACTIVE</span></div><div class="table-wrap"><table><thead><tr><th>ASSET</th><th>TYPE</th><th>AMOUNT</th><th>TIME LEFT</th></tr></thead><tbody id="openPositions"><tr><td colspan="4" class="empty">No open positions</td></tr></tbody></table></div></article>
-          </div>
-          <article class="card" id="historyCard"><div class="card-head"><h3>Recent Trades</h3><button id="clearHistory" style="background:transparent;color:var(--muted);font-size:11px">Clear history</button></div><div class="table-wrap"><table><thead><tr><th>TIME</th><th>ASSET</th><th>POSITION</th><th>STAKE</th><th>RESULT</th><th>P/L</th></tr></thead><tbody id="historyBody"><tr><td colspan="6" class="empty">Your demo trades will appear here.</td></tr></tbody></table></div></article>
-        </section>
-        <aside class="card trade-panel">
-          <div class="card-head"><h2>Place Demo Trade</h2><span class="live-pill">VIRTUAL</span></div>
-          <div class="form-body">
-            <div class="field"><label for="assetSelect">Select market</label><select id="assetSelect">
-              <optgroup label="Forex majors"><option value="EUR/USD">EUR/USD</option><option value="GBP/USD">GBP/USD</option><option value="USD/JPY">USD/JPY</option><option value="AUD/USD">AUD/USD</option><option value="USD/CAD">USD/CAD</option><option value="NZD/USD">NZD/USD</option><option value="USD/CHF">USD/CHF</option></optgroup>
-              <optgroup label="Forex crosses"><option value="EUR/GBP">EUR/GBP</option><option value="EUR/JPY">EUR/JPY</option><option value="GBP/JPY">GBP/JPY</option><option value="EUR/AUD">EUR/AUD</option><option value="GBP/AUD">GBP/AUD</option><option value="AUD/JPY">AUD/JPY</option></optgroup>
-              <optgroup label="Metals"><option value="XAU/USD">XAU/USD · Gold</option><option value="XAG/USD">XAG/USD · Silver</option></optgroup>
-              <optgroup label="Crypto (demo only)"><option value="BTC/USD">BTC/USD</option><option value="ETH/USD">ETH/USD</option><option value="LTC/USD">LTC/USD</option><option value="XRP/USD">XRP/USD</option></optgroup>
-              <optgroup label="Other (demo only)"><option value="OIL">Crude Oil</option><option value="NATGAS">Natural Gas</option><option value="SPX">S&amp;P 500</option><option value="NDX">NASDAQ 100</option><option value="DJI">Dow Jones</option></optgroup>
-            </select></div>
-            <div class="field"><label for="duration">Expiry duration</label><select id="duration"><option value="30">30 seconds</option><option value="60" selected>1 minute</option><option value="300">5 minutes</option></select></div>
-            <div class="field"><label for="amount">Trade amount <span>USD</span></label><div class="amount-box"><button id="minus" type="button">−</button><input id="amount" type="number" min="1" max="10000" step="1" value="100"><button id="plus" type="button">+</button></div><div class="quick-amounts"><button data-amount="10">$10</button><button data-amount="25">$25</button><button data-amount="50">$50</button><button data-amount="100">$100</button></div></div>
-            <div class="payout"><span>Demo payout rate <b>·</b> illustrative</span><strong>+80%</strong></div>
-            <div class="trade-btns"><button class="trade-btn call" id="callBtn">▲ CALL<small>Price goes up</small></button><button class="trade-btn put" id="putBtn">▼ PUT<small>Price goes down</small></button></div>
-            <div class="risk-note">Demo only. Results are randomly simulated at expiry and do not predict real market outcomes. Never risk money you cannot afford to lose.</div>
-          </div>
-        </aside>
-      </div>
-    </div>
+  <main class="centercol">
+    <section class="panel">
+      <div class="market-head"><div class="pair"><div class="pair-icon" id="pairIcon">EU</div><div><div class="pair-name" id="pairName">EUR/USD <span style="font-size:10px;color:#54dfff">●</span></div><div class="pair-desc" id="pairDesc">Euro / US Dollar · Forex · Demo</div></div></div><div class="live-price"><strong id="price">1.08452</strong><small id="change">▲ 0.12%</small></div></div>
+      <div class="chart-toolbar"><button class="active" data-tf="1m">1m</button><button data-tf="5m">5m</button><button data-tf="15m">15m</button><button data-tf="1h">1h</button><span style="flex:1"></span><span class="chart-label">✦ SIMULATED CANDLES</span></div>
+      <div class="chart"><div class="legend"><span>O <b id="o">1.08410</b></span><span>H <b id="h">1.08520</b></span><span>L <b id="l">1.08390</b></span><span>C <b id="c">1.08452</b></span></div><svg id="chartSvg" viewBox="0 0 900 420" preserveAspectRatio="none" aria-label="Simulated candlestick chart"></svg></div>
+      <div class="chart-bottom"><span>● Demo price movement</span><span>Updated <b id="updated">--:--:--</b></span><span>UTC+5:30</span></div>
+    </section>
+    <section class="panel positions"><div class="panel-head"><span>▣ Open positions</span><span class="muted" id="openCount">0 OPEN</span></div><div class="table-wrap"><table><thead><tr><th>ASSET</th><th>POSITION</th><th>STAKE</th><th>ENTRY</th><th>TIME LEFT</th></tr></thead><tbody id="openRows"><tr><td colspan="5" class="empty">No open demo trades</td></tr></tbody></table></div></section>
+    <section class="panel"><div class="panel-head"><span>▤ Recent trades</span><button id="clear" style="background:none;color:#a5b4d4;font-size:10px">Clear history</button></div><div class="table-wrap"><table><thead><tr><th>TIME</th><th>ASSET</th><th>POSITION</th><th>STAKE</th><th>RESULT</th><th>P/L</th></tr></thead><tbody id="history"><tr><td colspan="6" class="empty">Your demo trades will appear here</td></tr></tbody></table></div></section>
   </main>
+  <aside class="rightcol">
+    <section class="panel">
+      <div class="trade-head"><strong>⌁ Place a trade</strong><span class="demo-label">DEMO MODE</span></div>
+      <div class="trade-body">
+        <div class="field"><label for="tradeAsset">Selected asset</label><select id="tradeAsset"></select></div>
+        <div class="field"><label for="duration">Trade duration</label><select id="duration"><option value="30">30 seconds</option><option value="60" selected>1 minute</option><option value="300">5 minutes</option></select></div>
+        <div class="field"><label for="stake">Investment amount <span>USD</span></label><div class="amount"><button id="minus">−</button><input id="stake" type="number" min="1" max="10000" value="100"><button id="plus">+</button></div><div class="quick"><button data-stake="10">$10</button><button data-stake="25">$25</button><button data-stake="50">$50</button><button data-stake="100">$100</button></div></div>
+        <div class="field"><label for="payoutRate">Payout (demo)</label><select id="payoutRate"><option value=".8">+80% · Standard</option><option value=".7">+70%</option><option value=".9">+90%</option></select></div>
+        <div class="payout"><span>Potential profit<br><b style="font-size:9px">if demo trade wins</b></span><strong id="potential">$80.00</strong></div>
+        <div class="trade-buttons"><button class="trade-btn call" id="call"><span><i class="arrow">↗</i> CALL <small>HIGHER</small></span><span>▲</span></button><button class="trade-btn put" id="put"><span><i class="arrow">↘</i> PUT <small>LOWER</small></span><span>▼</span></button></div>
+        <div class="risk">This is a visual demo. Outcomes are simulated and not a signal or prediction. Do not deposit money into this demo.</div>
+      </div>
+    </section>
+  </aside>
 </div>
 <div class="toast" id="toast" role="status"></div>
 <script>
-(() => {
-  const $ = id => document.getElementById(id);
-  const assets = {
-    "EUR/USD":{price:1.08452,icon:"EU",desc:"Euro / US Dollar · Forex",dec:5,vol:.00020},
-    "GBP/USD":{price:1.27184,icon:"GB",desc:"British Pound / US Dollar · Forex",dec:5,vol:.00025},
-    "USD/JPY":{price:149.682,icon:"UJ",desc:"US Dollar / Japanese Yen · Forex",dec:3,vol:.035},
-    "AUD/USD":{price:.65842,icon:"AU",desc:"Australian Dollar / US Dollar · Forex",dec:5,vol:.00018},
-    "USD/CAD":{price:1.36218,icon:"UC",desc:"US Dollar / Canadian Dollar · Forex",dec:5,vol:.00020},
-    "NZD/USD":{price:.61284,icon:"NZ",desc:"New Zealand Dollar / US Dollar · Forex",dec:5,vol:.00018},
-    "USD/CHF":{price:.88425,icon:"US",desc:"US Dollar / Swiss Franc · Forex",dec:5,vol:.00018},
-    "EUR/GBP":{price:.85312,icon:"EG",desc:"Euro / British Pound · Forex",dec:5,vol:.00015},
-    "EUR/JPY":{price:162.318,icon:"EJ",desc:"Euro / Japanese Yen · Forex",dec:3,vol:.04},
-    "GBP/JPY":{price:190.224,icon:"GJ",desc:"British Pound / Japanese Yen · Forex",dec:3,vol:.05},
-    "EUR/AUD":{price:1.6472,icon:"EA",desc:"Euro / Australian Dollar · Forex",dec:4,vol:.00025},
-    "GBP/AUD":{price:1.9321,icon:"GA",desc:"British Pound / Australian Dollar · Forex",dec:4,vol:.0003},
-    "AUD/JPY":{price:98.512,icon:"AJ",desc:"Australian Dollar / Japanese Yen · Forex",dec:3,vol:.035},
-    "XAU/USD":{price:2650.25,icon:"AU",desc:"Gold / US Dollar · Metal (demo)",dec:2,vol:1.8},
-    "XAG/USD":{price:31.245,icon:"AG",desc:"Silver / US Dollar · Metal (demo)",dec:3,vol:.05},
-    "BTC/USD":{price:62450.25,icon:"₿",desc:"Bitcoin / US Dollar · Crypto (demo)",dec:2,vol:65},
-    "ETH/USD":{price:2450.18,icon:"Ξ",desc:"Ethereum / US Dollar · Crypto (demo)",dec:2,vol:4.2},
-    "LTC/USD":{price:72.84,icon:"Ł",desc:"Litecoin / US Dollar · Crypto (demo)",dec:2,vol:.25},
-    "XRP/USD":{price:.5324,icon:"X",desc:"XRP / US Dollar · Crypto (demo)",dec:4,vol:.003},
-    "OIL":{price:78.25,icon:"OIL",desc:"Crude Oil · Demo instrument",dec:2,vol:.2},
-    "NATGAS":{price:2.85,icon:"NG",desc:"Natural Gas · Demo instrument",dec:3,vol:.015},
-    "SPX":{price:5280.25,icon:"S&P",desc:"S&P 500 · Demo instrument",dec:2,vol:2.5},
-    "NDX":{price:18450.5,icon:"NQ",desc:"NASDAQ 100 · Demo instrument",dec:2,vol:8},
-    "DJI":{price:39150.25,icon:"DJ",desc:"Dow Jones · Demo instrument",dec:2,vol:12}
-  };
-  const state={balance:10000,initial:10000,history:[],open:[],trades:0,wins:0,losses:0,price:assets["EUR/USD"].price,selected:"EUR/USD",candles:[],toastTimer:null};
-  const fmt=(n,d=2)=>Number(n).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
-  const priceText=(asset,p)=>fmt(p,assets[asset]?.dec ?? 2);
-  const now=()=>new Date().toLocaleTimeString("en-IN",{hour12:false});
-  function toast(message){const t=$("toast");t.textContent=message;t.classList.add("show");clearTimeout(state.toastTimer);state.toastTimer=setTimeout(()=>t.classList.remove("show"),2800)}
-  function seedCandles(){let p=state.price;state.candles=[];for(let i=0;i<44;i++){let o=p;p+=((Math.random()-.49)*assets[state.selected].vol*2);let c=p;let h=Math.max(o,c)+Math.random()*assets[state.selected].vol;let l=Math.min(o,c)-Math.random()*assets[state.selected].vol;state.candles.push({o,h,l,c})}state.price=p}
-  function drawChart(){
-    const svg=$("chartSvg"),w=900,h=340,pad={l:18,r:65,t:34,b:20},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
-    const vals=state.candles.flatMap(c=>[c.h,c.l]);let min=Math.min(...vals),max=Math.max(...vals),range=max-min||1;min-=range*.08;max+=range*.08;const y=v=>pad.t+(max-v)/(max-min)*ch;
-    let s='';
-    for(let i=0;i<6;i++){let yy=pad.t+i*ch/5;let val=max-i*(max-min)/5;s+=`<line x1="${pad.l}" y1="${yy}" x2="${w-pad.r}" y2="${yy}" stroke="#183027" stroke-width="1" stroke-dasharray="3 5"/><text x="${w-pad.r+8}" y="${yy+4}" fill="#71877d" font-size="10">${priceText(state.selected,val)}</text>`}
-    for(let i=0;i<7;i++){let xx=pad.l+i*cw/6;s+=`<line x1="${xx}" y1="${pad.t}" x2="${xx}" y2="${h-pad.b}" stroke="#12251d" stroke-width="1"/>`}
-    const step=cw/state.candles.length,body=Math.max(3,step*.55);
-    state.candles.forEach((c,i)=>{let x=pad.l+i*step+step/2,up=c.c>=c.o,color=up?"#00d897":"#ff5268",yo=y(c.o),yc=y(c.c),top=Math.min(yo,yc),bh=Math.max(2,Math.abs(yc-yo));s+=`<line x1="${x}" y1="${y(c.h)}" x2="${x}" y2="${y(c.l)}" stroke="${color}" stroke-width="1.2"/><rect x="${x-body/2}" y="${top}" width="${body}" height="${bh}" rx="1" fill="${color}"/>`});
-    let last=state.candles[state.candles.length-1].c,ly=y(last);s+=`<line x1="${pad.l}" y1="${ly}" x2="${w-pad.r}" y2="${ly}" stroke="#00d897" stroke-dasharray="4 4" opacity=".8"/><rect x="${w-pad.r+3}" y="${ly-9}" width="60" height="18" rx="4" fill="#00a875"/><text x="${w-pad.r+33}" y="${ly+3}" fill="#041a12" font-size="10" text-anchor="middle" font-weight="700">${priceText(state.selected,last)}</text>`;
-    svg.innerHTML=s;
-    const c=state.candles[state.candles.length-1];$("ohlcO").textContent=priceText(state.selected,c.o);$("ohlcH").textContent=priceText(state.selected,c.h);$("ohlcL").textContent=priceText(state.selected,c.l);$("ohlcC").textContent=priceText(state.selected,c.c);
-  }
-  function updateAsset(reset=true){
-    state.selected=$("assetSelect").value;const a=assets[state.selected];state.price=a.price;
-    $("assetTitle").textContent=state.selected;$("assetIcon").textContent=a.icon;$("assetDesc").textContent=a.desc;$("legendAsset").textContent=state.selected;
-    if(reset)seedCandles();$("currentPrice").textContent=priceText(state.selected,state.price);drawChart();$("priceChange").textContent=(Math.random()>.35?"+":"-")+(Math.random()*.35).toFixed(2)+"%";
-  }
-  function updateBalance(){$("topBalance").textContent="$"+fmt(state.balance);$("totalTrades").textContent=state.trades;$("totalWins").textContent=state.wins;$("winRate").textContent=(state.trades?Math.round(state.wins/state.trades*100):0)+"%"}
-  function renderOpen(){
-    const tbody=$("openPositions");$("openCount").textContent=state.open.length+" ACTIVE";
-    if(!state.open.length){tbody.innerHTML='<tr><td colspan="4" class="empty">No open positions</td></tr>';return}
-    tbody.innerHTML=state.open.map(t=>`<tr><td>${t.asset}</td><td class="${t.side==="CALL"?"green":"red"}">${t.side}</td><td>$${fmt(t.amount)}</td><td>${Math.max(0,Math.ceil((t.end-Date.now())/1000))}s</td></tr>`).join("");
-  }
-  function renderHistory(){
-    const tbody=$("historyBody");if(!state.history.length){tbody.innerHTML='<tr><td colspan="6" class="empty">Your demo trades will appear here.</td></tr>';return}
-    tbody.innerHTML=state.history.slice(0,20).map(t=>`<tr><td>${t.time}</td><td>${t.asset}</td><td class="${t.side==="CALL"?"green":"red"}">${t.side}</td><td>$${fmt(t.amount)}</td><td class="${t.result==="WIN"?"green":"red"}">${t.result}</td><td class="${t.pnl>=0?"green":"red"}">${t.pnl>=0?"+":"−"}$${fmt(Math.abs(t.pnl))}</td></tr>`).join("");
-  }
-  function placeTrade(side){
-    const amount=Number($("amount").value),duration=Number($("duration").value);
-    if(!Number.isFinite(amount)||amount<1){toast("Enter a demo stake of at least $1.");return}
-    if(amount>state.balance){toast("Insufficient demo balance.");return}
-    if(amount>10000){toast("Maximum demo stake is $10,000.");return}
-    state.balance-=amount;state.trades++;
-    const trade={id:Date.now()+Math.random(),asset:state.selected,side,amount,entry:state.price,end:Date.now()+duration*1000,time:now()};
-    state.open.push(trade);updateBalance();renderOpen();toast(`${side} demo trade opened on ${trade.asset}.`);
-  }
-  function settleTrades(){
-    const nowMs=Date.now();let done=state.open.filter(t=>t.end<=nowMs);state.open=state.open.filter(t=>t.end>nowMs);
-    done.forEach(t=>{
-      const a=assets[t.asset],final=state.price+(Math.random()-.49)*a.vol*4;
-      const won=t.side==="CALL"?final>t.entry:final<t.entry;
-      const pnl=won?t.amount*.8:-t.amount;
-      if(won){state.wins++;state.balance+=t.amount+pnl}else{state.losses++}
-      state.history.unshift({...t,result:won?"WIN":"LOSS",pnl,exit:final});
-      toast(`${t.asset} ${won?"WIN":"LOSS"} · ${pnl>=0?"+":"−"}$${fmt(Math.abs(pnl))} (demo)`);
-    });
-    updateBalance();renderOpen();if(done.length)renderHistory();
-  }
-  $("assetSelect").addEventListener("change",()=>updateAsset(true));
-  $("callBtn").addEventListener("click",()=>placeTrade("CALL"));$("putBtn").addEventListener("click",()=>placeTrade("PUT"));
-  $("minus").addEventListener("click",()=>{$("amount").value=Math.max(1,(Number($("amount").value)||1)-10)});
-  $("plus").addEventListener("click",()=>{$("amount").value=Math.min(10000,(Number($("amount").value)||0)+10)});
-  document.querySelectorAll("[data-amount]").forEach(b=>b.addEventListener("click",()=>{$("amount").value=b.dataset.amount}));
-  document.querySelectorAll("[data-time]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-time]").forEach(x=>x.classList.remove("active"));b.classList.add("active");toast("Chart timeframe changed for demo display.")}));
-  $("clearHistory").addEventListener("click",()=>{state.history=[];renderHistory();toast("Demo trade history cleared.")});
-  $("hamb").addEventListener("click",()=> $("sidebar").classList.toggle("open"));
-  $("profileBtn").addEventListener("click",()=>toast("Demo profile · no account system is connected yet."));
-  document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-view]").forEach(x=>x.classList.remove("active"));b.classList.add("active");const v=b.dataset.view;const titles={terminal:"Trading Terminal",assets:"Markets",history:"Trade History",account:"My Account"};$("pageTitle").textContent=titles[v]||"Trading Terminal";if(v==="history")$("historyCard").scrollIntoView({behavior:"smooth",block:"start"});else if(v==="assets")$("assetSelect").focus();else if(v==="account")toast("Demo account only. Registration is not connected yet.");$("sidebar").classList.remove("open")}));
-  seedCandles();updateAsset(false);updateBalance();renderHistory();renderOpen();
-  setInterval(()=>{
-    const a=assets[state.selected],prev=state.price;state.price=Math.max(.00001,state.price+(Math.random()-.5)*a.vol*1.7);
-    const c=state.candles[state.candles.length-1];c.c=state.price;c.h=Math.max(c.h,state.price);c.l=Math.min(c.l,state.price);
-    if(Math.random()>.72){let p=state.price;state.candles.push({o:p,h:p,l:p,c:p});if(state.candles.length>44)state.candles.shift()}
-    $("currentPrice").textContent=priceText(state.selected,state.price);$("priceChange").textContent=(state.price>=prev?"+":"")+(100*(state.price-prev)/(prev||1)).toFixed(3)+"%";$("priceChange").style.color=state.price>=prev?"var(--green)":"var(--red)";$("lastUpdate").textContent=now();drawChart();settleTrades();
-  },1500);
-  setInterval(renderOpen,500);
+(()=>{
+const $=id=>document.getElementById(id);
+const data={
+"EUR/USD":{p:1.08452,icon:"EU",desc:"Euro / US Dollar",cat:"Forex",digits:5,vol:.0002,rate:87},
+"GBP/USD":{p:1.27184,icon:"GB",desc:"British Pound / US Dollar",cat:"Forex",digits:5,vol:.00025,rate:85},
+"USD/JPY":{p:149.682,icon:"UJ",desc:"US Dollar / Japanese Yen",cat:"Forex",digits:3,vol:.035,rate:82},
+"AUD/USD":{p:.65842,icon:"AU",desc:"Australian Dollar / US Dollar",cat:"Forex",digits:5,vol:.00018,rate:84},
+"USD/CAD":{p:1.36218,icon:"UC",desc:"US Dollar / Canadian Dollar",cat:"Forex",digits:5,vol:.0002,rate:81},
+"NZD/USD":{p:.61284,icon:"NZ",desc:"New Zealand Dollar / US Dollar",cat:"Forex",digits:5,vol:.00018,rate:80},
+"USD/CHF":{p:.88425,icon:"US",desc:"US Dollar / Swiss Franc",cat:"Forex",digits:5,vol:.00018,rate:80},
+"EUR/GBP":{p:.85312,icon:"EG",desc:"Euro / British Pound",cat:"Forex",digits:5,vol:.00015,rate:83},
+"EUR/JPY":{p:162.318,icon:"EJ",desc:"Euro / Japanese Yen",cat:"Forex",digits:3,vol:.04,rate:84},
+"GBP/JPY":{p:190.224,icon:"GJ",desc:"British Pound / Japanese Yen",cat:"Forex",digits:3,vol:.05,rate:82},
+"EUR/AUD":{p:1.6472,icon:"EA",desc:"Euro / Australian Dollar",cat:"Forex",digits:4,vol:.00025,rate:79},
+"GBP/AUD":{p:1.9321,icon:"GA",desc:"British Pound / Australian Dollar",cat:"Forex",digits:4,vol:.0003,rate:78},
+"AUD/JPY":{p:98.512,icon:"AJ",desc:"Australian Dollar / Japanese Yen",cat:"Forex",digits:3,vol:.035,rate:80},
+"EUR/CHF":{p:.9412,icon:"EC",desc:"Euro / Swiss Franc",cat:"Forex",digits:4,vol:.00015,rate:78},
+"GBP/CHF":{p:1.1224,icon:"GC",desc:"British Pound / Swiss Franc",cat:"Forex",digits:4,vol:.0002,rate:77},
+"CAD/JPY":{p:109.82,icon:"CJ",desc:"Canadian Dollar / Japanese Yen",cat:"Forex",digits:2,vol:.03,rate:76},
+"XAU/USD":{p:2650.25,icon:"Au",desc:"Gold / US Dollar",cat:"Metals",digits:2,vol:1.8,rate:91},
+"XAG/USD":{p:31.245,icon:"Ag",desc:"Silver / US Dollar",cat:"Metals",digits:3,vol:.05,rate:85},
+"BTC/USD":{p:62450.25,icon:"₿",desc:"Bitcoin / US Dollar",cat:"Crypto",digits:2,vol:65,rate:88},
+"ETH/USD":{p:2450.18,icon:"Ξ",desc:"Ethereum / US Dollar",cat:"Crypto",digits:2,vol:4.2,rate:86},
+"LTC/USD":{p:72.84,icon:"Ł",desc:"Litecoin / US Dollar",cat:"Crypto",digits:2,vol:.25,rate:80},
+"XRP/USD":{p:.5324,icon:"X",desc:"XRP / US Dollar",cat:"Crypto",digits:4,vol:.003,rate:82},
+"OIL":{p:78.25,icon:"OIL",desc:"Crude Oil · Demo",cat:"Other",digits:2,vol:.2,rate:78},
+"NASDAQ":{p:18450.5,icon:"NQ",desc:"NASDAQ 100 · Demo",cat:"Other",digits:2,vol:8,rate:80}
+};
+const state={balance:10000,initial:10000,selected:"EUR/USD",prices:{},candles:[],history:[],open:[],trades:0,wins:0,losses:0,category:"All",timer:null};
+Object.keys(data).forEach(k=>state.prices[k]=data[k].p);
+const fmt=(n,d=2)=>Number(n).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+const ptxt=(k,p)=>fmt(p,data[k].digits);
+const time=()=>new Date().toLocaleTimeString("en-IN",{hour12:false});
+function toast(s){const t=$("toast");t.textContent=s;t.classList.add("show");clearTimeout(state.timer);state.timer=setTimeout(()=>t.classList.remove("show"),2800)}
+function catClass(k){return data[k].cat==="Metals"?"gold":data[k].cat==="Crypto"?"crypto":""}
+function buildAssetList(){
+ const q=$("search").value.toLowerCase();const items=Object.keys(data).filter(k=>(state.category==="All"||data[k].cat===state.category)&&(k+" "+data[k].desc).toLowerCase().includes(q));
+ $("marketCount").textContent=items.length+" ASSETS";
+ $("assetList").innerHTML=items.map(k=>`<button class="asset ${k===state.selected?"selected":""}" data-asset="${k}"><span class="coin ${catClass(k)}">${data[k].icon}</span><span class="asset-text"><strong>${k}</strong><small>${data[k].desc}</small></span><span class="asset-percent ${data[k].rate<80?"low":""}">${data[k].rate}%</span></button>`).join("")||'<div class="empty">No assets found</div>';
+ document.querySelectorAll("[data-asset]").forEach(b=>b.addEventListener("click",()=>selectAsset(b.dataset.asset)));
+}
+function buildTradeSelect(){ $("tradeAsset").innerHTML=Object.keys(data).map(k=>`<option value="${k}">${k} · ${data[k].cat}</option>`).join("");$("tradeAsset").value=state.selected}
+function seed(){let p=state.prices[state.selected];state.candles=[];for(let i=0;i<52;i++){let o=p;p+=((Math.random()-.49)*data[state.selected].vol*2);let c=p;state.candles.push({o,h:Math.max(o,c)+Math.random()*data[state.selected].vol,l:Math.min(o,c)-Math.random()*data[state.selected].vol,c})}state.prices[state.selected]=p}
+function draw(){
+ const k=state.selected,svg=$("chartSvg"),w=900,h=420,pad={l:15,r:72,t:38,b:18},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b,vals=state.candles.flatMap(c=>[c.h,c.l]);let min=Math.min(...vals),max=Math.max(...vals),range=max-min||1;min-=range*.08;max+=range*.08;const y=v=>pad.t+(max-v)/(max-min)*ch;let s="";
+ for(let i=0;i<7;i++){let yy=pad.t+i*ch/6,v=max-i*(max-min)/6;s+=`<line x1="${pad.l}" y1="${yy}" x2="${w-pad.r}" y2="${yy}" stroke="#303b5a" stroke-width="1" stroke-dasharray="3 5"/><text x="${w-pad.r+7}" y="${yy+4}" fill="#9ba8c8" font-size="10">${ptxt(k,v)}</text>`}
+ for(let i=0;i<8;i++){let xx=pad.l+i*cw/7;s+=`<line x1="${xx}" y1="${pad.t}" x2="${xx}" y2="${h-pad.b}" stroke="#293451" stroke-width="1"/>`}
+ const step=cw/state.candles.length,bw=Math.max(3,step*.58);
+ state.candles.forEach((c,i)=>{let x=pad.l+i*step+step/2,up=c.c>=c.o,color=up?"#16d9a0":"#ff5478",yo=y(c.o),yc=y(c.c),top=Math.min(yo,yc),bh=Math.max(2,Math.abs(yc-yo));s+=`<line x1="${x}" y1="${y(c.h)}" x2="${x}" y2="${y(c.l)}" stroke="${color}" stroke-width="1.3"/><rect x="${x-bw/2}" y="${top}" width="${bw}" height="${bh}" rx="1" fill="${color}"/>`});
+ let last=state.candles.at(-1).c,ly=y(last);s+=`<line x1="${pad.l}" y1="${ly}" x2="${w-pad.r}" y2="${ly}" stroke="#42dfff" stroke-dasharray="4 4"/><rect x="${w-pad.r+3}" y="${ly-9}" width="65" height="18" rx="4" fill="#397dff"/><text x="${w-pad.r+35}" y="${ly+3}" fill="#fff" font-size="10" text-anchor="middle" font-weight="700">${ptxt(k,last)}</text>`;svg.innerHTML=s;
+ const c=state.candles.at(-1);$("o").textContent=ptxt(k,c.o);$("h").textContent=ptxt(k,c.h);$("l").textContent=ptxt(k,c.l);$("c").textContent=ptxt(k,c.c);
+}
+function selectAsset(k){state.selected=k;$("tradeAsset").value=k;const a=data[k];$("pairName").innerHTML=`${k} <span style="font-size:10px;color:#54dfff">●</span>`;$("pairDesc").textContent=a.desc+" · "+a.cat+" · Demo";$("pairIcon").textContent=a.icon;$("pairIcon").style.background=a.cat==="Metals"?"linear-gradient(135deg,#ffdd67,#e18c20)":a.cat==="Crypto"?"linear-gradient(135deg,#ff9b54,#f34e80)":"linear-gradient(135deg,#365eff,#28c9e9)";$("price").textContent=ptxt(k,state.prices[k]);$("change").textContent="▲ "+(Math.random()*.3).toFixed(2)+"%";buildAssetList();seed();draw();updatePotential()}
+function updatePotential(){const amount=Math.max(0,Number($("stake").value)||0),rate=Number($("payoutRate").value);$("potential").textContent="$"+fmt(amount*rate)}
+function stats(){ $("balance").textContent="$"+fmt(state.balance);$("trades").textContent=state.trades;$("wins").textContent=state.wins;$("rate").textContent=(state.trades?Math.round(state.wins/state.trades*100):0)+"%"}
+function renderOpen(){ $("openCount").textContent=state.open.length+" OPEN";$("openRows").innerHTML=state.open.length?state.open.map(t=>`<tr><td>${t.asset}</td><td class="${t.side==="CALL"?"positive":"negative"}">${t.side}</td><td>$${fmt(t.amount)}</td><td>${ptxt(t.asset,t.entry)}</td><td>${Math.max(0,Math.ceil((t.end-Date.now())/1000))}s</td></tr>`).join(""):'<tr><td colspan="5" class="empty">No open demo trades</td></tr>'}
+function renderHistory(){ $("history").innerHTML=state.history.length?state.history.slice(0,20).map(t=>`<tr><td>${t.time}</td><td>${t.asset}</td><td class="${t.side==="CALL"?"positive":"negative"}">${t.side}</td><td>$${fmt(t.amount)}</td><td class="${t.pnl>=0?"positive":"negative"}">${t.result}</td><td class="${t.pnl>=0?"positive":"negative"}">${t.pnl>=0?"+":"−"}$${fmt(Math.abs(t.pnl))}</td></tr>`).join(""):'<tr><td colspan="6" class="empty">Your demo trades will appear here</td></tr>'}
+function trade(side){const amount=Number($("stake").value),duration=Number($("duration").value);if(!Number.isFinite(amount)||amount<1){toast("Enter at least $1 demo stake.");return}if(amount>state.balance){toast("Not enough demo balance.");return}if(amount>10000){toast("Maximum demo stake is $10,000.");return}state.balance-=amount;state.trades++;state.open.push({asset:state.selected,side,amount,entry:state.prices[state.selected],end:Date.now()+duration*1000,time:time(),rate:Number($("payoutRate").value)});stats();renderOpen();toast(side+" demo position opened on "+state.selected)}
+function settle(){const n=Date.now(),done=state.open.filter(t=>t.end<=n);state.open=state.open.filter(t=>t.end>n);done.forEach(t=>{const a=data[t.asset],exit=state.prices[t.asset]+(Math.random()-.49)*a.vol*4,won=t.side==="CALL"?exit>t.entry:exit<t.entry,pnl=won?t.amount*t.rate:-t.amount;if(won){state.wins++;state.balance+=t.amount+pnl}else state.losses++;state.history.unshift({...t,result:won?"WIN":"LOSS",pnl});toast(`${t.asset} ${won?"WIN":"LOSS"} · ${pnl>=0?"+":"−"}$${fmt(Math.abs(pnl))} (demo)`)});stats();renderOpen();if(done.length)renderHistory()}
+$("search").addEventListener("input",buildAssetList);document.querySelectorAll("[data-category]").forEach(b=>b.addEventListener("click",()=>{state.category=b.dataset.category;document.querySelectorAll("[data-category]").forEach(x=>x.classList.toggle("active",x===b));buildAssetList()}));
+$("tradeAsset").addEventListener("change",()=>selectAsset($("tradeAsset").value));$("call").addEventListener("click",()=>trade("CALL"));$("put").addEventListener("click",()=>trade("PUT"));$("stake").addEventListener("input",updatePotential);$("payoutRate").addEventListener("change",updatePotential);
+$("minus").addEventListener("click",()=>{$("stake").value=Math.max(1,(Number($("stake").value)||1)-10);updatePotential()});$("plus").addEventListener("click",()=>{$("stake").value=Math.min(10000,(Number($("stake").value)||0)+10);updatePotential()});document.querySelectorAll("[data-stake]").forEach(b=>b.addEventListener("click",()=>{$("stake").value=b.dataset.stake;updatePotential()}));
+document.querySelectorAll("[data-tf]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-tf]").forEach(x=>x.classList.toggle("active",x===b));toast("Timeframe changed for demo chart.")}));
+$("clear").addEventListener("click",()=>{state.history=[];renderHistory();toast("Demo history cleared.")});
+$("reset").addEventListener("click",()=>{state.balance=state.initial;state.history=[];state.open=[];state.trades=0;state.wins=0;state.losses=0;stats();renderOpen();renderHistory();toast("Demo account reset to $10,000.")});
+buildAssetList();buildTradeSelect();selectAsset(state.selected);stats();renderOpen();renderHistory();
+setInterval(()=>{for(const k of Object.keys(data)){const a=data[k],prev=state.prices[k];state.prices[k]=Math.max(.00001,prev+(Math.random()-.5)*a.vol*1.4)}const k=state.selected,p=state.prices[k],c=state.candles.at(-1);c.c=p;c.h=Math.max(c.h,p);c.l=Math.min(c.l,p);if(Math.random()>.7){state.candles.push({o:p,h:p,l:p,c:p});if(state.candles.length>52)state.candles.shift()}$("price").textContent=ptxt(k,p);$("change").textContent=(p>=c.o?"▲ ":"▼ ")+(Math.random()*.12).toFixed(3)+"%";$("change").style.color=p>=c.o?"var(--green)":"var(--red)";$("updated").textContent=time();draw();settle()},1500);
+setInterval(renderOpen,400);
 })();
 </script>
 </body>

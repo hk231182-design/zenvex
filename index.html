@@ -632,6 +632,27 @@ button,input,select{transition:background-color .15s,border-color .15s,box-shado
 .indicator-summary{margin:0 12px 12px;padding:9px 10px;border-radius:7px;background:#111923;color:#a8b7c7;font-size:10px;line-height:1.5}
 @media(max-width:760px){.desktop-change-asset{display:none!important}.marketbar{cursor:default}.indicator-modal-backdrop{align-items:flex-end;padding:0}.indicator-modal{width:100%;max-height:78dvh;border-radius:14px 14px 0 0}.indicator-options{grid-template-columns:1fr 1fr}.indicator-option{padding:10px 9px;min-height:76px}.indicator-option .indicator-check{align-self:flex-start}}
 
+
+/* Final request: remove the extra asset-tab strip and give the chart more room on desktop and phones. */
+@media (min-width:761px){
+  .asset-tabs{display:none!important;height:0!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;overflow:hidden!important}
+  .chartcol{gap:7px!important;min-height:calc(100vh - 92px)}
+  .chart{height:clamp(520px,72vh,900px)!important;min-height:520px!important;max-height:none!important}
+  .mobile-asset-selector{display:flex!important;min-height:46px!important;padding:8px 11px!important;border:1px solid var(--line)!important;border-radius:8px!important;background:#17212c!important;margin-bottom:8px!important}
+  .tradepanel .mobile-asset-selector{margin:0!important;border-radius:0!important;border-left:0!important;border-right:0!important;border-top:0!important}
+  .workspace{align-items:stretch!important}
+  .chartcol>div:has(>.chart-tools){min-height:0}
+}
+@media (max-width:760px){
+  .asset-tabs{display:none!important;height:0!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;overflow:hidden!important}
+  .chartcol{gap:0!important}
+  .marketbar{min-height:44px!important;padding:5px 9px!important}
+  .chart{height:clamp(320px,57dvh,650px)!important;min-height:320px!important;max-height:none!important}
+  .chart-shell{flex:0 0 auto!important;min-height:320px!important}
+}
+@media (max-width:380px){
+  .chart{height:clamp(300px,53dvh,520px)!important;min-height:300px!important}
+}
 </style></head>
 <body>
 <header class="top"><div class="brand"><div class="brand-mark">Z</div><span>ZENVEX<em>.</em></span></div><nav class="topnav"><span class="on">◈ Trade</span><span>▤ History</span><span>◉ Support</span></nav><div class="spacer"></div><span class="account-mode">DEMO ACCOUNT</span><div class="balance"><small>Demo balance</small><strong id="balance">$10,000.00</strong></div><button class="add-funds" id="openAccount">Wallet</button><button class="add-funds" id="reset">↻ Reset</button><button class="profile" id="profileButton" aria-label="Profile">Z</button></header>

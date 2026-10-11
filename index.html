@@ -300,6 +300,99 @@ button,input,select{transition:background-color .15s,border-color .15s,box-shado
 @media(max-width:900px){.top{height:56px;padding:0 10px;gap:8px}.brand{min-width:unset;font-size:17px}.topnav{display:none}.account-mode{font-size:10px;padding:7px}.balance{min-width:unset;padding:6px 8px}.balance small{font-size:9px}.balance strong{font-size:13px}.layout{display:block}.rail{display:none}.main{padding:0}.workspace{display:flex;flex-direction:column;gap:0}.chartcol{display:flex;flex-direction:column}.asset-tabs{order:0;margin:7px 8px 5px;overflow-x:auto;flex-wrap:nowrap}.asset-tab{min-width:150px}.chart-tools{order:1;border-radius:0;border-left:0;border-right:0;overflow-x:auto;flex-wrap:nowrap}.chart-tools button{white-space:nowrap}.chart-shell{order:2;border-radius:0;border-left:0;border-right:0}.chart{height:clamp(320px,48svh,520px)!important;min-height:320px!important}.chart-foot{flex-wrap:wrap;font-size:10px;gap:7px 12px}.tradepanel{order:3;border-radius:10px 10px 0 0;margin:8px 0 0;border-left:0;border-right:0}.trade-title{padding:10px 14px}.trade-content{display:grid!important;grid-template-columns:1fr 1fr;gap:10px!important;padding:12px!important}.trade-content>.field:first-of-type{grid-column:1}.trade-content>.field:nth-of-type(2){grid-column:2}.trade-content .return-box{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center}.trade-content .order-btn{width:100%;min-height:54px}.trade-note{grid-column:1/-1}.quick-amount{gap:4px}.quick-amount button{padding:6px 3px}}
 @media(max-width:520px){body{font-size:13px}.top{padding:0 7px;gap:6px}.brand{font-size:14px;gap:5px}.brand-mark{width:25px;height:25px}.account-mode{font-size:9px;padding:6px 7px;white-space:nowrap}.balance{padding:5px 6px}.balance small{font-size:8px}.balance strong{font-size:11px}.add-funds{padding:8px 9px;font-size:10px}#reset{display:none}.profile{width:29px;height:29px;min-width:29px}.chart{height:clamp(300px,43svh,410px)!important;min-height:300px!important}.asset-tab{min-width:136px;padding:8px}.chart-tools{padding:6px;gap:4px}.chart-tools button{padding:7px 8px;font-size:10px}.chart-foot span:nth-child(2){display:none}.trade-content{gap:8px!important;padding:9px!important}.trade-title{font-size:11px}.trade-content .field label{font-size:10px}.trade-content .amount-row{grid-template-columns:30px minmax(0,1fr) 30px}.trade-content .amount-row input{font-size:14px;min-width:0}.trade-content .amount-row button{width:26px;height:26px}.trade-content .quick-amount button{font-size:9px}.trade-content .field select{padding:12px 8px;font-size:12px}.return-box{padding:10px}.return-box strong{font-size:17px}.trade-content .order-btn{font-size:14px!important;padding:12px 10px!important}.trade-note{font-size:10px}.history-panel{margin:8px;border-radius:8px}.history-head{gap:5px}.history-tab{font-size:10px}}
 
+
+
+/* ZENVEX mobile-first polish: isolated to phones/tablets; desktop rules untouched. */
+@media (max-width: 760px) {
+  html, body { width:100%; max-width:100%; overflow-x:hidden; }
+  body { padding-bottom:0; }
+  .top { position:sticky; top:0; z-index:25; height:52px; padding:0 6px; gap:5px; overflow:hidden; }
+  .brand { min-width:0; flex:0 0 auto; gap:4px; font-size:13px; letter-spacing:0; }
+  .brand-mark { width:23px; height:23px; min-width:23px; border-radius:7px; }
+  .spacer { flex:1 1 auto; min-width:0; }
+  .topnav, .account-mode { display:none!important; }
+  .balance { flex:0 1 auto; min-width:0; margin-left:auto; line-height:1.1; }
+  .balance small { font-size:7px; margin-bottom:2px; }
+  .balance strong { font-size:10px; white-space:nowrap; }
+  .add-funds { flex:0 0 auto; padding:7px 7px; font-size:9px; white-space:nowrap; }
+  #reset { width:25px; height:28px; padding:0; font-size:0; display:grid; place-items:center; }
+  #reset:before { content:'↻'; font-size:15px; }
+  .profile { width:26px; height:26px; min-width:26px; flex:0 0 26px; font-size:10px; }
+  .warning { padding:5px 7px; font-size:8px; line-height:1.35; }
+  .layout { display:block!important; width:100%; height:auto!important; min-height:0; overflow:visible!important; }
+  .rail { display:none!important; }
+  .main { display:flex!important; width:100%; height:auto!important; min-height:0; overflow:visible!important; margin:0; padding:7px 7px 250px!important; gap:9px; }
+  .workspace { display:flex!important; flex-direction:column; width:100%; height:auto!important; min-height:0; gap:9px; }
+  .chartcol { display:flex!important; flex-direction:column; width:100%; height:auto!important; min-height:0; gap:7px; order:1; }
+  .asset-tabs { display:flex!important; min-height:45px; gap:5px; overflow-x:auto; overflow-y:hidden; padding-bottom:1px; scrollbar-width:none; overscroll-behavior-x:contain; }
+  .asset-tabs::-webkit-scrollbar, .chart-tools::-webkit-scrollbar { display:none; }
+  .asset-tab { flex:0 0 auto; min-width:112px; padding:6px 8px; gap:6px; }
+  .asset-tab strong { font-size:10px; }
+  .asset-tab small { font-size:9px; }
+  .marketbar { display:flex; min-width:0; min-height:47px; padding:6px 8px; gap:6px; border-radius:8px; }
+  .pair-icon { width:auto; min-width:48px; height:28px; padding:0; }
+  .pair-icon .flag-circle, .pair-icon .asset-symbol { width:22px; height:22px; min-width:22px; flex-basis:22px; font-size:11px; }
+  .pair-info { flex:1 1 auto; min-width:0; }
+  .pair-info strong { font-size:11px; white-space:nowrap; }
+  .pair-info small { font-size:8px; line-height:1.25; }
+  .pricebox { flex:0 0 auto; min-width:0; }
+  .pricebox strong { font-size:12px; white-space:nowrap; }
+  .pricebox small { font-size:8px; }
+  .chartcol>div:has(>.chart-tools) { display:flex; flex-direction:column; flex:0 0 auto; width:100%; min-width:0; min-height:0; overflow:visible; }
+  .chart-tools { display:flex; flex:0 0 auto; min-width:0; flex-wrap:nowrap; overflow-x:auto; overflow-y:hidden; white-space:nowrap; gap:3px; padding:5px; border-radius:8px 8px 0 0; scrollbar-width:none; }
+  .chart-tools button, .chart-tools select { flex:0 0 auto; padding:6px 7px; font-size:9px; white-space:nowrap; }
+  .chart-tools .tool-spacer { flex:1 0 4px; min-width:4px; }
+  .chart-shell { display:flex; flex:0 0 auto; flex-direction:column; width:100%; min-width:0; min-height:0; overflow:hidden; border-radius:0 0 8px 8px; }
+  .chart { width:100%; height:clamp(280px, 42svh, 390px)!important; min-height:280px!important; flex:0 0 auto; }
+  .chart svg { display:block; width:100%; height:100%; }
+  .legend { top:7px; left:7px; max-width:calc(100% - 95px); font-size:8px; }
+  .chart-foot { display:flex; flex-wrap:wrap; justify-content:flex-start; gap:4px 9px; padding:6px 7px; font-size:8px; line-height:1.35; }
+  .tradepanel { position:fixed!important; left:0!important; right:0!important; bottom:0!important; z-index:35!important; width:100%!important; max-height:min(42svh, 330px)!important; overflow-y:auto!important; overscroll-behavior:contain; align-self:stretch; order:2; margin:0!important; border:1px solid #34404e; border-bottom:0; border-left:0; border-right:0; border-radius:13px 13px 0 0; box-shadow:0 -8px 28px #0009; background:#171e28; padding-bottom:env(safe-area-inset-bottom); }
+  .trade-title { position:sticky; top:0; z-index:2; display:flex!important; padding:7px 11px; min-height:31px; background:#1b2430; border-bottom:1px solid var(--line); font-size:10px; }
+  .demo-tag { padding:3px 5px; font-size:8px; }
+  .trade-content { display:grid!important; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:end; gap:7px!important; padding:8px 8px calc(8px + env(safe-area-inset-bottom))!important; }
+  .trade-content .field { min-width:0; grid-column:auto!important; }
+  .trade-content .field label { font-size:9px; margin-bottom:4px; }
+  .trade-content .amount-row { grid-template-columns:25px minmax(0,1fr) 25px; gap:3px; }
+  .trade-content .amount-row button { width:25px; min-height:28px; padding:2px; font-size:15px; }
+  .trade-content .amount-row input { min-width:0; padding:7px 2px; font-size:12px; }
+  .trade-content .quick-amount { display:none!important; }
+  .trade-content .field select { width:100%; min-width:0; padding:8px 6px; font-size:11px; }
+  .trade-content .return-box { display:flex!important; grid-column:1/-1; min-height:32px; padding:5px 9px; }
+  .trade-content .return-box span { font-size:9px; }
+  .trade-content .return-box strong { font-size:14px; }
+  .trade-content .order-btn { display:flex; grid-column:auto!important; width:100%; min-width:0; min-height:41px; padding:8px 9px!important; justify-content:space-between; border-radius:7px; font-size:11px!important; }
+  .trade-content .order-btn small { display:inline; font-size:9px; }
+  .trade-content .order-btn .arrow { display:grid; place-items:center; width:21px; height:21px; font-size:13px; }
+  .trade-content .trade-note { display:none!important; }
+  .history-panel { display:block!important; width:100%; min-width:0; margin:0 0 8px; overflow:hidden; }
+  .history-head { display:flex; flex-wrap:wrap; gap:4px; padding:0 6px; min-height:40px; }
+  .history-tab { height:38px; font-size:9px; }
+  .history-tools { margin-left:auto; gap:4px; }
+  .history-tools button { padding:5px 6px; font-size:8px; }
+  .table-wrap { width:100%; max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .asset-modal-backdrop { padding:0; align-items:flex-end; }
+  .asset-modal { width:100%; max-height:88dvh; border-radius:14px 14px 0 0; }
+  .modal-list { grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
+  .account-modal-backdrop { padding:10px; }
+  .account-modal { width:100%; max-height:88dvh; }
+}
+@media (max-width: 380px) {
+  .top { gap:4px; padding:0 4px; }
+  .brand { font-size:12px; gap:3px; }
+  .brand-mark { width:21px; height:21px; min-width:21px; }
+  .balance small { font-size:6px; }
+  .balance strong { font-size:9px; }
+  .add-funds { padding:6px 5px; font-size:8px; }
+  #reset { width:23px; }
+  .profile { width:24px; height:24px; min-width:24px; flex-basis:24px; }
+  .chart { height:clamp(260px, 39svh, 340px)!important; min-height:260px!important; }
+  .trade-content { gap:5px!important; padding:6px 6px calc(6px + env(safe-area-inset-bottom))!important; }
+  .trade-content .amount-row { grid-template-columns:21px minmax(0,1fr) 21px; gap:2px; }
+  .trade-content .amount-row button { width:21px; }
+  .trade-content .order-btn { min-height:39px; padding:7px 6px!important; font-size:10px!important; }
+}
+
 </style></head>
 <body>
 <header class="top"><div class="brand"><div class="brand-mark">Z</div><span>ZENVEX<em>.</em></span></div><nav class="topnav"><span class="on">◈ Trade</span><span>▤ History</span><span>◉ Support</span></nav><div class="spacer"></div><span class="account-mode">DEMO ACCOUNT</span><div class="balance"><small>Demo balance</small><strong id="balance">$10,000.00</strong></div><button class="add-funds" id="openAccount">Wallet</button><button class="add-funds" id="reset">↻ Reset</button><button class="profile" id="profileButton" aria-label="Profile">Z</button></header>

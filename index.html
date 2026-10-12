@@ -699,6 +699,40 @@ button,input,select{transition:background-color .15s,border-color .15s,box-shado
   .trade-content .amount-row input,.trade-content .field select{height:33px!important;min-height:33px!important;font-size:10px!important}
 }
 
+
+/* Final mobile correction: remove the extra horizontal asset tabs/quick asset options.
+   Keep the single main pair selector in the chart header and the trade controls below. */
+@media (max-width:760px){
+  .asset-tabs,
+  .asset-tabs .asset-tab,
+  .asset-tabs .add-asset,
+  .asset-tabs button[data-tab-asset],
+  .asset-tabs button#addAsset{
+    display:none!important;
+    visibility:hidden!important;
+    height:0!important;
+    min-height:0!important;
+    max-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    overflow:hidden!important;
+    pointer-events:none!important;
+  }
+  .chartcol > .asset-tabs,
+  .chartcol .asset-tabs{
+    flex:0 0 0!important;
+    gap:0!important;
+    width:0!important;
+    min-width:0!important;
+  }
+  .marketbar{
+    display:flex!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+}
+
 </style></head>
 <body>
 <header class="top"><div class="brand"><div class="brand-mark">Z</div><span>ZENVEX<em>.</em></span></div><nav class="topnav"><span class="on">◈ Trade</span><span>▤ History</span><span>◉ Support</span></nav><div class="spacer"></div><span class="account-mode">DEMO ACCOUNT</span><div class="balance"><small>Demo balance</small><strong id="balance">$10,000.00</strong></div><button class="add-funds" id="openAccount">Wallet</button><button class="add-funds" id="reset">↻ Reset</button><button class="profile" id="profileButton" aria-label="Profile">Z</button></header>

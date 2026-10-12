@@ -663,6 +663,13 @@ button,input,select{transition:background-color .15s,border-color .15s,box-shado
 
 
 
+/* User-requested fix: remove the upper asset selector area on phones only.
+   Keep the single asset selector in Trade Options and preserve desktop controls. */
+@media (max-width:760px){
+  .chartcol > .asset-tabs{display:none!important}
+  .chartcol > .marketbar{display:none!important}
+}
+
 /* Final correction: the compact asset selector belongs on phones only.
    Desktop keeps the single selector in the chart header, avoiding a duplicate beside Investment. */
 @media (min-width:761px){

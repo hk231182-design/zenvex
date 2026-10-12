@@ -938,8 +938,10 @@ const historyHome=$('historyPanel').parentElement;
 const historyHomeNext=$('historyPanel').nextElementSibling;
 function placeHistoryPanel(){const panel=$('historyPanel'),tradePanel=document.querySelector('.tradepanel'),isMobile=window.matchMedia('(max-width: 760px)').matches;if(isMobile){if(panel.parentElement!==historyHome){if(historyHomeNext&&historyHomeNext.parentElement===historyHome)historyHome.insertBefore(panel,historyHomeNext);else historyHome.appendChild(panel)}panel.classList.remove('mobile-open')}else{panel.classList.remove('mobile-open');if(panel.parentElement!==tradePanel)tradePanel.appendChild(panel)}}
 placeHistoryPanel();window.addEventListener('resize',placeHistoryPanel,{passive:true});
-// Keep the three-dot timeframe sheet outside the horizontally scrolling toolbar so it is never clipped.
-const chartStage=document.querySelector('.chart');chartStage.appendChild($('mobileTfTrigger'));chartStage.appendChild($('mobileTfMenu'));
+// Mobile-only placement: keep desktop chart toolbar exactly as it was; on phones place the ⋮ and its menu inside the chart near the lower-left corner.
+const chartStage=document.querySelector('.chart'), chartToolbar=document.querySelector('.chart-tools');
+function placeMobileChartMenu(){const isMobile=window.matchMedia('(max-width: 760px)').matches;const trigger=$('mobileTfTrigger'),menu=$('mobileTfMenu');if(isMobile){if(trigger.parentElement!==chartStage)chartStage.appendChild(trigger);if(menu.parentElement!==chartStage)chartStage.appendChild(menu);}else{if(trigger.parentElement!==chartToolbar)chartToolbar.appendChild(trigger);if(menu.parentElement!==chartToolbar)chartToolbar.appendChild(menu);menu.classList.remove('open');trigger.setAttribute('aria-expanded','false');}}
+placeMobileChartMenu();window.addEventListener('resize',placeMobileChartMenu,{passive:true});
 function refreshMobileAssetLabel(){if(!$('mobileAssetName'))return;$('mobileAssetName').textContent=displayAsset(state.selected);$('mobileAssetCategory').textContent=data[state.selected].cat+' · '+data[state.selected].rate+'% payout';$('mobileAssetFlags').innerHTML=pairFlags(state.selected)}
 const originalSelectAsset=selectAsset;
 selectAsset=function(k){originalSelectAsset(k);refreshMobileAssetLabel()};

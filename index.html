@@ -740,6 +740,55 @@ button,input,select{transition:background-color .15s,border-color .15s,box-shado
   }
 }
 
+
+
+/* FINAL MOBILE FIT FIX: remove the upper pair bar and fit chart + trade controls to phone viewport */
+@media (max-width:760px){
+  html,body{width:100%!important;height:100%!important;min-height:100%!important;overflow:hidden!important;overscroll-behavior:none!important}
+  body{display:flex!important;flex-direction:column!important;padding:0!important}
+  .top{display:flex!important;flex:0 0 48px!important;height:48px!important;min-height:48px!important;position:relative!important;top:auto!important}
+  .warning{display:block!important;flex:0 0 auto!important;min-height:22px!important;padding:4px 6px!important;font-size:8px!important;line-height:1.25!important;white-space:normal!important}
+  .layout{display:block!important;flex:1 1 auto!important;width:100%!important;height:0!important;min-height:0!important;overflow:hidden!important}
+  .main{display:block!important;width:100%!important;height:100%!important;min-height:0!important;overflow:hidden!important;padding:0!important;margin:0!important}
+  .workspace{display:block!important;width:100%!important;height:100%!important;min-height:0!important;overflow:hidden!important}
+  .chartcol{display:flex!important;flex-direction:column!important;width:100%!important;height:100%!important;min-height:0!important;gap:0!important;padding:0 0 198px!important;overflow:hidden!important}
+  .chartcol>.asset-tabs,.chartcol>.marketbar,#desktopAssetSelector,.asset-tabs{display:none!important;visibility:hidden!important;height:0!important;min-height:0!important;max-height:0!important;width:0!important;margin:0!important;padding:0!important;border:0!important;overflow:hidden!important;pointer-events:none!important}
+  .chartcol>div:has(>.chart-tools){display:flex!important;flex:1 1 auto!important;flex-direction:column!important;min-height:0!important;height:0!important;overflow:hidden!important}
+  .chart-tools{flex:0 0 36px!important;height:36px!important;min-height:36px!important;max-height:36px!important;overflow-x:auto!important;overflow-y:hidden!important;flex-wrap:nowrap!important;white-space:nowrap!important;padding:3px 4px!important;gap:2px!important;border-radius:0!important}
+  .chart-tools button{flex:0 0 auto!important;padding:5px 6px!important;font-size:9px!important}
+  .chart-tools .tool-spacer{display:block!important;flex:1 1 auto!important;min-width:0!important}
+  .chart-shell{display:flex!important;flex:1 1 auto!important;flex-direction:column!important;min-height:0!important;height:0!important;overflow:hidden!important;border-radius:0!important;border-left:0!important;border-right:0!important}
+  .chart{display:block!important;flex:1 1 auto!important;width:100%!important;height:0!important;min-height:0!important;max-height:none!important;position:relative!important}
+  .chart-foot{flex:0 0 auto!important;min-height:22px!important;padding:4px 6px!important;font-size:8px!important;line-height:1.2!important;gap:3px 7px!important;overflow:hidden!important}
+  .chart-foot span:nth-child(2),.chart-foot span:nth-child(4),.chart-foot span:nth-child(5){display:none!important}
+  .tradepanel{display:block!important;position:fixed!important;left:0!important;right:0!important;bottom:0!important;z-index:25!important;width:100%!important;max-height:198px!important;overflow-y:auto!important;overflow-x:hidden!important;align-self:stretch!important;margin:0!important;border-radius:10px 10px 0 0!important;border-bottom:0!important;border-left:0!important;border-right:0!important;box-shadow:0 -5px 18px #0007!important;padding-bottom:env(safe-area-inset-bottom)!important}
+  .tradepanel>.mobile-asset-selector{display:flex!important;position:relative!important;min-height:38px!important;height:38px!important;padding:4px 9px!important;gap:8px!important;border-radius:0!important;border-left:0!important;border-right:0!important;border-top:0!important;margin:0!important}
+  .mobile-asset-selector .mobile-asset-copy{display:flex!important;flex:1!important;min-width:0!important;flex-direction:column!important;gap:1px!important}
+  .mobile-asset-selector .mobile-asset-copy strong{font-size:11px!important;line-height:1.1!important}
+  .mobile-asset-selector .mobile-asset-copy small{font-size:8px!important;line-height:1.1!important}
+  .tradepanel .trade-title{display:none!important}
+  .trade-content{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:end!important;gap:5px 7px!important;padding:6px 7px calc(6px + env(safe-area-inset-bottom))!important}
+  .trade-content .field{min-width:0!important;margin:0!important}
+  .trade-content .field label{font-size:8px!important;margin-bottom:3px!important}
+  .trade-content .amount-row{display:grid!important;grid-template-columns:25px minmax(0,1fr) 25px!important;gap:3px!important}
+  .trade-content .amount-row button{height:30px!important;min-height:30px!important;padding:0!important;font-size:15px!important}
+  .trade-content .amount-row input,.trade-content .field select{height:30px!important;min-height:30px!important;padding:4px 3px!important;font-size:11px!important;min-width:0!important}
+  .trade-content .quick-amount,.trade-content .return-box,.trade-content .trade-note{display:none!important}
+  .trade-content .order-btn{display:flex!important;grid-column:auto!important;justify-content:center!important;align-items:center!important;height:36px!important;min-height:36px!important;padding:6px 4px!important;margin:0!important;font-size:11px!important;border-radius:6px!important}
+  .trade-content .order-btn small,.trade-content .order-btn .arrow{display:none!important}
+  .history-panel{display:none!important}
+}
+@media(max-width:380px){
+  .chartcol{padding-bottom:188px!important}
+  .tradepanel{max-height:188px!important}
+  .tradepanel>.mobile-asset-selector{height:35px!important;min-height:35px!important}
+  .chart-tools{flex-basis:33px!important;height:33px!important;min-height:33px!important;max-height:33px!important}
+  .trade-content{gap:4px 5px!important;padding:5px!important}
+  .trade-content .amount-row{grid-template-columns:22px minmax(0,1fr) 22px!important;gap:2px!important}
+  .trade-content .amount-row input,.trade-content .field select{font-size:10px!important}
+  .trade-content .order-btn{height:33px!important;min-height:33px!important;font-size:10px!important}
+}
+
 </style></head>
 <body>
 <header class="top"><div class="brand"><div class="brand-mark">Z</div><span>ZENVEX<em>.</em></span></div><nav class="topnav"><span class="on">◈ Trade</span><span>▤ History</span><span>◉ Support</span></nav><div class="spacer"></div><span class="account-mode">DEMO ACCOUNT</span><div class="balance"><small>Demo balance</small><strong id="balance">$10,000.00</strong></div><button class="add-funds" id="openAccount">Wallet</button><button class="add-funds" id="reset">↻ Reset</button><button class="profile" id="profileButton" aria-label="Profile">Z</button></header>

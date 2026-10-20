@@ -1467,27 +1467,191 @@ window.addEventListener('DOMContentLoaded',function(){requestAnimationFrame(func
   #historyPanel.mobile-open{display:flex!important;visibility:visible!important;pointer-events:auto!important}
 }
 </style>
+<style id="zenvex-quotex-immersive-full-ui-polish">
+/* ZENVEX immersive terminal polish — visual-only layer; existing controls and trade logic preserved. */
+:root{
+ --z-gold:#e9c96f;--z-gold-bright:#f6df9a;--z-ink:#090f17;--z-panel:#111a25;--z-panel-raised:#172331;
+ --z-edge:rgba(220,190,108,.20);--z-edge-cool:rgba(160,181,207,.12);--z-muted:#8c9bad;
+}
+html{background:var(--z-ink)!important;color-scheme:dark}
+body{background:radial-gradient(ellipse at 50% -18%,#1b2a3a 0%,#0b111a 54%,#080d14 100%)!important;color:#edf2f7}
+header.top{background:linear-gradient(115deg,rgba(22,32,45,.98),rgba(12,19,28,.98))!important;border:1px solid var(--z-edge)!important;box-shadow:0 10px 34px #0004,inset 0 1px #ffffff09!important;backdrop-filter:blur(16px)}
+.brand-mark{box-shadow:0 0 0 3px #e9c96f0d,0 5px 18px #0005!important}
+.balance strong{color:var(--z-gold-bright)!important}
+.balance-refresh,.add-funds,#profileButton,.rail button,.chart-tools button,.history-tab,.history-tools button,.desktop-change-asset,.order-btn,.quick-amount button,.amount-row button{transition:background .16s ease,border-color .16s ease,box-shadow .16s ease,transform .16s ease!important}
+.balance-refresh:hover,.add-funds:hover,#profileButton:hover,.rail button:hover,.chart-tools button:hover,.history-tools button:hover,.desktop-change-asset:hover,.quick-amount button:hover,.amount-row button:hover{border-color:#e9c96f70!important;box-shadow:0 0 0 3px #e9c96f0b!important}
+.layout{background:transparent!important}
+.rail{background:linear-gradient(180deg,#121d29,#0d151f)!important;border-color:var(--z-edge-cool)!important;box-shadow:inset -1px 0 #ffffff04}
+.rail button{border:1px solid transparent!important}
+.rail button.active{color:var(--z-gold-bright)!important;background:linear-gradient(135deg,#e9c96f18,#e9c96f07)!important;border-color:#e9c96f35!important;box-shadow:inset 0 1px #ffffff08!important}
+.main{gap:12px!important;scrollbar-width:thin;scrollbar-color:#3b4859 #0d141d}
+.workspace{gap:14px!important}
+.marketbar{background:linear-gradient(120deg,#192634,#111a25)!important;border-color:var(--z-edge)!important;border-radius:13px!important;box-shadow:0 8px 24px #0002,inset 0 1px #ffffff07!important}
+.pair-icon{background:linear-gradient(145deg,#253647,#172330)!important;border:1px solid #ffffff13!important;box-shadow:inset 0 1px #ffffff09,0 4px 12px #0002!important}
+.pricebox strong{color:var(--z-gold-bright)!important}
+.chart-tools{background:linear-gradient(180deg,#172330,#121b26)!important;border-color:var(--z-edge-cool)!important;gap:6px!important}
+.chart-tools button{border-radius:7px!important}
+.chart-tools button.active{background:linear-gradient(135deg,#e9c96f20,#e9c96f0a)!important;color:#f7e4a8!important;border-color:#e9c96f40!important;box-shadow:inset 0 1px #ffffff08!important}
+.chart-shell{background:#0a1119!important;border:1px solid var(--z-edge-cool)!important;border-radius:0 0 14px 14px!important;box-shadow:0 14px 35px #0003!important}
+.chart{background:radial-gradient(ellipse at 50% 0%,#111d29,#0a1119 70%)!important}
+.chart svg{filter:drop-shadow(0 1px 1px #0002)}
+.legend{padding:7px 9px!important;border:1px solid #ffffff0c!important;border-radius:8px!important;background:#0b121bc9!important;backdrop-filter:blur(8px);color:#9cabbc!important}
+.chart-foot{background:linear-gradient(90deg,#111a25,#0d151e)!important;border-top-color:#ffffff0c!important;flex-wrap:wrap!important}
+.chart-foot span{white-space:nowrap}
+.tradepanel{background:linear-gradient(155deg,#172432,#101821 70%)!important;border-color:var(--z-edge)!important;border-radius:14px!important;box-shadow:0 12px 32px #0003,inset 0 1px #ffffff06!important}
+.trade-title{background:#ffffff03!important;color:var(--z-gold-bright)!important;letter-spacing:.8px!important}
+.demo-tag{border:1px solid #e9c96f28!important;background:#e9c96f12!important;color:#f0d98f!important;border-radius:6px!important}
+.field input,.field select{background:#0c141e!important;border-color:#344354!important;border-radius:9px!important;box-shadow:inset 0 1px 2px #0003!important}
+.field input:focus,.field select:focus{border-color:#d8b95f!important;box-shadow:0 0 0 3px #e9c96f12!important;outline:none!important}
+.amount-row button,.quick-amount button{background:linear-gradient(180deg,#263442,#1b2733)!important;border-color:#354455!important;border-radius:8px!important}
+.quick-amount button:focus,.quick-amount button.active{color:#f6df9a!important;border-color:#e9c96f55!important;background:#e9c96f14!important}
+.return-box{background:linear-gradient(120deg,#122d2a,#11231f)!important;border-color:#2b6b5a!important;border-radius:10px!important;box-shadow:inset 0 1px #ffffff05!important}
+.order-btn{min-height:48px!important;border-radius:10px!important;box-shadow:0 6px 16px #0002,inset 0 1px #ffffff24!important}
+.order-btn:hover{transform:translateY(-1px)!important;filter:saturate(1.06)}
+.order-btn.call{background:linear-gradient(115deg,#20ca91,#109d75)!important}
+.order-btn.put{background:linear-gradient(115deg,#f25a73,#c93658)!important}
+.trade-note{color:#8392a4!important}
+.history-panel{background:linear-gradient(150deg,#141f2b,#0e1620)!important;border-color:var(--z-edge)!important;border-radius:14px!important;box-shadow:0 12px 32px #0003!important}
+.history-screen-title{background:linear-gradient(100deg,#192634,#111a25)!important;border-bottom-color:var(--z-edge)!important}
+.history-screen-mark{box-shadow:inset 0 1px #ffffff0c!important}
+.history-head{background:#ffffff02!important;border-bottom-color:#ffffff10!important}
+.history-tab{border-radius:7px 7px 0 0!important}
+.history-tab.active{color:var(--z-gold-bright)!important;border-bottom-color:var(--z-gold)!important}
+.history-count{background:#e9c96f12!important;color:#f0d98f!important;border:1px solid #e9c96f24!important}
+.history-tools button{border-radius:8px!important;background:#202c39!important;border-color:#3a4859!important}
+.table-wrap{scrollbar-width:thin;scrollbar-color:#3b4859 #101721}
+thead{background:#ffffff03!important}
+th{color:#a5b2c1!important;letter-spacing:.65px!important}
+td{color:#e2e9f1!important}
+tbody tr:hover td{background:#ffffff03}
+.asset-modal{background:linear-gradient(155deg,#172432,#0d151f)!important;border-color:var(--z-edge)!important;border-radius:16px!important;box-shadow:0 26px 90px #000b!important}
+.modal-head{color:var(--z-gold-bright)!important}
+.modal-search input{background:#0a121b!important;border-color:#354455!important;border-radius:10px!important}
+.modal-cats button{border-radius:8px!important}
+.modal-cats button.active{background:#e9c96f16!important;color:#f6df9a!important;border-color:#e9c96f48!important}
+.modal-asset{border-radius:8px!important}
+.modal-asset:hover{background:#ffffff08!important}
 
-<style id="zenvex-history-hide-before-first-paint">
+/* Desktop: keep the terminal within the viewport and give the chart the dominant, immersive canvas. */
+@media(min-width:761px){
+ .layout{height:calc(100dvh - 78px)!important;min-height:0!important;overflow:hidden!important;align-items:stretch!important}
+ .main{height:100%!important;min-height:0!important;overflow:auto!important;padding:12px!important;gap:12px!important}
+ .workspace{min-height:0!important;align-items:stretch!important}
+ .chartcol{min-height:0!important}
+ .chartcol>div:has(>.chart-tools){min-height:0!important}
+ .chart-tools{padding:8px 10px!important}
+ .chart-shell{min-height:0!important}
+ .chart-foot{padding:9px 12px!important;gap:8px 14px!important}
+ .tradepanel{align-self:stretch!important;max-height:calc(100dvh - 105px)!important;overflow:auto!important;scrollbar-width:thin;scrollbar-color:#3b4859 #101721}
+ .tradepanel>#historyPanel{border-radius:12px!important}
+}
+@media(min-width:761px) and (max-height:800px){
+ .main{padding:8px!important;gap:8px!important}
+ .workspace{gap:10px!important}
+ .marketbar{min-height:56px!important;margin-bottom:6px!important;padding:8px 11px!important}
+ .trade-title{padding:10px 12px!important}
+ .trade-content{gap:9px!important;padding:10px!important}
+ .order-btn{min-height:42px!important;padding:10px!important}
+}
+/* Mobile: preserve the existing phone-first layout and touch controls; refine only the surface styling. */
+@media(max-width:760px){
+ body{background:#090f17!important}
+ .marketbar{background:linear-gradient(110deg,#172330,#0e1721)!important;border-color:#e9c96f2a!important}
+ .chart-tools{background:#111b26!important}
+ .chart-shell{border-radius:0!important;box-shadow:none!important}
+ .chart-foot{padding:7px 9px!important;gap:5px 10px!important}
+ .tradepanel{border-color:#e9c96f2b!important}
+ .history-panel.mobile-open{border-radius:15px!important;box-shadow:0 18px 60px #000b!important}
+ .history-screen-title{background:linear-gradient(100deg,#192634,#101821)!important}
+ .order-btn{min-height:46px!important}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+</style>
+
+<style id="zenvex-wallet-profile-layout-final-fix">
+/* Final alignment polish: keep wallet/profile content near the top, compact and scrollable. */
+#accountModal.account-modal-backdrop{align-items:center!important;justify-content:center!important;padding:12px!important;overflow:hidden!important}
+#accountModal .account-modal{display:flex!important;flex-direction:column!important;width:min(480px,100%)!important;max-height:min(88dvh,780px)!important;height:auto!important;overflow:hidden!important;margin:0 auto!important;transform:none!important;position:relative!important}
+#accountModal .account-modal-head{flex:0 0 auto!important;position:relative!important;top:auto!important;min-height:52px!important;padding:12px 16px!important}
+#accountModal .account-body{display:block!important;flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;overscroll-behavior:contain!important;padding:13px!important;gap:0!important;scrollbar-width:thin;scrollbar-color:#4b5969 #111923}
+#accountModal .account-body>.account-note{margin:0 0 12px!important}
+#accountModal:not(.profile-only) .account-actions{position:relative!important;top:auto!important;margin:0 0 13px!important;padding:8px!important}
+#accountModal .account-body>div.hidden{display:none!important}
+#accountModal #walletDeposit,#accountModal #walletWithdraw,#accountModal #walletHistory,#accountModal #walletProfile{width:100%!important;min-width:0!important;margin:0!important;transform:none!important;position:relative!important;top:auto!important}
+#accountModal #walletDeposit>label,#accountModal #walletWithdraw>label{margin:10px 0 5px!important}
+#accountModal #walletDeposit>label:first-child,#accountModal #walletWithdraw>label:first-child{margin-top:0!important}
+#accountModal #walletDeposit input,#accountModal #walletWithdraw input{display:block!important;margin:0 0 9px!important}
+#accountModal #walletDeposit .account-submit,#accountModal #walletWithdraw .account-submit{margin:7px 0 10px!important}
+#accountModal .zenvex-pfp-editor{margin:0 0 12px!important;padding:13px!important;gap:13px!important}
+#accountModal .zenvex-pfp-copy{min-width:0!important;flex:1 1 auto!important}
+#accountModal .profile-fields{margin:0!important;padding:13px!important}
+#accountModal .profile-field-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+#accountModal .profile-field-grid>div{min-width:0!important}
+#accountModal .profile-fields label{margin:10px 0 5px!important}
+#accountModal .profile-fields-title{margin:0 0 8px!important}
+#accountModal #saveProfile,#accountModal #changePassword{margin-top:9px!important}
+#accountModal .profile-local-note{margin:7px 0 10px!important}
+#accountModal .profile-fields p{margin:9px 0 0!important}
+#accountModal .wallet-address{margin:10px 0!important;overflow-wrap:anywhere!important}
+#accountModal #walletHistory #walletRequests{padding:2px 0!important;overflow-wrap:anywhere!important}
+@media(max-width:600px){
+ #accountModal.account-modal-backdrop{align-items:flex-start!important;padding:8px!important;padding-top:max(8px,env(safe-area-inset-top))!important}
+ #accountModal .account-modal{width:100%!important;max-height:calc(100dvh - 16px - env(safe-area-inset-top))!important;border-radius:14px!important}
+ #accountModal .account-body{padding:11px!important}
+ #accountModal .zenvex-pfp-preview{flex-basis:64px!important;width:64px!important;height:64px!important;min-width:64px!important}
+ #accountModal .profile-field-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:360px){#accountModal .profile-field-grid{grid-template-columns:minmax(0,1fr)!important}}
+</style>
+
+<style id="zenvex-final-asset-chart-fix">
+/* Keep asset selection clean: no feed/simulation status label inside the picker. */
+.modal-asset small{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#93a5b8!important;font-size:10px!important;line-height:1.35}
+/* Trade entry markers are rendered by the same SVG drawing path on PC and mobile. Keep them crisp and readable. */
+#chartSvg text{paint-order:stroke;stroke:#101923;stroke-width:.7px;stroke-linejoin:round}
+@media(max-width:760px){
+  html,body{width:100%;height:100%;min-height:100dvh;overflow:hidden!important;overscroll-behavior:none}
+  .top,.warning,.rail,.asset-tabs,.history-panel{display:none!important}
+  .layout,.main,.workspace,.chartcol{width:100%!important;min-width:0!important}
+  .layout{height:100dvh!important;min-height:0!important;overflow:hidden!important}
+  .main{height:100dvh!important;min-height:0!important;padding:0!important;margin:0!important;overflow:hidden!important}
+  .workspace{height:100%!important;min-height:0!important;display:block!important}
+  .chartcol{height:100%!important;min-height:0!important;display:flex!important;flex-direction:column!important;gap:0!important}
+  .chartcol>div:has(>.chart-tools){display:flex!important;flex:1 1 auto!important;flex-direction:column!important;min-height:0!important;overflow:hidden!important}
+  .chart-shell{display:flex!important;flex:1 1 auto!important;flex-direction:column!important;min-height:0!important;overflow:hidden!important}
+  .chart{width:100%!important;max-width:none!important;min-width:0!important;height:auto!important;min-height:0!important;flex:1 1 auto!important;overflow:hidden!important}
+  #chartSvg{width:100%!important;height:100%!important;min-height:0!important;display:block!important}
+  .chart-foot{flex:0 0 auto!important;flex-wrap:wrap!important;gap:4px 8px!important}
+}
+@media(min-width:761px){
+  #chartSvg{width:100%;height:100%;display:block}
+}
+</style>
+<style id="zenvex-pips-label-and-more-button-polish">
+/* Keep the three-dot control in its existing chart corner; polish its fit without shifting the chart. */
 @media (max-width:760px){
-  #historyPanel:not(.mobile-open){display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
-  #historyPanel.mobile-open{position:fixed!important;inset:0!important;z-index:100500!important;box-sizing:border-box!important;width:100vw!important;height:100dvh!important;max-width:100vw!important;max-height:100dvh!important;min-height:0!important;margin:0!important;border-radius:0!important;overflow:hidden!important;flex-direction:column!important;visibility:visible!important;opacity:1!important;transition:none!important}
-  #historyPanel.mobile-open.history-preparing{visibility:hidden!important;opacity:0!important}
-  body.history-screen-open{overflow:hidden!important}
+  .chart #mobileTfTrigger{
+    left:9px!important; right:auto!important; top:auto!important; bottom:18px!important;
+    width:30px!important; min-width:30px!important; height:30px!important; min-height:30px!important;
+    padding:0!important; display:flex!important; align-items:center!important; justify-content:center!important;
+    line-height:1!important; font-size:18px!important; border-radius:8px!important;
+    box-shadow:0 3px 9px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.10)!important; transform:none!important;
+  }
 }
 </style>
 </head>
 <body>
 <header class="top"><div class="brand"><div class="brand-mark">Z</div><span>ZENVEX<em>.</em></span></div><nav class="topnav"><span class="on">◈ Trade</span><span>▤ History</span><span>◉ Support</span></nav><div class="spacer"></div><div class="header-money-group"><button type="button" class="balance-refresh" id="balanceRefresh" aria-label="Refresh balance" title="Refresh balance">↻</button><div class="balance"><button type="button" id="accountModeToggle" class="account-mode-toggle" aria-haspopup="true" aria-expanded="false">DEMO ACCOUNT ▾</button><strong id="balance">$10,000.00</strong><div id="accountModeMenu" class="account-mode-menu" hidden><button type="button" data-account-mode="demo">Demo Account</button><button type="button" data-account-mode="real">Real Account</button></div></div><button class="add-funds" id="openAccount">Wallet</button></div><button class="profile" id="profileButton" aria-label="Profile">Z</button></header>
 <div class="warning">ZENVEX DEMO · Weekday and OTC prices use separate simulated feeds. No broker account or licensed live OTC feed is connected.</div>
-<div class="layout"><aside class="rail"><button class="active" title="Trading">⌁</button><button title="Assets" id="railAssets">◫</button><button title="History" id="railHistory">▤</button><button title="Statistics" id="railStats">▥</button><div style="flex:1"></div><button title="Settings" id="settings">⚙</button></aside>
+<div class="layout"><aside class="rail"><button class="active" type="button" title="Chart" aria-label="Chart"><svg class="rail-chart-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16"/><path d="M7 15V9h3v6zM14 12V5h3v7z"/><path d="M6 7l4-3 4 2 5-3"/></svg></button><button title="Assets" id="railAssets">◫</button><button title="History" id="railHistory">▤</button><button title="Statistics" id="railStats">▥</button><button type="button" title="Leaderboard" aria-label="Open ZENVEX Leaderboard" id="railLeaderboard" class="rail-leaderboard"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10M17 4v5a5 5 0 0 1-10 0V4M5 8H2v1a4 4 0 0 0 4 4M19 8h3v1a4 4 0 0 1-4 4M12 14v3"/></svg></button><div style="flex:1"></div><button title="Support" aria-label="Open ZENVEX Support" id="settings"><svg class="rail-support-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="12" width="4" height="7" rx="2"/><rect x="17" y="12" width="4" height="7" rx="2"/><path d="M19 19a3 3 0 0 1-3 3h-3"/></svg></button></aside>
 <main class="main"><div class="workspace"><section class="chartcol"><div class="asset-tabs" id="assetTabs"></div>
 <div class="marketbar" id="desktopAssetSelector" role="button" tabindex="0" aria-label="Select asset"><div class="pair-icon" id="pairIcon"></div><div class="pair-info"><strong id="pairName">EUR/USD</strong><small id="pairDesc">Euro / US Dollar · Forex</small></div><div class="pricebox"><strong id="price">1.08420</strong><small id="change">+0.02%</small></div><button type="button" class="desktop-change-asset" id="desktopChangeAsset">⌄ Assets</button></div>
 <div><div class="chart-tools"><button class="active" data-tf="1m">1m</button><button data-tf="5m">5m</button><button data-tf="15m">15m</button><button data-tf="30m">30m</button><button data-tf="1h">1H</button><span class="tool-divider"></span><button class="active" id="candleMode">▥ Candles</button><button id="indicators">ƒx Indicators</button><span class="tool-spacer"></span><button id="zoomOut">−</button><button id="zoomIn">＋</button><button id="fullscreen">⛶</button><button id="mobileTfTrigger" class="mobile-only-tool" type="button" aria-label="More chart options" aria-expanded="false">⋮</button><div id="mobileTfMenu" class="mobile-tf-menu" aria-label="Chart timeframe"><div class="mobile-tf-title">Chart timeframe</div><div class="mobile-tf-grid"><button type="button" data-tf="1m">1m</button><button type="button" data-tf="5m">5m</button><button type="button" data-tf="15m">15m</button><button type="button" data-tf="30m">30m</button><button type="button" data-tf="1h">1H</button></div><button type="button" id="mobileIndicators">ƒx Indicators</button></div></div><div class="chart-shell"><div class="chart"><div class="legend"><b id="legendPair">EUR/USD</b> · O <span id="o">1.08420</span> H <span id="h">1.08420</span> L <span id="l">1.08420</span> C <span id="c">1.08420</span></div><svg id="chartSvg" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-label="Simulated candlestick chart"></svg></div><div class="chart-foot"><span>◉ <strong id="marketStatus">WEEKDAY MARKET · SIMULATED</strong></span><span>Server time <strong id="clock">--:--:--</strong></span><span>Chart: <strong id="tfLabel">1 minute</strong></span><span>Next candle: <strong id="candleCountdown">--:--</strong></span><span>● <strong style="color:#20c997">SIMULATED FEED</strong></span></div></div></div>
 </section><aside class="tradepanel"><div class="trade-title"><span>TRADE OPTIONS</span><span class="demo-tag">DEMO</span></div><button type="button" id="mobileAssetSelector" class="mobile-asset-selector"><span id="mobileAssetFlags"></span><span class="mobile-asset-copy"><strong id="mobileAssetName">EUR/USD</strong><small id="mobileAssetCategory">Forex · 87% payout</small></span><span class="mobile-asset-chevron">⌄</span></button><div class="trade-content"><select id="tradeAsset" class="asset-sync-select" aria-hidden="true" tabindex="-1"></select><div class="field"><label>Investment <span>USD</span></label><div class="amount-row"><button id="minus">−</button><input id="stake" type="number" min="1" max="10000" step="1" value="100"><button id="plus">+</button></div><div class="quick-amount"><button data-stake="50">$50</button><button data-stake="100">$100</button><button data-stake="250">$250</button><button data-stake="500">$500</button></div></div><div class="field"><label>Time <span>Expiry</span></label><select id="duration"><option value="30">00:00:30</option><option value="60" selected>00:01:00</option><option value="120">00:02:00</option><option value="180">00:03:00</option><option value="300">00:05:00</option><option value="600">00:10:00</option></select></div><div class="return-box"><span>Potential return<br><small id="rateText">Payout +87%</small></span><strong id="potential">$187.00</strong></div><button class="order-btn call" id="call"><span>↗ <span>CALL <small>Higher</small></span></span><span class="arrow">↑</span></button><button class="order-btn put" id="put"><span>↘ <span>PUT <small>Lower</small></span></span><span class="arrow">↓</span></button><div class="trade-note">Practice mode only. Trade outcomes are simulated and do not predict real-market performance.</div></div></aside></div>
-<section class="history-panel" id="historyPanel"><div class="history-screen-title"><div class="history-screen-mark" aria-hidden="true">↗</div><div class="history-screen-heading"><strong>All Trade History</strong><small>0 LIVE · 0 COMPLETED</small></div><button type="button" id="closeFullHistory" aria-label="Back to chart">×</button></div><div class="history-head"><button class="history-tab active" data-tab="open">Open trades <span class="history-count" id="openCount">0</span></button><button class="history-tab" data-tab="history">Trade history <span class="history-count" id="historyCount">0</span></button><button class="history-tab" data-tab="stats">Statistics</button><div class="history-tools"><button id="clear">Clear history</button></div></div><div class="table-wrap"><table><thead id="tableHead"><tr><th>Time</th><th>Asset</th><th>Direction</th><th>Investment</th><th>Entry</th><th>Trade status</th><th>Profit / Loss</th></tr></thead><tbody id="tableBody"><tr class="journal-empty-row"><td colspan="7" class="empty journal-empty"><span class="journal-empty-icon">↗</span><strong>No trades yet</strong><small>Your journal is ready. Place a demo trade to see its live status and final result here.</small><em class="journal-empty-tag">READY FOR FIRST TRADE</em></td></tr></tbody></table></div></section>
+<section class="history-panel" id="historyPanel"><div class="history-screen-title"><div class="history-screen-mark" aria-hidden="true">▤</div><div class="history-screen-heading"><strong>All Trade History</strong><small>COMPLETED TRADES</small></div><button type="button" id="closeFullHistory" aria-label="Back to chart">×</button></div><div class="history-head"><button class="history-tab active" data-tab="open">Open trades <span class="history-count" id="openCount">0</span></button><button class="history-tab" data-tab="history">Trade history <span class="history-count" id="historyCount">0</span></button><button class="history-tab" data-tab="stats">Statistics</button><div class="history-tools"><button id="clear">Clear history</button></div></div><div class="table-wrap"><table><thead id="tableHead"><tr><th>Asset</th><th>Direction</th><th>Investment</th><th>Entry price</th><th>Expiry in</th><th>Status / Result</th></tr></thead><tbody id="tableBody"><tr><td colspan="6" class="empty">No open demo trades</td></tr></tbody></table></div></section>
 </main></div>
-<div class="asset-modal-backdrop" id="assetModal"><div class="asset-modal"><div class="modal-head"><span>Select an asset</span><button id="closeModal" aria-label="Close">×</button></div><div class="modal-search"><input id="assetSearch" placeholder="Search assets, e.g. EUR/USD or Bitcoin"></div><div class="modal-cats"><button class="active" data-cat="All">All</button><button data-cat="Forex">Forex</button><button data-cat="Commodities">Commodities</button><button data-cat="Crypto">Crypto</button><button data-cat="Metals">Metals</button><button data-cat="Indices">Indices</button></div><div class="modal-list" id="modalList"></div></div></div><div class="indicator-modal-backdrop" id="indicatorModal" aria-hidden="true"><section class="indicator-modal" role="dialog" aria-modal="true" aria-labelledby="indicatorTitle"><div class="modal-head"><span id="indicatorTitle">Chart indicators</span><button type="button" id="closeIndicators" aria-label="Close indicators">×</button></div><p class="indicator-help">Choose overlays to display on the chart. These are calculated from the demo candles.</p><div class="indicator-options"><button type="button" class="indicator-option" data-indicator="sma"><span><b>SMA 7</b><small>Simple moving average</small></span><span class="indicator-check">＋</span></button><button type="button" class="indicator-option" data-indicator="ema"><span><b>EMA 9</b><small>Exponential moving average</small></span><span class="indicator-check">＋</span></button><button type="button" class="indicator-option" data-indicator="bb"><span><b>Bollinger Bands</b><small>20 periods · 2 standard deviations</small></span><span class="indicator-check">＋</span></button><button type="button" class="indicator-option" data-indicator="rsi"><span><b>RSI 14</b><small>Relative Strength Index · current value</small></span><span class="indicator-check">＋</span></button></div><div class="indicator-summary" id="indicatorSummary">No indicators selected</div></section></div><div class="account-modal-backdrop" id="accountModal"><section class="account-modal"><div class="account-modal-head"><span id="accountTitle">Profile & Wallet</span><button id="closeAccount" aria-label="Close">×</button></div><div class="account-body"><div class="account-note">Prototype only: Google sign-in, real account balances, blockchain verification, admin notifications and withdrawals require a secure backend. This page cannot accept or confirm real deposits.</div><div class="account-actions"><button type="button" data-wallet-tab="profile" class="active">Profile</button><button type="button" data-wallet-tab="deposit">Deposit</button><button type="button" data-wallet-tab="withdraw">Withdrawal</button><button type="button" data-wallet-tab="history">Requests</button></div><div id="walletProfile"><div class="zenvex-pfp-editor"><div class="zenvex-pfp-preview" id="zenvexPfpPreview" aria-label="Profile picture preview">Z</div><div class="zenvex-pfp-copy"><strong>Profile picture</strong><small>Choose a photo for your round profile icon.</small><label class="zenvex-pfp-upload" for="zenvexPfpInput">Upload photo</label><input id="zenvexPfpInput" type="file" accept="image/*" hidden><button type="button" id="zenvexPfpRemove" class="zenvex-pfp-remove">Remove photo</button></div></div><div class="profile-fields"><div class="profile-fields-title">Personal information</div><div class="profile-field-grid"><div><label for="profileNickname">Nickname</label><input id="profileNickname" autocomplete="nickname" placeholder="Nickname"></div><div><label for="profileFirstName">First name</label><input id="profileFirstName" autocomplete="given-name" placeholder="First name"></div><div><label for="profileLastName">Last name</label><input id="profileLastName" autocomplete="family-name" placeholder="Last name"></div><div><label for="profileDob">Date of birth</label><input id="profileDob" type="date" autocomplete="bday"></div></div><label for="profileEmail">Email</label><input id="profileEmail" type="email" autocomplete="email" placeholder="name@example.com"><button type="button" id="saveProfile" class="account-submit" style="width:100%;margin-top:9px">Save profile on this device</button><div class="profile-local-note">Profile details are saved only in this browser. Secure account sync requires a backend.</div><div class="profile-fields-title" style="margin-top:8px">Change password</div><label for="currentPassword">Current password</label><input id="currentPassword" type="password" autocomplete="current-password" placeholder="Current password"><label for="newPassword">New password</label><input id="newPassword" type="password" autocomplete="new-password" placeholder="New password"><label for="confirmPassword">Confirm new password</label><input id="confirmPassword" type="password" autocomplete="new-password" placeholder="Confirm new password"><button type="button" id="changePassword" class="account-submit" style="width:100%;margin-top:4px;background:#25313d;color:#fff;border-color:#3b4b59">Update password</button><div class="profile-local-note">Password changes need a secure signed-in account backend; this demo will not store passwords.</div></div><div class="wallet-address" style="margin-bottom:10px"><b>Account type:</b> <span id="accountTypeLabel">DEMO ACCOUNT</span><br><b>Demo balance:</b> <span id="profileBalance">$10,000.00</span></div><label>Email / Google account</label><button type="button" id="googleLogin" class="account-submit" style="width:100%">Continue with Google</button><label style="margin-top:12px">Real account</label><button type="button" id="requestRealAccount" class="account-submit" style="width:100%;background:#25313d;color:#fff;border-color:#3b4b59">Request real-account activation</button><p style="color:#8d9aa9;font-size:11px;line-height:1.5">Real-money trading stays locked until secure authentication, backend balance ledger, verified live pricing, payment checks and applicable compliance are configured. This page alone cannot activate it.</p></div><div id="walletDeposit" class="hidden"><label>Deposit network</label><input value="USDT · BNB Smart Chain (BEP20)" readonly><label>Amount (USDT)</label><input id="depositAmount" type="number" min="1" step="0.01" placeholder="Enter amount"><label>Deposit address</label><div class="wallet-address" id="depositAddress">0x136926116a84B3BDB9a4f18313789f7946eA7e43</div><button type="button" id="copyAddress" class="account-submit">Copy address</button><label>Transaction hash (required for review)</label><input id="depositHash" placeholder="Paste transaction hash"><button type="button" id="submitDeposit" class="account-submit">Submit deposit request</button></div><div id="walletWithdraw" class="hidden"><label>Network</label><input value="USDT · BNB Smart Chain (BEP20)" readonly><label>Amount (USDT)</label><input id="withdrawAmount" type="number" min="1" step="0.01" placeholder="Enter amount"><label>Your BEP20 wallet address</label><input id="withdrawAddress" placeholder="0x…"><button type="button" id="submitWithdraw" class="account-submit">Submit withdrawal request</button></div><div id="walletHistory" class="hidden"><div id="walletRequests" style="font-size:11px;color:#aebbc9">No requests in this browser session.</div></div></div></section></div><nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Main navigation">
+<div class="asset-modal-backdrop" id="assetModal"><div class="asset-modal"><div class="modal-head"><span>Select an asset</span><button id="closeModal" aria-label="Close">×</button></div><div class="modal-search"><input id="assetSearch" placeholder="Search assets, e.g. EUR/USD or Bitcoin"></div><div class="modal-cats"><button class="active" data-cat="All">All</button><button data-cat="Forex">Forex</button><button data-cat="Commodities">Commodities</button><button data-cat="Crypto">Crypto</button><button data-cat="Metals">Metals</button><button data-cat="Indices">Indices</button></div><div class="modal-list" id="modalList"></div></div></div><div class="indicator-modal-backdrop" id="indicatorModal" aria-hidden="true"><section class="indicator-modal" role="dialog" aria-modal="true" aria-labelledby="indicatorTitle"><div class="modal-head"><span id="indicatorTitle">Chart indicators</span><button type="button" id="closeIndicators" aria-label="Close indicators">×</button></div><p class="indicator-help">Choose overlays to display on the chart. These are calculated from the demo candles.</p><div class="indicator-options"><button type="button" class="indicator-option" data-indicator="sma"><span><b>SMA 7</b><small>Simple moving average</small></span><span class="indicator-check">＋</span></button><button type="button" class="indicator-option" data-indicator="ema"><span><b>EMA 9</b><small>Exponential moving average</small></span><span class="indicator-check">＋</span></button><button type="button" class="indicator-option" data-indicator="bb"><span><b>Bollinger Bands</b><small>20 periods · 2 standard deviations</small></span><span class="indicator-check">＋</span></button><button type="button" class="indicator-option" data-indicator="rsi"><span><b>RSI 14</b><small>Relative Strength Index · current value</small></span><span class="indicator-check">＋</span></button></div><div class="indicator-summary" id="indicatorSummary">No indicators selected</div></section></div><div class="account-modal-backdrop" id="accountModal"><section class="account-modal"><div class="account-modal-head"><span id="accountTitle">Wallet</span><button id="closeAccount" aria-label="Close">×</button></div><div class="account-body"><div class="account-note">Prototype only: Google sign-in, real account balances, blockchain verification, admin notifications and withdrawals require a secure backend. This page cannot accept or confirm real deposits.</div><div class="account-actions"><button type="button" data-wallet-tab="deposit">Deposit</button><button type="button" data-wallet-tab="withdraw">Withdrawal</button><button type="button" data-wallet-tab="history">Requests</button></div><div id="walletProfile"><div class="zenvex-pfp-editor"><div class="zenvex-pfp-preview" id="zenvexPfpPreview" aria-label="Profile picture preview">Z</div><div class="zenvex-pfp-copy"><strong>Profile picture</strong><small>Choose a photo for your round profile icon.</small><label class="zenvex-pfp-upload" for="zenvexPfpInput">Upload photo</label><input id="zenvexPfpInput" type="file" accept="image/*" hidden><button type="button" id="zenvexPfpRemove" class="zenvex-pfp-remove">Remove photo</button></div></div><div class="profile-fields"><div class="profile-fields-title">Personal information</div><div class="profile-field-grid"><div><label for="profileNickname">Nickname</label><input id="profileNickname" autocomplete="nickname" placeholder="Nickname"></div><div><label for="profileFirstName">First name</label><input id="profileFirstName" autocomplete="given-name" placeholder="First name"></div><div><label for="profileLastName">Last name</label><input id="profileLastName" autocomplete="family-name" placeholder="Last name"></div><div><label for="profileDob">Date of birth</label><input id="profileDob" type="date" autocomplete="bday"></div></div><label for="profileEmail">Email</label><input id="profileEmail" type="email" autocomplete="email" placeholder="name@example.com"><button type="button" id="saveProfile" class="account-submit" style="width:100%;margin-top:9px">Save profile on this device</button><div class="profile-local-note">Profile details are saved only in this browser. Secure account sync requires a backend.</div><div class="profile-fields-title" style="margin-top:8px">Change password</div><label for="currentPassword">Current password</label><input id="currentPassword" type="password" autocomplete="current-password" placeholder="Current password"><label for="newPassword">New password</label><input id="newPassword" type="password" autocomplete="new-password" placeholder="New password"><label for="confirmPassword">Confirm new password</label><input id="confirmPassword" type="password" autocomplete="new-password" placeholder="Confirm new password"><button type="button" id="changePassword" class="account-submit" style="width:100%;margin-top:4px;background:#25313d;color:#fff;border-color:#3b4b59">Update password</button><div class="profile-local-note">Password changes need a secure signed-in account backend; this demo will not store passwords.</div></div><div class="wallet-address" style="margin-bottom:10px"><b>Account type:</b> <span id="accountTypeLabel">DEMO ACCOUNT</span><br><b>Demo balance:</b> <span id="profileBalance">$10,000.00</span></div><label>Email / Google account</label><button type="button" id="googleLogin" class="account-submit" style="width:100%">Continue with Google</button><label style="margin-top:12px">Real account</label><button type="button" id="requestRealAccount" class="account-submit" style="width:100%;background:#25313d;color:#fff;border-color:#3b4b59">Request real-account activation</button><p style="color:#8d9aa9;font-size:11px;line-height:1.5">Real-money trading stays locked until secure authentication, backend balance ledger, verified live pricing, payment checks and applicable compliance are configured. This page alone cannot activate it.</p></div><div id="walletDeposit" class="hidden"><label>Deposit network</label><input value="USDT · BNB Smart Chain (BEP20)" readonly><label>Amount (USDT)</label><input id="depositAmount" type="number" min="1" step="0.01" placeholder="Enter amount"><label>Deposit address</label><div class="wallet-address" id="depositAddress">0x136926116a84B3BDB9a4f18313789f7946eA7e43</div><button type="button" id="copyAddress" class="account-submit">Copy address</button><label>Transaction hash (required for review)</label><input id="depositHash" placeholder="Paste transaction hash"><button type="button" id="submitDeposit" class="account-submit">Submit deposit request</button></div><div id="walletWithdraw" class="hidden"><label>Network</label><input value="USDT · BNB Smart Chain (BEP20)" readonly><label>Amount (USDT)</label><input id="withdrawAmount" type="number" min="1" step="0.01" placeholder="Enter amount"><label>Your BEP20 wallet address</label><input id="withdrawAddress" placeholder="0x…"><button type="button" id="submitWithdraw" class="account-submit">Submit withdrawal request</button></div><div id="walletHistory" class="hidden"><div id="walletRequests" style="font-size:11px;color:#aebbc9">No requests in this browser session.</div></div></div></section></div><nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Main navigation">
 <button type="button" class="active" data-mobile-nav="chart"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16"/><path d="M7 15V9h3v6zM14 12V5h3v7z"/><path d="M6 7l4-3 4 2 5-3"/></svg></span><small>Chart</small></button>
 <button type="button" data-mobile-nav="history"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7H2V3M3 7a9 9 0 1 1-1 7"/><path d="M12 7v5l3 2"/></svg></span><small>History</small></button>
 <button type="button" data-mobile-nav="support"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="12" width="4" height="7" rx="2"/><rect x="17" y="12" width="4" height="7" rx="2"/><path d="M19 19a3 3 0 0 1-3 3h-3"/></svg></span><small>Support</small></button>
@@ -1575,17 +1739,17 @@ function tfMs(){return ({'1m':60000,'5m':300000,'15m':900000,'30m':1800000,'1h':
 function otcSeed(k){let h=2166136261;for(let i=0;i<k.length;i++){h^=k.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}function sharedOtcAt(k,ms){const d=data[k],seed=otcSeed(k),t=ms/1000,scale=d.vol;const wave=Math.sin(t/17+(seed%997)/71)*.34+Math.sin(t/53+(seed%313)/29)*.27+Math.sin(t/7.3+(seed%127)/19)*.12;const dayDrift=Math.sin(t/1800+(seed%89))*0.12;return Math.max(.00001,d.p*(1+((seed%2001)-1000)/100000)+scale*(wave+dayDrift))}function fmt(n){return Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}function price(k,n=state.prices[k]){const p=data[k].p;let d=p<1?5:p<10?4:p<100?3:2;return Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d})}function now(){return new Date().toLocaleTimeString('en-GB',{hour12:false})}function isWeekendOTC(date=new Date()){const day=date.getDay();return day===0||day===6}function marketMode(){return isWeekendOTC()?'OTC':'REAL'}function displayAsset(k){return isWeekendOTC()?k+' OTC':k}function modeLabel(){return isWeekendOTC()?'ZENVEX OTC FEED · SIMULATED':'ZENVEX WEEKDAY FEED · SIMULATED'}function toast(m){/* Click-triggered toast messages disabled as requested. */return;}function isForex(k){return data[k].cat==='Forex'}function activateFeed(mode=marketMode()){state.prices=mode==='OTC'?state.otcPrices:state.realPrices;state.candlesByAsset=mode==='OTC'?state.otcCandlesByAsset:state.realCandlesByAsset;state.candles=state.candlesByAsset[state.selected]||[];seed(state.selected)}function seed(k){if(state.candlesByAsset[k]){state.candles=state.candlesByAsset[k];return}const arr=[];const interval=tfMs(),anchor=Math.floor(Date.now()/interval)*interval;let p=state.prices[k];for(let i=179;i>=0;i--){const startMs=anchor-i*interval;let o,c,h,l;if(marketMode()==='OTC'){o=sharedOtcAt(k,startMs);c=sharedOtcAt(k,startMs+interval-1);const mid=sharedOtcAt(k,startMs+interval*.48);h=Math.max(o,c,mid)+data[k].vol*.12;l=Math.max(.00001,Math.min(o,c,mid)-data[k].vol*.12)}else{const v=data[k].vol;o=p;p+=(Math.random()-.51)*v*2.5;c=p;h=Math.max(o,c)+Math.random()*v;l=Math.max(.00001,Math.min(o,c)-Math.random()*v)}arr.push({id:state.nextCandleId++,startMs,o,h,l,c})}state.prices[k]=marketMode()==='OTC'?sharedOtcAt(k,Date.now()):p;state.candlesByAsset[k]=arr;state.candles=arr}
 function renderTabs(){let list=[state.selected,...Object.keys(data).filter(k=>k!==state.selected).slice(0,3)];$('assetTabs').innerHTML=list.map(k=>`<button class="asset-tab ${k===state.selected?'active':''}" data-tab-asset="${k}">${pairFlags(k)}<span><strong>${displayAsset(k)}</strong><small>${data[k].rate}% payout</small></span><span class="pct">${data[k].rate}%</span></button>`).join('')+'<button class="add-asset" id="addAsset" title="Add asset">+</button>';document.querySelectorAll('[data-tab-asset]').forEach(b=>b.onclick=()=>selectAsset(b.dataset.tabAsset));$('addAsset').onclick=openModal}
 function renderTradeSelect(){ $('tradeAsset').innerHTML=Object.keys(data).map(k=>`<option value="${k}">${displayAsset(k)}</option>`).join('');$('tradeAsset').value=state.selected}
-function renderModal(){let q=$('assetSearch').value.trim().toLowerCase(),items=Object.keys(data).filter(k=>(state.modalCategory==='All'||data[k].cat===state.modalCategory)&&(displayAsset(k)+' '+data[k].desc+' '+data[k].cat).toLowerCase().includes(q));$('modalList').innerHTML=items.map(k=>`<button class="modal-asset" data-modal-asset="${k}">${pairFlags(k)}<span><strong>${displayAsset(k)}</strong><small>${data[k].desc} · ${marketMode()==='OTC'?'Independent OTC demo feed':'weekday simulation'}</small></span><span class="pct">${data[k].rate}%</span></button>`).join('')||'<div class="empty">No assets found</div>';document.querySelectorAll('[data-modal-asset]').forEach(b=>b.onclick=()=>{selectAsset(b.dataset.modalAsset);closeModal()})}
+function renderModal(){let q=$('assetSearch').value.trim().toLowerCase(),items=Object.keys(data).filter(k=>(state.modalCategory==='All'||data[k].cat===state.modalCategory)&&(displayAsset(k)+' '+data[k].desc+' '+data[k].cat).toLowerCase().includes(q));$('modalList').innerHTML=items.map(k=>`<button class="modal-asset" data-modal-asset="${k}">${pairFlags(k)}<span><strong>${displayAsset(k)}</strong><small>${data[k].desc} · ${data[k].cat}</small></span><span class="pct">${data[k].rate}%</span></button>`).join('')||'<div class="empty">No assets found</div>';document.querySelectorAll('[data-modal-asset]').forEach(b=>b.onclick=()=>{selectAsset(b.dataset.modalAsset);closeModal()})}
 function openModal(){$('assetModal').classList.add('show');$('assetSearch').value='';state.modalCategory='All';document.querySelectorAll('[data-cat]').forEach(b=>b.classList.toggle('active',b.dataset.cat==='All'));renderModal();$('assetSearch').focus()}function closeModal(){$('assetModal').classList.remove('show')}
-function selectAsset(k){if(!data[k])return;state.selected=k;state.pan=0;state.zoom=1;activateFeed(marketMode());seed(k);$('tradeAsset').value=k;$('pairName').textContent=displayAsset(k);$('legendPair').textContent=displayAsset(k);$('pairDesc').textContent=data[k].desc+' · '+data[k].cat+' · '+modeLabel();$('pairIcon').innerHTML=pairFlags(k);$('price').textContent=price(k);$('change').textContent=isWeekendOTC()?'● OTC demo price':'● Simulated price';$('change').style.color='var(--green)';renderTabs();renderTradeSelect();renderModal();draw();updatePotential()}
-function draw(){const k=state.selected,arr=state.candles,svg=$('chartSvg'),w=1000,h=500,pad={l:12,r:83,t:37,b:20},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;let visible=Math.max(8,Math.min(arr.length,Math.round(65/state.zoom))),end=Math.max(visible,arr.length-Math.max(0,state.pan)),start=Math.max(0,end-visible),cs=arr.slice(start,end);if(!cs.length)cs=arr.slice(-visible);let vals=cs.flatMap(c=>[c.h,c.l]);state.open.filter(t=>t.asset===k).forEach(t=>vals.push(t.entry));let min=Math.min(...vals),max=Math.max(...vals),range=max-min||1;min-=range*.1;max+=range*.1;const y=v=>pad.t+(max-v)/(max-min)*ch;let s='';for(let i=0;i<=7;i++){let yy=pad.t+i*ch/7,v=max-i*(max-min)/7;s+=`<line x1="${pad.l}" y1="${yy}" x2="${w-pad.r}" y2="${yy}" stroke="#26394c" stroke-width="1" stroke-dasharray="3 5"/><text x="${w-pad.r+8}" y="${yy+4}" fill="#91a9c1" font-size="10">${price(k,v)}</text>`}for(let i=0;i<=8;i++){let xx=pad.l+i*cw/8;s+=`<line x1="${xx}" y1="${pad.t}" x2="${xx}" y2="${h-pad.b}" stroke="#1b2d40" stroke-width="1"/>`}const step=cw/cs.length,bw=Math.max(2,step*.58),idx=new Map(cs.map((c,i)=>[c.id,i]));cs.forEach((c,i)=>{let x=pad.l+i*step+step/2,up=c.c>=c.o,col=up?'#27d9a5':'#ff5d78',yo=y(c.o),yc=y(c.c),top=Math.min(yo,yc),bh=Math.max(1.5,Math.abs(yc-yo));s+=`<line x1="${x}" y1="${y(c.h)}" x2="${x}" y2="${y(c.l)}" stroke="${col}" stroke-width="1.35"/><rect x="${x-bw/2}" y="${top}" width="${bw}" height="${bh}" rx=".8" fill="${col}" stroke="${col}" stroke-width=".45"/>`});
+function selectAsset(k){if(!data[k])return;state.selected=k;state.pan=0;state.zoom=1;activateFeed(marketMode());seed(k);$('tradeAsset').value=k;$('pairName').textContent=displayAsset(k);$('legendPair').textContent=displayAsset(k);$('pairDesc').textContent=data[k].desc+' · '+data[k].cat;$('pairIcon').innerHTML=pairFlags(k);$('price').textContent=price(k);$('change').textContent=isWeekendOTC()?'● OTC demo price':'● Simulated price';$('change').style.color='var(--green)';renderTabs();renderTradeSelect();renderModal();draw();updatePotential()}
+function draw(){const k=state.selected,arr=state.candles,svg=$('chartSvg'),rect=svg.getBoundingClientRect(),w=Math.max(320,Math.round(rect.width||1000)),h=Math.max(240,Math.round(rect.height||500)),pad={l:8,r:(window.matchMedia('(max-width: 760px)').matches?70:83),t:32,b:24},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;svg.setAttribute('viewBox',`0 0 ${w} ${h}`);let visible=Math.max(8,Math.min(arr.length,Math.round(65/state.zoom))),end=Math.max(visible,arr.length-Math.max(0,state.pan)),start=Math.max(0,end-visible),cs=arr.slice(start,end);if(!cs.length)cs=arr.slice(-visible);let vals=cs.flatMap(c=>[c.h,c.l]);state.open.filter(t=>t.asset===k).forEach(t=>vals.push(t.entry));let min=Math.min(...vals),max=Math.max(...vals),range=max-min||1;min-=range*.1;max+=range*.1;const y=v=>pad.t+(max-v)/(max-min)*ch;let s='';for(let i=0;i<=7;i++){let yy=pad.t+i*ch/7,v=max-i*(max-min)/7;s+=`<line x1="${pad.l}" y1="${yy}" x2="${w-pad.r}" y2="${yy}" stroke="#26394c" stroke-width="1" stroke-dasharray="3 5"/><text x="${window.matchMedia('(max-width: 760px)').matches?w-4:w-pad.r+8}" y="${yy+4}" text-anchor="${window.matchMedia('(max-width: 760px)').matches?'end':'start'}" fill="#91a9c1" font-size="${window.matchMedia('(max-width: 760px)').matches?8:10}">${price(k,v)}</text>`}for(let i=0;i<=8;i++){let xx=pad.l+i*cw/8;s+=`<line x1="${xx}" y1="${pad.t}" x2="${xx}" y2="${h-pad.b}" stroke="#1b2d40" stroke-width="1"/>`}const step=cw/cs.length,bw=Math.max(2,step*.58),idx=new Map(cs.map((c,i)=>[c.id,i]));cs.forEach((c,i)=>{let x=pad.l+i*step+step/2,up=c.c>=c.o,col=up?'#27d9a5':'#ff5d78',yo=y(c.o),yc=y(c.c),top=Math.min(yo,yc),bh=Math.max(1.5,Math.abs(yc-yo));s+=`<line x1="${x}" y1="${y(c.h)}" x2="${x}" y2="${y(c.l)}" stroke="${col}" stroke-width="1"/><rect x="${x-bw/2}" y="${top}" width="${bw}" height="${bh}" rx="0" fill="${col}" stroke="${col}" stroke-width=".35"/>`});
 // Technical overlays calculated from the visible demo candles.
 const closes=cs.map(c=>c.c),xs=cs.map((c,i)=>pad.l+i*step+step/2);
 function linePath(vals){return vals.map((v,i)=>Number.isFinite(v)?`${i?'L':'M'}${xs[i].toFixed(2)},${y(v).toFixed(2)}`:'').filter(Boolean).join(' ')}
 if(state.indicators.sma){const vals=closes.map((_,i)=>i<6?NaN:closes.slice(i-6,i+1).reduce((a,b)=>a+b,0)/7);s+=`<path d="${linePath(vals)}" fill="none" stroke="#ffd166" stroke-width="2" stroke-linejoin="round"/>`}
 if(state.indicators.ema){let prev=NaN;const vals=closes.map((v,i)=>{if(i===8)prev=closes.slice(0,9).reduce((a,b)=>a+b,0)/9;else if(i>8)prev=v*(2/10)+prev*(1-2/10);return i<8?NaN:prev});s+=`<path d="${linePath(vals)}" fill="none" stroke="#8e7dff" stroke-width="2" stroke-linejoin="round"/>`}
 if(state.indicators.bb){const mid=[],upper=[],lower=[];closes.forEach((_,i)=>{if(i<19){mid.push(NaN);upper.push(NaN);lower.push(NaN);return}const win=closes.slice(i-19,i+1),avg=win.reduce((a,b)=>a+b,0)/20,sd=Math.sqrt(win.reduce((a,b)=>a+(b-avg)**2,0)/20);mid.push(avg);upper.push(avg+2*sd);lower.push(avg-2*sd)});s+=`<path d="${linePath(upper)}" fill="none" stroke="#55b7ff" stroke-width="1.3" stroke-dasharray="4 3"/><path d="${linePath(lower)}" fill="none" stroke="#55b7ff" stroke-width="1.3" stroke-dasharray="4 3"/><path d="${linePath(mid)}" fill="none" stroke="#55b7ff" stroke-width="1" opacity=".7"/>`}
-state.open.filter(t=>t.asset===k&&(!t.mode||t.mode===marketMode())).forEach(t=>{let i=idx.get(t.candleId);if(i==null)i=0;let x=pad.l+i*step+step/2,yy=y(t.entry),col=t.side==='CALL'?'#27d9a5':'#ff5d78',seconds=Math.max(0,Math.ceil((t.end-Date.now())/1000)),lx=Math.min(w-pad.r-104,Math.max(pad.l,x+6)),ly=Math.max(pad.t+3,yy-25);s+=`<line x1="${x}" y1="${pad.t}" x2="${x}" y2="${h-pad.b}" stroke="${col}" stroke-width="1.5" stroke-dasharray="5 4"/><line x1="${pad.l}" y1="${yy}" x2="${w-pad.r}" y2="${yy}" stroke="${col}" stroke-width="1.4" stroke-dasharray="6 4"/><circle cx="${x}" cy="${yy}" r="5" fill="${col}" stroke="#fff" stroke-width="1.3"/><rect x="${lx}" y="${ly}" width="99" height="20" rx="4" fill="${col}"/><text x="${lx+49.5}" y="${ly+13.5}" text-anchor="middle" fill="#061713" font-size="10" font-weight="800">${t.side} · ${seconds}s</text>`});let last=cs[cs.length-1],ly=y(last.c);s+=`<line x1="${pad.l}" y1="${ly}" x2="${w-pad.r}" y2="${ly}" stroke="#57c8f4" stroke-width="1" stroke-dasharray="4 4"/><rect x="${w-pad.r+3}" y="${ly-9}" width="77" height="18" rx="3" fill="#167fa8"/><text x="${w-pad.r+41}" y="${ly+3}" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">${price(k,last.c)}</text>`;const candleMs=tfMs(),candleLeft=Math.max(0,candleMs-(Date.now()%candleMs)),candleText=String(Math.floor(candleLeft/60000)).padStart(2,'0')+':'+String(Math.floor((candleLeft%60000)/1000)).padStart(2,'0'),timerY=Math.max(pad.t+4,Math.min(h-pad.b-34,ly+13));s+=`<rect x="${w-pad.r+3}" y="${timerY}" width="77" height="24" rx="4" fill="#102b3c" stroke="#36b9e8" stroke-width="1"/><text x="${w-pad.r+41}" y="${timerY+9}" text-anchor="middle" fill="#82dfff" font-size="6.5" font-weight="700" letter-spacing=".7">CANDLE CLOSE</text><text x="${w-pad.r+41}" y="${timerY+19}" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="800">${candleText}</text>`;if(state.indicators.rsi){const r=indicatorRsi();s+=`<rect x="${w-pad.r-126}" y="${pad.t+5}" width="118" height="20" rx="4" fill="#273547" stroke="#53677e"/><text x="${w-pad.r-67}" y="${pad.t+18.5}" text-anchor="middle" fill="#e8eef6" font-size="10" font-weight="700">RSI 14: ${r===null?'--':r.toFixed(1)}</text>`}svg.innerHTML=s;svg.classList.add('zenvex-chart-ready');if($('indicatorModal').classList.contains('show'))updateIndicatorPicker();$('o').textContent=price(k,last.o);$('h').textContent=price(k,last.h);$('l').textContent=price(k,last.l);$('c').textContent=price(k,last.c)}
+state.open.filter(t=>t.asset===k&&(!t.mode||t.mode===marketMode())).forEach(t=>{const absoluteIndex=arr.findIndex(c=>c.id===t.candleId);let i=idx.get(t.candleId);if(i==null)i=absoluteIndex<0?cs.length-1:(absoluteIndex<start?0:cs.length-1);let x=pad.l+i*step+step/2,yy=y(t.entry),col=t.side==='CALL'?'#27d9a5':'#ff5d78',seconds=Math.max(0,Math.ceil((t.end-Date.now())/1000)),lx=Math.min(w-pad.r-94,Math.max(pad.l+2,x+9)),ly=Math.max(pad.t+3,Math.min(h-pad.b-21,yy-25)),arrow=t.side==='CALL'?`<path d="M ${x-3} ${yy+1} L ${x} ${yy-3} L ${x+3} ${yy+1} Z" fill="#07151a"`:`<path d="M ${x-3} ${yy-1} L ${x} ${yy+3} L ${x+3} ${yy-1} Z" fill="#07151a"`;s+=`<line x1="${x}" y1="${Math.max(pad.t,yy-25)}" x2="${x}" y2="${Math.min(h-pad.b,yy+25)}" stroke="${col}" stroke-width="1" stroke-dasharray="2 3" opacity=".65"/><line x1="${pad.l}" y1="${yy}" x2="${w-pad.r}" y2="${yy}" stroke="${col}" stroke-width=".85" stroke-dasharray="3 5" opacity=".52"/><circle cx="${x}" cy="${yy}" r="8" fill="${col}" opacity=".12"/><circle cx="${x}" cy="${yy}" r="5.5" fill="${col}" stroke="#f3f7fa" stroke-width="1"/>${arrow}<rect x="${lx}" y="${ly}" width="88" height="19" rx="3" fill="#101923" stroke="${col}" stroke-width=".9"/><rect x="${lx+1}" y="${ly+4}" width="2.5" height="11" rx=".5" fill="${col}"/><text x="${lx+46}" y="${ly+12.7}" text-anchor="middle" fill="#f2f7fa" font-size="9.2" font-weight="750" letter-spacing=".1">${t.side==='CALL'?'CALL ↑':'PUT ↓'} · ${seconds}s</text>`});let last=cs[cs.length-1],ly=y(last.c);s+=`<line x1="${pad.l}" y1="${ly}" x2="${w-pad.r}" y2="${ly}" stroke="#57c8f4" stroke-width="1" stroke-dasharray="4 4"/><rect x="${window.matchMedia('(max-width: 760px)').matches?w-61:w-pad.r+3}" y="${ly-9}" width="${window.matchMedia('(max-width: 760px)').matches?57:77}" height="18" rx="3" fill="#167fa8"/><text x="${window.matchMedia('(max-width: 760px)').matches?w-32:w-pad.r+41}" y="${ly+3}" text-anchor="middle" fill="#fff" font-size="${window.matchMedia('(max-width: 760px)').matches?8:10}" font-weight="700">${price(k,last.c)}</text>`;const candleMs=tfMs(),candleLeft=Math.max(0,candleMs-(Date.now()%candleMs)),candleText=String(Math.floor(candleLeft/60000)).padStart(2,'0')+':'+String(Math.floor((candleLeft%60000)/1000)).padStart(2,'0'),timerY=Math.max(pad.t+4,Math.min(h-pad.b-34,ly+13)),mobileChart=window.matchMedia('(max-width: 760px)').matches,timerW=mobileChart?57:77,timerX=mobileChart?w-61:w-pad.r+3,timerCX=timerX+timerW/2;s+=`<rect x="${timerX}" y="${timerY}" width="${timerW}" height="24" rx="4" fill="#102b3c" stroke="#36b9e8" stroke-width="1"/><text x="${timerCX}" y="${timerY+9}" text-anchor="middle" fill="#82dfff" font-size="${mobileChart?5.3:6.5}" font-weight="700" letter-spacing=".35">NEXT CANDLE</text><text x="${timerCX}" y="${timerY+19}" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="800">${candleText}</text>`;const pipStep=(data[k].cat==='Forex'?(k.includes('JPY')?0.01:0.0001):(data[k].cat==='Metals'?0.1:1)),pipMove=(last.c-last.o)/pipStep,pipText=(pipMove>0?'+':'')+pipMove.toFixed(1);if(!mobileChart){s+=`<rect x="${pad.l+2}" y="${h-19}" width="78" height="15" rx="3" fill="#101923" stroke="#34465a" stroke-width=".7"/><text x="${pad.l+42}" y="${h-8.5}" text-anchor="middle" fill="${pipMove>=0?'#27d9a5':'#ff5d78'}" font-size="8.5" font-weight="750">${pipText}</text>`;}if(state.indicators.rsi){const r=indicatorRsi();s+=`<rect x="${w-pad.r-126}" y="${pad.t+5}" width="118" height="20" rx="4" fill="#273547" stroke="#53677e"/><text x="${w-pad.r-67}" y="${pad.t+18.5}" text-anchor="middle" fill="#e8eef6" font-size="10" font-weight="700">RSI 14: ${r===null?'--':r.toFixed(1)}</text>`}svg.innerHTML=s;svg.classList.add('zenvex-chart-ready');if($('indicatorModal').classList.contains('show'))updateIndicatorPicker();$('o').textContent=price(k,last.o);$('h').textContent=price(k,last.h);$('l').textContent=price(k,last.l);$('c').textContent=price(k,last.c)}
 function updatePotential(){let amount=Math.max(0,Number($('stake').value)||0),r=data[state.selected].rate/100;$('potential').textContent='$'+fmt(amount*(1+r));$('rateText').textContent='Payout +'+data[state.selected].rate+'%'}function renderStats(){ const real=state.accountMode==='real';$('balance').textContent='$'+fmt(real?0:state.balance);const refreshBtn=$('balanceRefresh');if(refreshBtn){refreshBtn.style.setProperty('display',real?'none':'inline-grid','important');refreshBtn.style.setProperty('visibility',real?'hidden':'visible','important');refreshBtn.setAttribute('aria-hidden',real?'true':'false');refreshBtn.tabIndex=real?-1:0;}const modeLabel=$('accountModeToggle');if(modeLabel)modeLabel.textContent=(real?'REAL ACCOUNT':'DEMO ACCOUNT')+' ▾';const smallBalance=$('profileBalance');if(smallBalance)smallBalance.textContent='$'+fmt(state.balance);$('openCount').textContent=state.open.length;$('historyCount').textContent=state.history.length;document.querySelectorAll('.order-btn').forEach(b=>{b.disabled=real;b.setAttribute('aria-disabled',real?'true':'false')});const note=document.querySelector('.trade-note');if(note)note.textContent=real?'Real account is not connected yet. Secure broker/backend connection is required before real-money trading.':'Practice mode only. Trade outcomes are simulated and do not predict real-market performance.'}
 function renderTable(){renderStats();if(window.matchMedia('(min-width: 761px)').matches||document.getElementById('historyPanel')?.classList.contains('mobile-open')){let head='<tr><th>Time</th><th>Asset</th><th>Direction</th><th>Investment</th><th>Entry</th><th>Trade status</th><th>Profit / Loss</th></tr>',rows='';const active=state.open.slice().sort((a,b)=>a.end-b.end).map(t=>{const left=Math.max(0,Math.ceil((t.end-Date.now())/1000));const tm=t.time||new Date(Number(t.id)||Date.now()).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'});return `<tr class="active-trade-row" data-trade-kind="active"><td>${tm}</td><td><span class="journal-asset-name"><span class="journal-asset-icon">${pairFlags(t.asset)}</span><span class="journal-asset-label">${displayAsset(t.asset)}</span></span></td><td class="${t.side==='CALL'?'green':'red'}"><span class="journal-side ${t.side==='CALL'?'side-call':'side-put'}">${t.side}</span></td><td>$${fmt(t.amount)}</td><td>${price(t.asset,t.entry)}</td><td><span class="journal-live-status"><i></i> LIVE · ${left}s LEFT</span></td><td class="journal-pending-pnl">In progress</td></tr>`}).join('');const completed=state.history.slice(0,100).map(t=>`<tr class="completed-trade-row" data-trade-kind="completed"><td>${t.time||'—'}</td><td><span class="journal-asset-name"><span class="journal-asset-icon">${pairFlags(t.asset)}</span><span class="journal-asset-label">${displayAsset(t.asset)}</span></span></td><td class="${t.side==='CALL'?'green':'red'}"><span class="journal-side ${t.side==='CALL'?'side-call':'side-put'}">${t.side}</span></td><td>$${fmt(t.amount)}</td><td>${price(t.asset,t.entry)}</td><td><span class="journal-result-status ${t.pnl>=0?'result-win':'result-loss'}"><i></i>${t.result}</span></td><td class="${t.pnl>=0?'green':'red'} journal-final-pnl">${t.pnl>=0?'+':'−'}$${fmt(Math.abs(t.pnl))}</td></tr>`).join('');rows=active+completed;if(!rows)rows='<tr class="journal-empty-row"><td colspan="7" class="empty journal-empty"><span class="journal-empty-icon">↗</span><strong>No trades yet</strong><small>Your journal is ready. Place a demo trade to see its live status and final result here.</small><em class="journal-empty-tag">READY FOR FIRST TRADE</em></td></tr>';const panel=$('historyPanel');if(panel){const subtitle=panel.querySelector('.history-screen-heading small');if(subtitle)subtitle.textContent=`${state.open.length} LIVE · ${state.history.length} COMPLETED`;const mark=panel.querySelector('.history-screen-mark');if(mark)mark.textContent='↗';} $('tableHead').innerHTML=head;$('tableBody').innerHTML=rows;const oc=$('openCount'),hc=$('historyCount');if(oc)oc.textContent=state.open.length;if(hc)hc.textContent=state.history.length;return;}let head='',rows='';if(state.tab==='open'){head='<tr><th>Asset</th><th>Direction</th><th>Investment</th><th>Entry price</th><th>Expiry in</th><th>Status</th></tr>';rows=(state.open.length?state.open.map(t=>`<tr><td><span style="display:inline-flex;vertical-align:middle;margin-right:6px">${pairFlags(t.asset)}</span>${displayAsset(t.asset)}</td><td class="${t.side==='CALL'?'green':'red'}">${t.side}</td><td>$${fmt(t.amount)}</td><td>${price(t.asset,t.entry)}</td><td>${Math.max(0,Math.ceil((t.end-Date.now())/1000))}s</td><td class="green">OPEN</td></tr>`).join(''):'')+(state.history.length?state.history.slice(0,100).map(t=>`<tr><td><span style="display:inline-flex;vertical-align:middle;margin-right:6px">${pairFlags(t.asset)}</span>${displayAsset(t.asset)}</td><td class="${t.side==='CALL'?'green':'red'}">${t.side}</td><td>$${fmt(t.amount)}</td><td>${price(t.asset,t.entry)}</td><td>—</td><td class="${t.pnl>=0?'green':'red'}">COMPLETED · ${t.result} ${t.pnl>=0?'+':'−'}$${fmt(Math.abs(t.pnl))}</td></tr>`).join(''):'')||'<tr><td colspan="6" class="empty">No open or completed demo trades</td></tr>'}else if(state.tab==='history'){head='<tr><th>Time</th><th>Asset</th><th>Direction</th><th>Investment</th><th>Entry price</th><th>Result</th><th>P/L</th></tr>';rows=state.history.length?state.history.map(t=>`<tr><td>${t.time}</td><td><span style="display:inline-flex;vertical-align:middle;margin-right:6px">${pairFlags(t.asset)}</span>${displayAsset(t.asset)}</td><td class="${t.side==='CALL'?'green':'red'}">${t.side}</td><td>$${fmt(t.amount)}</td><td>${price(t.asset,t.entry)}</td><td class="${t.pnl>=0?'green':'red'}">${t.result}</td><td class="${t.pnl>=0?'green':'red'}">${t.pnl>=0?'+':'−'}$${fmt(Math.abs(t.pnl))}</td></tr>`).join(''):'<tr><td colspan="7" class="empty">Your completed demo trades will appear here</td></tr>'}else{head='<tr><th>Demo statistics</th><th>Value</th><th>Demo statistics</th><th>Value</th></tr>';rows=`<tr><td>Completed trades</td><td>${state.trades}</td><td>Wins</td><td class="green">${state.wins}</td></tr><tr><td>Losses</td><td class="red">${state.losses}</td><td>Win rate</td><td>${state.trades?Math.round(state.wins/state.trades*100):0}%</td></tr><tr><td>Demo balance</td><td>$${fmt(state.balance)}</td><td>Net P/L</td><td class="${state.balance>=state.initial?'green':'red'}">${state.balance>=state.initial?'+':'−'}$${fmt(Math.abs(state.balance-state.initial))}</td></tr>`}$('tableHead').innerHTML=head;$('tableBody').innerHTML=rows;document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===state.tab));$('clear').style.display=state.tab==='history'?'inline-block':'none'}
 const tradeResultQueue=[];let tradeResultBusy=false;function showTradeResult(t,h){tradeResultQueue.push({t,h});if(!tradeResultBusy)playNextTradeResult()}function playNextTradeResult(){if(!tradeResultQueue.length){tradeResultBusy=false;return}tradeResultBusy=true;const item=tradeResultQueue.shift(),t=item.t,h=item.h,won=h.result==='WIN',overlay=$('tradeResultOverlay'),card=$('tradeResultCard');$('tradeResultEmblem').textContent=won?'✓':'×';$('tradeResultTitle').textContent=won?'YOU WIN':'YOU LOSE';$('tradeResultPnl').textContent=(h.pnl>=0?'+':'−')+'$'+fmt(Math.abs(h.pnl));$('tradeResultMeta').textContent=displayAsset(t.asset)+' · '+t.side;$('tradeResultInvestment').textContent='Investment $'+fmt(t.amount)+' · DEMO RESULT';card.classList.toggle('is-win',won);card.classList.toggle('is-loss',!won);overlay.classList.add('show');card.classList.remove('animate-in');void card.offsetWidth;card.classList.add('animate-in');setTimeout(()=>{overlay.classList.remove('show');setTimeout(()=>{tradeResultBusy=false;playNextTradeResult()},240)},2600)}
@@ -1606,13 +1770,13 @@ chartShell.addEventListener('wheel',e=>{e.preventDefault();applyChartZoom(e.delt
 const activePointers=new Map();let dragStartX=null,dragStartPan=0,pinchStartDistance=0,pinchStartZoom=1;
 function pointerDistance(){const pts=[...activePointers.values()];return pts.length<2?0:Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y)}
 panSvg.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;activePointers.set(e.pointerId,{x:e.clientX,y:e.clientY});try{panSvg.setPointerCapture(e.pointerId)}catch(_){}if(activePointers.size===1){dragStartX=e.clientX;dragStartPan=state.pan;panSvg.classList.add('dragging')}else if(activePointers.size===2){dragStartX=null;pinchStartDistance=pointerDistance();pinchStartZoom=state.zoom}});
-panSvg.addEventListener('pointermove',e=>{if(!activePointers.has(e.pointerId))return;activePointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(activePointers.size>=2&&pinchStartDistance>0){if(e.cancelable)e.preventDefault();applyChartZoom(1);const ratio=pointerDistance()/pinchStartDistance;const next=Math.max(.35,Math.min(8,pinchStartZoom*ratio));if(next!==state.zoom){state.zoom=next;const visible=Math.max(8,Math.min(state.candles.length,Math.round(65/state.zoom)));state.pan=Math.min(state.pan,Math.max(0,state.candles.length-visible));draw()}return}if(dragStartX!==null){const rect=panSvg.getBoundingClientRect(),visible=Math.max(8,Math.min(state.candles.length,Math.round(65/state.zoom))),step=(rect.width*(1000-12-83)/1000)/visible,delta=Math.round((dragStartX-e.clientX)/Math.max(1,step));state.pan=Math.max(0,Math.min(Math.max(0,state.candles.length-visible),dragStartPan+delta));draw()}});
+panSvg.addEventListener('pointermove',e=>{if(!activePointers.has(e.pointerId))return;activePointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(activePointers.size>=2&&pinchStartDistance>0){if(e.cancelable)e.preventDefault();applyChartZoom(1);const ratio=pointerDistance()/pinchStartDistance;const next=Math.max(.35,Math.min(8,pinchStartZoom*ratio));if(next!==state.zoom){state.zoom=next;const visible=Math.max(8,Math.min(state.candles.length,Math.round(65/state.zoom)));state.pan=Math.min(state.pan,Math.max(0,state.candles.length-visible));draw()}return}if(dragStartX!==null){const rect=panSvg.getBoundingClientRect(),visible=Math.max(8,Math.min(state.candles.length,Math.round(65/state.zoom))),step=(rect.width-12-83)/visible,delta=Math.round((dragStartX-e.clientX)/Math.max(1,step));state.pan=Math.max(0,Math.min(Math.max(0,state.candles.length-visible),dragStartPan+delta));draw()}});
 function finishPointer(e){activePointers.delete(e.pointerId);if(activePointers.size<2)pinchStartDistance=0;if(activePointers.size===1){const remaining=[...activePointers.values()][0];dragStartX=remaining.x;dragStartPan=state.pan}else{dragStartX=null;panSvg.classList.remove('dragging')}}
 panSvg.addEventListener('pointerup',finishPointer);panSvg.addEventListener('pointercancel',finishPointer);panSvg.addEventListener('lostpointercapture',finishPointer);
 // Chart taps/pans must never bubble into document-level menus or activate neighboring controls.
 panSvg.addEventListener('click',e=>{e.stopPropagation()});panSvg.addEventListener('dblclick',e=>{e.preventDefault();e.stopPropagation()});panSvg.addEventListener('contextmenu',e=>{e.preventDefault()});
 const modeToggle=$('accountModeToggle'),modeMenu=$('accountModeMenu');if(modeToggle&&modeMenu){modeToggle.onclick=(e)=>{e.preventDefault();e.stopPropagation();const opening=modeMenu.hidden;modeMenu.hidden=!opening;modeToggle.setAttribute('aria-expanded',String(opening))};modeMenu.querySelectorAll('[data-account-mode]').forEach(btn=>btn.onclick=(e)=>{e.preventDefault();e.stopPropagation();state.accountMode=btn.dataset.accountMode;modeMenu.hidden=true;modeToggle.setAttribute('aria-expanded','false');renderStats();if(state.accountMode==='real'){const note=document.querySelector('.trade-note');if(note)note.textContent='Real account is not connected yet. Secure broker/backend connection is required before real-money trading.'} });document.addEventListener('click',e=>{if(!modeMenu.hidden&&!modeMenu.contains(e.target)&&e.target!==modeToggle){modeMenu.hidden=true;modeToggle.setAttribute('aria-expanded','false')}})};$('balanceRefresh').onclick=(e)=>{e.preventDefault();e.stopPropagation();if(state.accountMode==='demo'){state.balance=state.initial;renderTable()}else{renderStats()}const btn=$('balanceRefresh');btn.classList.remove('spinning');void btn.offsetWidth;btn.classList.add('spinning');btn.setAttribute('aria-label',state.accountMode==='demo'?'Demo balance restored to $10,000':'Real balance refresh requires account connection');setTimeout(()=>{btn.classList.remove('spinning');btn.setAttribute('aria-label','Refresh balance')},650)};
-$('candleMode').onclick=()=>toast('Candlestick chart is active');$('indicators').onclick=openIndicators;$('fullscreen').title='Toggle full-screen trading terminal';$('fullscreen').setAttribute('aria-label','Toggle full-screen trading terminal');$('fullscreen').onclick=async()=>{try{if(!document.fullscreenElement){await document.documentElement.requestFullscreen?.();$('fullscreen').textContent='⛶ Exit';}else{await document.exitFullscreen?.();$('fullscreen').textContent='⛶';}}catch(e){toast('Use your browser full-screen key (F11) if full screen is blocked.')}};document.addEventListener('fullscreenchange',()=>{$('fullscreen').textContent=document.fullscreenElement?'⛶ Exit':'⛶';});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeIndicators()});document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;renderTable()});$('clear').onclick=()=>{if(state.tab==='history'){state.history=[];renderTable();toast('Demo history cleared')}else toast('Open trades cannot be cleared before expiry')};$('railAssets').onclick=openModal;$('desktopChangeAsset').onclick=e=>{e.stopPropagation();openModal()};$('desktopAssetSelector').addEventListener('click',e=>{if(e.target.closest('#desktopChangeAsset'))return;if(!window.matchMedia('(max-width: 760px)').matches)openModal()});$('desktopAssetSelector').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!window.matchMedia('(max-width: 760px)').matches){e.preventDefault();openModal()}});$('railHistory').onclick=()=>{$('historyPanel').scrollIntoView({behavior:'smooth'});state.tab='history';renderTable()};$('railStats').onclick=()=>{state.tab='stats';renderTable();$('historyPanel').scrollIntoView({behavior:'smooth'})};$('settings').onclick=()=>openAccount('profile');
+$('candleMode').onclick=()=>toast('Candlestick chart is active');$('indicators').onclick=openIndicators;$('fullscreen').title='Toggle full-screen trading terminal';$('fullscreen').setAttribute('aria-label','Toggle full-screen trading terminal');$('fullscreen').onclick=async()=>{try{if(!document.fullscreenElement){await document.documentElement.requestFullscreen?.();$('fullscreen').textContent='⛶ Exit';}else{await document.exitFullscreen?.();$('fullscreen').textContent='⛶';}}catch(e){toast('Use your browser full-screen key (F11) if full screen is blocked.')}};document.addEventListener('fullscreenchange',()=>{$('fullscreen').textContent=document.fullscreenElement?'⛶ Exit':'⛶';});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeIndicators()});document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;renderTable()});$('clear').onclick=()=>{if(state.tab==='history'){state.history=[];renderTable();toast('Demo history cleared')}else toast('Open trades cannot be cleared before expiry')};$('railAssets').onclick=openModal;$('desktopChangeAsset').onclick=e=>{e.stopPropagation();openModal()};$('desktopAssetSelector').addEventListener('click',e=>{if(e.target.closest('#desktopChangeAsset'))return;if(!window.matchMedia('(max-width: 760px)').matches)openModal()});$('desktopAssetSelector').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!window.matchMedia('(max-width: 760px)').matches){e.preventDefault();openModal()}});$('railHistory').onclick=()=>{$('historyPanel').scrollIntoView({behavior:'smooth'});state.tab='history';renderTable()};$('railStats').onclick=()=>{state.tab='stats';renderTable();$('historyPanel').scrollIntoView({behavior:'smooth'})};$('settings').onclick=()=>{$('supportModal').classList.add('show')};
 // Responsive placement: desktop history lives below CALL/PUT; mobile history opens from the bottom bag tab.
 const historyHome=$('historyPanel').parentElement;
 const historyHomeNext=$('historyPanel').nextElementSibling;
@@ -1649,7 +1813,7 @@ $('changePassword').onclick=()=>{const cur=$('currentPassword').value,next=$('ne
 const openAccountBase=openAccount;openAccount=function(tab='profile'){openAccountBase(tab);loadProfileDetails()};
 
 function openAccount(tab='profile'){$('profileBalance').textContent='$'+fmt(state.balance);$('accountTypeLabel').textContent=state.accountMode==='real'?'REAL ACCOUNT':'DEMO ACCOUNT';$('accountModal').classList.add('show');setWalletTab(tab)}function closeAccount(){$('accountModal').classList.remove('show')}function setWalletTab(tab){const names={profile:'Profile',deposit:'Wallet · Deposit',withdraw:'Wallet · Withdrawal',history:'Wallet · Requests'};const modal=$('accountModal');modal.classList.toggle('profile-only',tab==='profile');$('accountTitle').textContent=tab==='profile'?'Profile · ZENVEX':names[tab];document.querySelectorAll('[data-wallet-tab]').forEach(b=>b.classList.toggle('active',b.dataset.walletTab===tab));['profile','deposit','withdraw','history'].forEach(k=>$('wallet'+k[0].toUpperCase()+k.slice(1)).classList.toggle('hidden',k!==tab))}const walletRequests=(()=>{try{return JSON.parse(localStorage.getItem('zenvex_wallet_requests')||'[]')}catch(e){return []}})();function saveWalletRequests(){try{localStorage.setItem('zenvex_wallet_requests',JSON.stringify(walletRequests))}catch(e){}}function renderWalletRequests(rows=walletRequests){$('walletRequests').innerHTML=rows.length?rows.map((r,i)=>`<div style="padding:10px 0;border-bottom:1px solid #2b3543"><b>${i+1}. ${r.type||r.kind||'REQUEST'}</b><div>${r.amount} USDT · BEP20</div><div style="color:#e5d9a8;margin-top:4px">${r.status||'Pending review'}</div><div style="overflow-wrap:anywhere;color:#8795a5;margin-top:4px">${r.ref||r.tx_hash||r.address||''}</div></div>`).join(''):'No requests yet.'}async function loadRemoteRequests(){if(!API_BASE)return renderWalletRequests();try{const r=await fetch(API_BASE+'/api/requests',{credentials:'include'});if(!r.ok)throw new Error('Sign in required or API unavailable');const j=await r.json();renderWalletRequests(j.requests||[])}catch(e){toast('Could not load server requests. Check login/API setup.')}} $('openAccount').onclick=()=>openAccount('deposit');$('profileButton').onclick=()=>openAccount('profile');$('closeAccount').onclick=closeAccount;$('accountModal').addEventListener('click',e=>{if(e.target===$('accountModal'))closeAccount()});document.querySelectorAll('[data-wallet-tab]').forEach(b=>b.onclick=()=>{setWalletTab(b.dataset.walletTab);if(b.dataset.walletTab==='history')loadRemoteRequests()});$('googleLogin').onclick=()=>{if(API_BASE){window.location.href=API_BASE+'/auth/google'}else toast('Google sign-in setup pending: set ZENVEX_API_BASE and configure Google OAuth in the backend.')};$('requestRealAccount').onclick=()=>toast('Real account remains locked until secure backend, verified live prices, payment controls and compliance are configured.');$('copyAddress').onclick=()=>{const addr=$('depositAddress').textContent;navigator.clipboard?.writeText(addr).then(()=>toast('BEP20 address copied')).catch(()=>toast(addr))};$('submitDeposit').onclick=async()=>{const amount=Number($('depositAmount').value),hash=$('depositHash').value.trim();if(!(amount>0)||!hash){toast('Enter a positive USDT amount and transaction hash.');return}if(API_BASE){try{const r=await fetch(API_BASE+'/api/deposits',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount,tx_hash:hash,network:'BEP20'})});const j=await r.json();if(!r.ok)throw new Error(j.detail||'Request failed');toast('Deposit request sent to server for manual blockchain review.');setWalletTab('history');await loadRemoteRequests()}catch(e){toast('Deposit not submitted: '+e.message)}return}walletRequests.unshift({type:'DEPOSIT REQUEST (LOCAL DEMO)',amount:amount.toFixed(2),ref:hash,status:'Saved only in this browser · Not sent to admin · Not blockchain-verified',created:new Date().toISOString()});saveWalletRequests();renderWalletRequests();setWalletTab('history');toast('Local demo only: no admin notification and no balance credit.')};$('submitWithdraw').onclick=async()=>{const amount=Number($('withdrawAmount').value),address=$('withdrawAddress').value.trim();if(!(amount>0)||!/^0x[a-fA-F0-9]{40}$/.test(address)){toast('Enter a positive amount and a valid-looking BEP20 address.');return}if(API_BASE){try{const r=await fetch(API_BASE+'/api/withdrawals',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount,address,network:'BEP20'})});const j=await r.json();if(!r.ok)throw new Error(j.detail||'Request failed');toast('Withdrawal request sent to server for admin review.');setWalletTab('history');await loadRemoteRequests()}catch(e){toast('Withdrawal not submitted: '+e.message)}return}walletRequests.unshift({type:'WITHDRAWAL REQUEST (LOCAL DEMO)',amount:amount.toFixed(2),address,status:'Saved only in this browser · Not sent to admin · No funds sent',created:new Date().toISOString()});saveWalletRequests();renderWalletRequests();setWalletTab('history');toast('Local demo only: no admin notification and no funds sent.')};
-renderTabs();renderTradeSelect();selectAsset(state.selected);renderTable();updatePotential();let lastMode=marketMode();setInterval(()=>{if(marketMode()!==lastMode){lastMode=marketMode();activateFeed(lastMode);renderTabs();renderTradeSelect();renderModal();selectAsset(state.selected);toast(lastMode==='OTC'?'Weekend detected · independent ZENVEX OTC feed enabled':'Weekday detected · ZENVEX weekday demo feed restored')}Object.keys(data).forEach((asset,i)=>{let d=data[asset];const realPrev=state.realPrices[asset];state.realPrices[asset]=Math.max(.00001,realPrev+(Math.random()-.5)*d.vol*1.25);state.otcPrices[asset]=sharedOtcAt(asset,Date.now())});state.prices=marketMode()==='OTC'?state.otcPrices:state.realPrices;state.candlesByAsset=marketMode()==='OTC'?state.otcCandlesByAsset:state.realCandlesByAsset;let k=state.selected,p=state.prices[k],arr=state.candles,c=arr[arr.length-1];c.c=p;c.h=Math.max(c.h,p);c.l=Math.min(c.l,p);const interval=tfMs(),bucket=Math.floor(Date.now()/interval)*interval;if(!c.startMs)c.startMs=bucket;if(bucket>c.startMs){arr.push({id:state.nextCandleId++,startMs:bucket,o:p,h:p,l:p,c:p});if(arr.length>500){let removed=arr.shift();state.open.forEach(t=>{if(t.asset===k&&(!t.mode||t.mode===marketMode())&&t.candleId===removed.id)t.candleId=arr[0].id})}state.candlesByAsset[k]=arr;if(state.pan>0)state.pan=Math.min(state.pan+1,Math.max(0,arr.length-Math.max(8,Math.round(65/state.zoom))));else state.pan=0}else{c.c=p;c.h=Math.max(c.h,p);c.l=Math.min(c.l,p)} $('price').textContent=price(k,p);$('clock').textContent=now();const candleRemain=Math.max(0,interval-(Date.now()%interval));$('candleCountdown').textContent=String(Math.floor(candleRemain/60000)).padStart(2,'0')+':'+String(Math.floor((candleRemain%60000)/1000)).padStart(2,'0');if($('marketStatus'))$('marketStatus').textContent=modeLabel();$('pairName').textContent=displayAsset(k);$('legendPair').textContent=displayAsset(k);$('pairDesc').textContent=data[k].desc+' · '+data[k].cat+' · '+modeLabel();$('change').textContent=(isWeekendOTC()?'OTC · ':'')+(p>=c.o?'▲ ':'▼ ')+(Math.random()*.14).toFixed(3)+'%';$('change').style.color=p>=c.o?'var(--green)':'var(--red)';draw();settle()},1000);
+renderTabs();renderTradeSelect();selectAsset(state.selected);renderTable();updatePotential();let lastMode=marketMode();setInterval(()=>{if(marketMode()!==lastMode){lastMode=marketMode();activateFeed(lastMode);renderTabs();renderTradeSelect();renderModal();selectAsset(state.selected);toast(lastMode==='OTC'?'Weekend detected · independent ZENVEX OTC feed enabled':'Weekday detected · ZENVEX weekday demo feed restored')}Object.keys(data).forEach((asset,i)=>{let d=data[asset];const realPrev=state.realPrices[asset];state.realPrices[asset]=Math.max(.00001,realPrev+(Math.random()-.5)*d.vol*1.25);state.otcPrices[asset]=sharedOtcAt(asset,Date.now())});state.prices=marketMode()==='OTC'?state.otcPrices:state.realPrices;state.candlesByAsset=marketMode()==='OTC'?state.otcCandlesByAsset:state.realCandlesByAsset;let k=state.selected,p=state.prices[k],arr=state.candles,c=arr[arr.length-1];c.c=p;c.h=Math.max(c.h,p);c.l=Math.min(c.l,p);const interval=tfMs(),bucket=Math.floor(Date.now()/interval)*interval;if(!c.startMs)c.startMs=bucket;if(bucket>c.startMs){arr.push({id:state.nextCandleId++,startMs:bucket,o:p,h:p,l:p,c:p});if(arr.length>500){let removed=arr.shift();state.open.forEach(t=>{if(t.asset===k&&(!t.mode||t.mode===marketMode())&&t.candleId===removed.id)t.candleId=arr[0].id})}state.candlesByAsset[k]=arr;if(state.pan>0)state.pan=Math.min(state.pan+1,Math.max(0,arr.length-Math.max(8,Math.round(65/state.zoom))));else state.pan=0}else{c.c=p;c.h=Math.max(c.h,p);c.l=Math.min(c.l,p)} $('price').textContent=price(k,p);$('clock').textContent=now();const candleRemain=Math.max(0,interval-(Date.now()%interval));$('candleCountdown').textContent=String(Math.floor(candleRemain/60000)).padStart(2,'0')+':'+String(Math.floor((candleRemain%60000)/1000)).padStart(2,'0');if($('marketStatus'))$('marketStatus').textContent=modeLabel();$('pairName').textContent=displayAsset(k);$('legendPair').textContent=displayAsset(k);$('pairDesc').textContent=data[k].desc+' · '+data[k].cat;$('change').textContent=(isWeekendOTC()?'OTC · ':'')+(p>=c.o?'▲ ':'▼ ')+(Math.random()*.14).toFixed(3)+'%';$('change').style.color=p>=c.o?'var(--green)':'var(--red)';draw();settle()},1000);
 })();
 </script>
 
@@ -2666,7 +2830,81 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline-color:#f5c
   #historyPanel.mobile-open th, #historyPanel.mobile-open td { padding: 9px 10px !important; font-size: 11px !important; }
 }
 </style>
-<!-- Removed conflicting legacy History controller: zenvex-trade-history-repair-v1-script -->
+<script id="zenvex-trade-history-repair-v1-script">
+(function () {
+  const panel = document.getElementById('historyPanel');
+  const main = document.querySelector('main.main');
+  const workspace = main && main.querySelector('.workspace');
+  if (!panel || !main || !workspace) return;
+  function placeHistoryInMain() {
+    if (panel.parentElement !== main || panel.previousElementSibling !== workspace) {
+      workspace.insertAdjacentElement('afterend', panel);
+    }
+  }
+  function openHistory() {
+    placeHistoryInMain();
+    if (window.matchMedia('(max-width: 760px)').matches) {
+      panel.classList.add('mobile-open');
+      panel.style.setProperty('display', 'flex', 'important');
+    } else {
+      panel.classList.remove('mobile-open');
+      panel.style.removeProperty('display');
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+  function closeHistory() {
+    panel.classList.remove('mobile-open');
+    if (window.matchMedia('(max-width: 760px)').matches) panel.style.setProperty('display', 'none', 'important');
+    else panel.style.removeProperty('display');
+  }
+  // Ensure the history panel is no longer trapped inside the trade-controls column.
+  placeHistoryInMain();
+  window.addEventListener('resize', function () {
+    placeHistoryInMain();
+    if (window.matchMedia('(max-width: 760px)').matches && !panel.classList.contains('mobile-open')) {
+      panel.style.setProperty('display', 'none', 'important');
+    } else if (!window.matchMedia('(max-width: 760px)').matches) {
+      panel.style.removeProperty('display');
+      panel.classList.remove('mobile-open');
+    }
+  });
+  document.querySelectorAll('[data-mobile-nav]').forEach(function (button) {
+    button.onclick = function () {
+      const dest = button.dataset.mobileNav;
+      document.querySelectorAll('[data-mobile-nav]').forEach(function (b) { b.classList.toggle('active', b === button); });
+      if (dest === 'history') {
+        if (panel.classList.contains('mobile-open')) {
+          closeHistory();
+          button.classList.remove('active');
+          const chartButton = document.querySelector('[data-mobile-nav="chart"]');
+          if (chartButton) chartButton.classList.add('active');
+          return;
+        }
+        if (typeof state !== 'undefined') state.tab = 'history';
+        // Open the mobile history view before rendering so renderTable() uses
+        // the fullscreen history branch on its very first paint. Rendering
+        // while hidden used to populate the legacy table, which then flashed.
+        openHistory();
+        if (typeof renderTable === 'function') renderTable();
+      } else {
+        closeHistory();
+        if (dest === 'chart') {
+          const chart = document.getElementById('chartSvg');
+          if (chart) chart.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else if (dest === 'support') {
+          const support = document.getElementById('supportModal'); if (support) support.classList.add('show');
+        } else if (dest === 'leaderboard') {
+          const leaderboard = document.getElementById('leaderboardModal'); if (leaderboard) { leaderboard.classList.add('show'); leaderboard.setAttribute('aria-hidden','false'); }
+        } else if (dest === 'profile' && typeof openAccount === 'function') openAccount('profile');
+      }
+    };
+  });
+  const railHistory = document.getElementById('railHistory');
+  if (railHistory) railHistory.onclick = function () { if (typeof state !== 'undefined') state.tab = 'history'; openHistory(); if (typeof renderTable === 'function') renderTable(); };
+  const railStats = document.getElementById('railStats');
+  if (railStats) railStats.onclick = function () { if (typeof state !== 'undefined') state.tab = 'stats'; openHistory(); if (typeof renderTable === 'function') renderTable(); };
+})();
+</script>
 
 <style id="zenvex-golden-logo-final-override">
 header.top .brand .brand-mark, .brand .brand-mark, .brand-mark{
@@ -2756,7 +2994,17 @@ header.top .brand > span em{display:inline!important;line-height:1!important;}
  .mobile-bottom-nav{z-index:28!important}
 }
 </style>
-<!-- Removed conflicting legacy History controller: zenvex-fullscreen-all-time-history-controls -->
+<script id="zenvex-fullscreen-all-time-history-controls">
+(function(){
+ const panel=document.getElementById('historyPanel'); const close=document.getElementById('closeFullHistory'); if(!panel||!close)return;
+ function closeFull(){panel.classList.remove('mobile-open');document.body.classList.remove('history-screen-open');/* Do not leave an inline !important display:none on the panel: it overrides the mobile-open CSS and prevents History from reopening. */panel.style.removeProperty('display');const h=document.querySelector('[data-mobile-nav="history"]');const c=document.querySelector('[data-mobile-nav="chart"]');if(h)h.classList.remove('active');if(c)c.classList.add('active');}
+ close.addEventListener('click',closeFull);
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('mobile-open'))closeFull()});
+ const oldOpen=window.openZenvexHistory;
+ document.querySelectorAll('[data-mobile-nav="history"]').forEach(b=>b.addEventListener('click',()=>{if(window.matchMedia('(max-width:760px)').matches){panel.style.removeProperty('display');if(panel.classList.contains('mobile-open')){document.body.classList.add('history-screen-open');try{if(typeof state!=='undefined')state.tab='history';if(typeof renderTable==='function')renderTable();}catch(e){}}}},true));
+ const observer=new MutationObserver(()=>{if(panel.classList.contains('mobile-open')&&window.matchMedia('(max-width:760px)').matches){document.body.classList.add('history-screen-open');if(typeof state!=='undefined')state.tab='history';if(typeof renderTable==='function')renderTable();}});observer.observe(panel,{attributes:true,attributeFilter:['class']});
+})();
+</script>
 
 
 <style id="zenvex-mobile-history-premium-fit">
@@ -3429,7 +3677,75 @@ button:focus-visible,[role="button"]:focus-visible{outline:2px solid #e3c36d!imp
 
 
 <!-- ZENVEX mobile history no-flash sequencing fix -->
-<!-- Removed conflicting legacy History controller: zenvex-mobile-history-no-flash-sequence-fix -->
+<script id="zenvex-mobile-history-no-flash-sequence-fix">
+(function(){
+  'use strict';
+  function install(){
+    var panel=document.getElementById('historyPanel');
+    var historyBtn=document.querySelector('[data-mobile-nav="history"]');
+    var chartBtn=document.querySelector('[data-mobile-nav="chart"]');
+    var closeBtn=document.getElementById('closeFullHistory');
+    if(!panel||!historyBtn)return;
+    function isMobile(){return window.matchMedia('(max-width:760px)').matches;}
+    function closeMobileHistory(){
+      panel.classList.remove('mobile-open');
+      panel.style.setProperty('display','none','important');
+      document.body.classList.remove('history-screen-open');
+      historyBtn.classList.remove('active');
+      if(chartBtn)chartBtn.classList.add('active');
+    }
+    function openMobileHistory(){
+      /* Make the correct panel visible and refresh its data in the same task,
+         before the browser can paint stale rows from the previous visit. */
+      panel.classList.add('mobile-open');
+      panel.style.setProperty('display','flex','important');
+      document.body.classList.add('history-screen-open');
+      historyBtn.classList.add('active');
+      if(chartBtn)chartBtn.classList.remove('active');
+      if(typeof state!=='undefined')state.tab='history';
+      if(typeof renderTable==='function')renderTable();
+    }
+    var previousHistoryClick=historyBtn.onclick;
+    historyBtn.onclick=function(ev){
+      if(!isMobile()){
+        if(typeof previousHistoryClick==='function')return previousHistoryClick.call(this,ev);
+        return;
+      }
+      if(ev&&ev.preventDefault)ev.preventDefault();
+      if(panel.classList.contains('mobile-open'))closeMobileHistory();
+      else openMobileHistory();
+    };
+    if(closeBtn){
+      closeBtn.onclick=function(ev){
+        if(isMobile()){
+          if(ev&&ev.preventDefault)ev.preventDefault();
+          closeMobileHistory();
+        }else{
+          panel.classList.remove('mobile-open');
+          panel.style.removeProperty('display');
+        }
+      };
+    }
+    /* Keep the hidden state deterministic on startup; never expose stale table rows. */
+    if(isMobile()&&!panel.classList.contains('mobile-open')){
+      panel.style.setProperty('display','none','important');
+      document.body.classList.remove('history-screen-open');
+    }
+    window.addEventListener('resize',function(){
+      if(isMobile()&&!panel.classList.contains('mobile-open')){
+        panel.style.setProperty('display','none','important');
+        document.body.classList.remove('history-screen-open');
+      }else if(!isMobile()){
+        panel.style.removeProperty('display');
+        panel.classList.remove('mobile-open');
+        document.body.classList.remove('history-screen-open');
+      }
+    },{passive:true});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});
+  else install();
+})();
+</script>
 
 
 <!-- Final mobile history flicker guard: intercept navigation before legacy handlers can paint the old view. -->
@@ -3441,78 +3757,287 @@ button:focus-visible,[role="button"]:focus-visible{outline:2px solid #e3c36d!imp
   #historyPanel.mobile-open .history-tools{display:none!important}
 }
 </style>
-<!-- Removed conflicting legacy History controller: zenvex-history-no-legacy-flash-final-script -->
-
-
-<style id="zenvex-history-no-old-interface-flash-final">
-@media (max-width:760px){
-  #historyPanel:not(.mobile-open){display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
-  #historyPanel.history-preparing{visibility:hidden!important;opacity:0!important;pointer-events:none!important;transition:none!important}
-  #historyPanel.mobile-open{visibility:visible;opacity:1}
-}
-</style>
-
-<style id="zenvex-history-hard-fix-final-css">
-@media(max-width:760px){
- #historyPanel:not(.mobile-open){display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
- #historyPanel.mobile-open{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;max-width:100vw!important;max-height:100dvh!important;min-height:0!important;margin:0!important;border-radius:0!important;z-index:100500!important;display:flex!important;flex-direction:column!important;overflow:hidden!important;transition:none!important}
- #historyPanel.mobile-open.history-preparing{visibility:hidden!important;opacity:0!important}
- #historyPanel.mobile-open .table-wrap{flex:1 1 auto!important;min-height:0!important;overflow:auto!important;-webkit-overflow-scrolling:touch!important}
- body.history-screen-open{overflow:hidden!important}
-}
-</style>
-<script id="zenvex-history-hard-fix-final-controller">
+<script id="zenvex-history-no-legacy-flash-final-script">
 (function(){
- 'use strict';
- var mq=window.matchMedia('(max-width:760px)');
- function install(){
-  var panel=document.getElementById('historyPanel');
-  var hist=document.querySelector('[data-mobile-nav="history"]');
-  var chart=document.querySelector('[data-mobile-nav="chart"]');
-  if(!panel||!hist)return;
-  function render(){try{if(typeof state!=='undefined')state.tab='history';}catch(e){} try{if(typeof renderTable==='function')renderTable();}catch(e){}}
-  function open(){
-   panel.classList.add('history-preparing','mobile-open');
-   panel.style.setProperty('display','flex','important');
-   panel.style.setProperty('visibility','hidden','important');
-   panel.style.setProperty('opacity','0','important');
-   document.body.classList.add('history-screen-open');
-   hist.classList.add('active'); if(chart)chart.classList.remove('active');
-   render();
-   requestAnimationFrame(function(){
-    if(!panel.classList.contains('mobile-open'))return;
-    panel.classList.remove('history-preparing');
-    panel.style.setProperty('visibility','visible','important');
-    panel.style.setProperty('opacity','1','important');
-   });
+  'use strict';
+  function install(){
+    var panel=document.getElementById('historyPanel');
+    var historyBtn=document.querySelector('[data-mobile-nav="history"]');
+    var chartBtn=document.querySelector('[data-mobile-nav="chart"]');
+    var closeBtn=document.getElementById('closeFullHistory');
+    if(!panel||!historyBtn)return;
+    var mq=window.matchMedia('(max-width:760px)');
+    function mobile(){return mq.matches;}
+    function paintCorrectHistory(){
+      try{if(typeof state!=='undefined')state.tab='history';}catch(e){}
+      try{if(typeof renderTable==='function')renderTable();}catch(e){}
+    }
+    function open(){
+      /* Keep the panel hidden while the canonical mobile rows are generated. */
+      panel.style.setProperty('visibility','hidden','important');
+      panel.style.setProperty('opacity','0','important');
+      panel.classList.add('mobile-open');
+      panel.style.setProperty('display','flex','important');
+      document.body.classList.add('history-screen-open');
+      historyBtn.classList.add('active');
+      if(chartBtn)chartBtn.classList.remove('active');
+      paintCorrectHistory();
+      /* Two frames allow old mutation observers to finish before the view is revealed. */
+      requestAnimationFrame(function(){
+        paintCorrectHistory();
+        requestAnimationFrame(function(){
+          if(panel.classList.contains('mobile-open')){
+            panel.style.setProperty('visibility','visible','important');
+            panel.style.setProperty('opacity','1','important');
+          }
+        });
+      });
+    }
+    function close(){
+      panel.classList.remove('mobile-open');
+      panel.style.setProperty('display','none','important');
+      panel.style.setProperty('visibility','hidden','important');
+      panel.style.setProperty('opacity','0','important');
+      document.body.classList.remove('history-screen-open');
+      historyBtn.classList.remove('active');
+      if(chartBtn)chartBtn.classList.add('active');
+    }
+    /* Window capture runs before button handlers registered by older patches. */
+    window.addEventListener('click',function(ev){
+      if(!mobile())return;
+      var target=ev.target;
+      var hitHistory=target&&target.closest?target.closest('[data-mobile-nav="history"]'):null;
+      var hitClose=target&&target.closest?target.closest('#closeFullHistory'):null;
+      var hitChart=target&&target.closest?target.closest('[data-mobile-nav="chart"]'):null;
+      if(hitHistory){
+        ev.preventDefault();ev.stopPropagation();ev.stopImmediatePropagation();
+        if(panel.classList.contains('mobile-open'))close();else open();
+      }else if(hitClose){
+        ev.preventDefault();ev.stopPropagation();ev.stopImmediatePropagation();close();
+      }else if(hitChart&&panel.classList.contains('mobile-open')){
+        ev.preventDefault();ev.stopPropagation();ev.stopImmediatePropagation();close();
+      }
+    },true);
+    if(mobile()&&!panel.classList.contains('mobile-open'))close();
+    window.addEventListener('resize',function(){
+      if(!mobile()){
+        panel.classList.remove('mobile-open');
+        panel.style.removeProperty('display');panel.style.removeProperty('visibility');panel.style.removeProperty('opacity');
+        document.body.classList.remove('history-screen-open');
+      }else if(!panel.classList.contains('mobile-open'))close();
+    },{passive:true});
   }
-  function close(){
-   panel.classList.remove('mobile-open','history-preparing');
-   panel.style.setProperty('display','none','important');
-   panel.style.setProperty('visibility','hidden','important');
-   panel.style.setProperty('opacity','0','important');
-   document.body.classList.remove('history-screen-open');
-   hist.classList.remove('active'); if(chart)chart.classList.add('active');
-  }
-  // Capture at the window before legacy button/document handlers can change the panel.
-  window.addEventListener('click',function(ev){
-   if(!mq.matches)return;
-   var t=ev.target; if(!t||!t.closest)return;
-   var h=t.closest('[data-mobile-nav="history"]');
-   var c=t.closest('[data-mobile-nav="chart"]');
-   var x=t.closest('#closeFullHistory');
-   if(h){ev.preventDefault();ev.stopPropagation();ev.stopImmediatePropagation();if(panel.classList.contains('mobile-open'))close();else open();}
-   else if(x||(c&&panel.classList.contains('mobile-open'))){ev.preventDefault();ev.stopPropagation();ev.stopImmediatePropagation();close();}
-  },true);
-  if(mq.matches&&!panel.classList.contains('mobile-open'))close();
-  window.addEventListener('resize',function(){
-   if(mq.matches){if(!panel.classList.contains('mobile-open'))close();}
-   else{panel.classList.remove('mobile-open','history-preparing');panel.style.removeProperty('display');panel.style.removeProperty('visibility');panel.style.removeProperty('opacity');document.body.classList.remove('history-screen-open');}
-  },{passive:true});
- }
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});
+  else install();
 })();
 </script>
+
+
+<style id="zenvex-pc-chart-fullheight-support-assets-fit">
+/* PC only: let the chart occupy the unused vertical space without touching mobile layout or trade logic. */
+@media (min-width: 901px) {
+  .layout {
+    height: calc(100dvh - 89px) !important;
+    min-height: 0 !important;
+    align-items: stretch !important;
+    overflow: hidden !important;
+  }
+  .main {
+    height: 100% !important;
+    min-height: 0 !important;
+    flex: 1 1 auto !important;
+    overflow: hidden !important;
+  }
+  .workspace {
+    flex: 1 1 auto !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    align-items: stretch !important;
+  }
+  .chartcol {
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+  .chartcol > div:has(> .chart-tools) {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+  .chart-tools { flex: 0 0 auto !important; }
+  .chart-shell {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+  .chart {
+    flex: 1 1 auto !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    width: 100% !important;
+  }
+  .chart-foot { flex: 0 0 auto !important; }
+  .rail button#settings { display:grid!important; place-items:center!important; }
+  .rail button#settings .rail-support-icon {
+    display:block!important; width:21px!important; height:21px!important;
+    fill:none!important; stroke:currentColor!important; stroke-width:1.8!important;
+    stroke-linecap:round!important; stroke-linejoin:round!important;
+  }
+  .rail button#settings:hover,
+  .rail button#settings:focus-visible { color:#e7c46b!important; background:#2b2a25!important; }
+  /* Keep the two currency flags / asset symbols fully visible inside the PC asset badge. */
+  #desktopAssetSelector .pair-icon {
+    display:flex!important; align-items:center!important; justify-content:center!important;
+    flex:0 0 42px!important; width:42px!important; min-width:42px!important;
+    max-width:42px!important; height:42px!important; padding:3px!important;
+    box-sizing:border-box!important; border-radius:50%!important; overflow:hidden!important;
+  }
+  #desktopAssetSelector .pair-icon .pair-flags {
+    display:flex!important; align-items:center!important; justify-content:center!important;
+    gap:1px!important; width:100%!important; height:100%!important; min-width:0!important;
+    overflow:visible!important;
+  }
+  #desktopAssetSelector .pair-icon .pair-flags > .flag-circle,
+  #desktopAssetSelector .pair-icon .pair-flags > .asset-symbol {
+    display:grid!important; place-items:center!important; flex:0 0 23px!important;
+    width:23px!important; min-width:23px!important; max-width:23px!important;
+    height:23px!important; min-height:23px!important; max-height:23px!important;
+    margin:0 -5px 0 0!important; padding:0!important; overflow:hidden!important; border-radius:50%!important;
+    box-sizing:border-box!important;
+  }
+  #desktopAssetSelector .pair-icon .pair-flags > .flag-circle svg,
+  #desktopAssetSelector .pair-icon .pair-flags > .asset-symbol svg,
+  #desktopAssetSelector .pair-icon .pair-flags > .asset-symbol img {
+    display:block!important; width:100%!important; height:100%!important;
+    max-width:100%!important; max-height:100%!important; object-fit:contain!important;
+  }
+  #desktopAssetSelector .pair-icon .pair-flags > .asset-symbol { background:#172434!important; }
+}
+</style>
+
+
+<style id="zenvex-pc-asset-icons-exact-mobile-style-2026-10-19">
+/* Final PC-only correction: match the mobile selector's two clearly visible round asset icons. */
+@media (min-width: 761px) {
+  #desktopAssetSelector .pair-icon {
+    display:flex!important; align-items:center!important; justify-content:flex-start!important;
+    flex:0 0 58px!important; width:58px!important; min-width:58px!important; max-width:58px!important;
+    height:32px!important; min-height:32px!important; max-height:32px!important;
+    padding:0!important; margin:0 10px 0 0!important; box-sizing:border-box!important;
+    border:0!important; border-radius:0!important; background:transparent!important;
+    box-shadow:none!important; overflow:visible!important;
+  }
+  #desktopAssetSelector .pair-icon .pair-flags {
+    display:inline-flex!important; align-items:center!important; justify-content:flex-start!important;
+    width:auto!important; min-width:0!important; height:auto!important; gap:3px!important;
+    white-space:nowrap!important; overflow:visible!important; flex-shrink:0!important;
+  }
+  #desktopAssetSelector .pair-icon .pair-flags > .flag-circle,
+  #desktopAssetSelector .pair-icon .pair-flags > .asset-symbol {
+    position:relative!important; display:inline-flex!important; align-items:center!important; justify-content:center!important;
+    flex:0 0 23px!important; width:23px!important; min-width:23px!important; max-width:23px!important;
+    height:23px!important; min-height:23px!important; max-height:23px!important; aspect-ratio:1/1!important;
+    margin:0!important; padding:0!important; box-sizing:border-box!important;
+    border-radius:50%!important; overflow:hidden!important; line-height:0!important;
+  }
+  #desktopAssetSelector .pair-icon .pair-flags > .flag-circle svg,
+  #desktopAssetSelector .pair-icon .pair-flags > .asset-symbol svg,
+  #desktopAssetSelector .pair-icon .pair-flags > .asset-symbol img {
+    display:block!important; width:100%!important; height:100%!important;
+    min-width:100%!important; min-height:100%!important; max-width:100%!important; max-height:100%!important;
+    object-fit:cover!important; border-radius:50%!important; overflow:hidden!important; flex:0 0 100%!important;
+  }
+}
+</style>
+
+<style id="zenvex-pc-chart-bottom-breathing-space-2026-10-19">
+/* PC only: leave a small, intentional gap below the chart area so it does not feel pressed against the bottom edge. */
+@media (min-width: 761px) {
+  .workspace { box-sizing: border-box !important; padding-bottom: 12px !important; }
+  .chartcol { box-sizing: border-box !important; padding-bottom: 4px !important; }
+  .chartcol > .chart-shell { margin-bottom: 4px !important; }
+}
+</style>
+
+
+<style id="zenvex-pc-nav-leaderboard-polish">
+@media (min-width:761px){
+  /* PC rail: only Trading/Chart, Leaderboard, and Support remain visible. */
+  .rail #railAssets,.rail #railHistory,.rail #railStats{display:none!important}
+  .rail{gap:9px!important;padding:12px 8px!important;background:linear-gradient(180deg,#111a25 0%,#0b121b 100%)!important;border-right:1px solid #263747!important}
+  .rail>button{width:42px!important;height:42px!important;min-width:42px!important;border-radius:13px!important;border:1px solid transparent!important;background:transparent!important;color:#9caebe!important;display:grid!important;place-items:center!important;transition:background .18s,border-color .18s,transform .18s!important}
+  .rail>button:hover{background:#d9b75b10!important;border-color:#d9b75b45!important;color:#f0d27b!important;transform:translateY(-1px)}
+  .rail>button.active{background:linear-gradient(145deg,#d9b75b24,#d9b75b0a)!important;border-color:#d9b75b70!important;color:#f2d47b!important;box-shadow:inset 0 1px #fff1,0 5px 18px #0003!important}
+  .rail>button.rail-leaderboard{display:grid!important;color:#d9b75b!important;background:linear-gradient(145deg,#d9b75b16,#d9b75b05)!important;border-color:#d9b75b35!important}
+  .rail>button.rail-leaderboard svg{width:21px!important;height:21px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+  .rail>button#settings{margin-top:8px!important;background:#182431!important;border-color:#344555!important;color:#e0c16a!important}
+  /* Keep the single main asset card above the chart; remove the duplicate quick-asset strip on PC. */
+  .chartcol>.asset-tabs,#assetTabs{display:none!important;min-height:0!important;height:0!important;margin:0!important;padding:0!important;border:0!important;overflow:hidden!important}
+  .chartcol>#desktopAssetSelector{margin-top:0!important}
+}
+</style>
+<script id="zenvex-pc-leaderboard-open">
+(function(){const b=document.getElementById('railLeaderboard'),m=document.getElementById('leaderboardModal');if(!b||!m)return;b.addEventListener('click',function(){m.classList.add('show');m.setAttribute('aria-hidden','false');});})();
+</script>
+
+
+<style id="zenvex-hide-desktop-three-dot-final">
+/* PC cleanup: the compact three-dot chart menu is mobile-only. Keep it available on mobile. */
+@media (min-width: 761px) {
+  #mobileTfTrigger, #mobileTfMenu { display: none !important; }
+}
+</style>
+
+
+<style id="zenvex-final-premium-responsive-polish-2026-10-19">
+/* Final visual pass: keep changes presentational, responsive and isolated from trade logic. */
+.rail .rail-chart-icon{width:21px!important;height:21px!important;display:block!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+@media (min-width:761px){
+  .layout{height:calc(100dvh - 75px)!important;min-height:0!important;overflow:hidden!important;align-items:stretch!important}
+  .main{height:100%!important;min-height:0!important;overflow:hidden!important;box-sizing:border-box!important}
+  .workspace{flex:1 1 auto!important;min-height:0!important;height:100%!important;align-items:stretch!important}
+  .chartcol{min-height:0!important;height:100%!important;align-self:stretch!important;overflow:hidden!important;gap:7px!important}
+  .chartcol>.chart-shell{flex:1 1 0!important;min-height:0!important;height:auto!important;margin:0 0 8px!important;padding:1px!important;box-sizing:border-box!important;border:1px solid rgba(164,184,207,.22)!important;border-radius:12px!important;background:linear-gradient(145deg,rgba(19,31,45,.96),rgba(9,16,25,.98))!important;box-shadow:0 8px 24px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.025)!important;overflow:hidden!important}
+  .chartcol>.chart-shell>.chart{flex:1 1 0!important;min-height:0!important;height:0!important;max-height:none!important;width:100%!important;border-radius:10px!important;overflow:hidden!important}
+  .chartcol>.chart-shell>.chart svg{display:block!important;width:100%!important;height:100%!important}
+  .chartcol>.chart-shell>.chart-foot{flex:0 0 auto!important;min-height:30px!important;padding:7px 10px!important;box-sizing:border-box!important;border-top:1px solid rgba(164,184,207,.16)!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important;flex-wrap:wrap!important;background:rgba(7,13,21,.55)!important}
+  #desktopAssetSelector{border-radius:11px!important;overflow:hidden!important}
+  .chart-tools{border-radius:10px!important}
+  .rail .rail-chart-icon,.rail #railLeaderboard svg,.rail #settings svg{flex-shrink:0!important}
+}
+@media (max-width:760px){
+  .rail .rail-chart-icon{width:21px!important;height:21px!important}
+}
+</style>
+
+
+<style id="zenvex-mobile-chart-label-fit-final">
+@media (max-width:760px){
+  #chartSvg{width:100%!important;height:100%!important;display:block!important;}
+  .chart-foot{box-sizing:border-box!important;display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:flex-start!important;gap:5px 8px!important;padding:6px 8px!important;line-height:1.35!important;overflow:hidden!important;}
+  .chart-foot>span{display:inline-flex!important;align-items:center!important;gap:3px!important;min-width:0!important;max-width:100%!important;white-space:nowrap!important;font-size:9px!important;}
+  .chart-foot strong{font-size:9px!important;font-weight:750!important;}
+}
+@media (max-width:390px){
+  .chart-foot{gap:4px 6px!important;padding:5px 6px!important;}
+  .chart-foot>span,.chart-foot strong{font-size:8px!important;}
+}
+</style>
+
+<style id="zenvex-mobile-chart-width-fit-fix">
+@media (max-width:760px){
+  .chartcol,.chart-shell,.chart{min-width:0!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important;}
+  .chart-shell{overflow:hidden!important;}
+  #chartSvg{width:100%!important;max-width:100%!important;display:block!important;}
+}
+</style>
+
 </body>
 </html>
 
@@ -3591,3 +4116,146 @@ button:focus-visible,[role="button"]:focus-visible{outline:2px solid #e3c36d!imp
 }
 </style>
 
+
+<style id="zenvex-pc-chart-height-and-asset-round-fit-fix-2026-10-19">
+/* PC-only: keep the chart inside the available workspace instead of pushing it downward. */
+@media (min-width: 761px) {
+  .layout { height: auto !important; min-height: 0 !important; overflow: hidden !important; }
+  .main { min-height: 0 !important; height: 100% !important; overflow: hidden !important; }
+  .workspace { height: 100% !important; min-height: 0 !important; align-items: stretch !important; }
+  .chartcol { display: flex !important; flex-direction: column !important; min-height: 0 !important; height: 100% !important; overflow: hidden !important; gap: 7px !important; }
+  .chartcol > .asset-tabs { flex: 0 0 auto !important; }
+  .chartcol > #desktopAssetSelector { flex: 0 0 auto !important; }
+  .chartcol > div:has(> .chart-tools) { flex: 0 0 auto !important; min-height: 0 !important; }
+  .chartcol > .chart-shell { display: flex !important; flex: 1 1 0 !important; flex-direction: column !important; min-height: 0 !important; height: auto !important; overflow: hidden !important; }
+  .chartcol > .chart-shell > .chart { flex: 1 1 0 !important; height: 0 !important; min-height: 220px !important; max-height: none !important; width: 100% !important; }
+  .chartcol > .chart-shell > .chart-foot { flex: 0 0 auto !important; }
+}
+/* PC asset badge: evenly fit both round flags without clipping, flattening or empty gaps. */
+@media (min-width: 761px) {
+  #desktopAssetSelector .pair-icon {
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    flex: 0 0 46px !important; width: 46px !important; min-width: 46px !important; max-width: 46px !important;
+    height: 46px !important; min-height: 46px !important; padding: 2px !important;
+    box-sizing: border-box !important; border-radius: 50% !important; overflow: hidden !important;
+  }
+  #desktopAssetSelector .pair-icon .pair-flags {
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    gap: 1px !important; width: 100% !important; height: 100% !important; min-width: 0 !important;
+    overflow: hidden !important;
+  }
+  #desktopAssetSelector .pair-icon .pair-flags > .flag-circle,
+  #desktopAssetSelector .pair-icon .pair-flags > .asset-symbol {
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    flex: 0 0 20px !important; width: 20px !important; min-width: 20px !important; max-width: 20px !important;
+    height: 20px !important; min-height: 20px !important; max-height: 20px !important;
+    margin: 0 !important; padding: 0 !important; border-radius: 50% !important; overflow: hidden !important;
+    box-sizing: border-box !important; line-height: 0 !important;
+  }
+  #desktopAssetSelector .pair-icon .pair-flags > .flag-circle svg,
+  #desktopAssetSelector .pair-icon .pair-flags > .asset-symbol svg,
+  #desktopAssetSelector .pair-icon .pair-flags > .asset-symbol img {
+    display: block !important; width: 100% !important; height: 100% !important;
+    min-width: 100% !important; min-height: 100% !important; max-width: 100% !important; max-height: 100% !important;
+    object-fit: contain !important; flex: 0 0 100% !important;
+  }
+}
+</style>
+
+<style id="zenvex-pc-assets-match-mobile-round-icons-2026-10-19">
+/* PC only: use the same compact, overlapping circular asset icons as the mobile selector. */
+@media (min-width: 761px) {
+  #desktopAssetSelector .pair-icon {
+    display:flex!important; align-items:center!important; justify-content:center!important;
+    flex:0 0 42px!important; width:42px!important; min-width:42px!important; max-width:42px!important;
+    height:42px!important; min-height:42px!important; max-height:42px!important; padding:0!important;
+    box-sizing:border-box!important; border-radius:50%!important; overflow:hidden!important;
+  }
+  #desktopAssetSelector .pair-icon .pair-flags {
+    display:flex!important; align-items:center!important; justify-content:center!important;
+    gap:0!important; width:100%!important; height:100%!important; min-width:0!important;
+    overflow:hidden!important;
+  }
+  #desktopAssetSelector .pair-icon .pair-flags > .flag-circle,
+  #desktopAssetSelector .pair-icon .pair-flags > .asset-symbol {
+    display:inline-flex!important; align-items:center!important; justify-content:center!important;
+    flex:0 0 26px!important; width:26px!important; min-width:26px!important; max-width:26px!important;
+    height:26px!important; min-height:26px!important; max-height:26px!important;
+    margin:0 0 0 -7px!important; padding:0!important; border-radius:50%!important; overflow:hidden!important;
+    box-sizing:border-box!important; line-height:0!important; aspect-ratio:1/1!important;
+  }
+  #desktopAssetSelector .pair-icon .pair-flags > .flag-circle:first-child,
+  #desktopAssetSelector .pair-icon .pair-flags > .asset-symbol:first-child { margin-left:0!important; }
+  #desktopAssetSelector .pair-icon .pair-flags > .flag-circle svg,
+  #desktopAssetSelector .pair-icon .pair-flags > .asset-symbol svg,
+  #desktopAssetSelector .pair-icon .pair-flags > .asset-symbol img {
+    display:block!important; flex:0 0 100%!important; width:100%!important; min-width:100%!important; max-width:100%!important;
+    height:100%!important; min-height:100%!important; max-height:100%!important; border-radius:50%!important;
+    object-fit:cover!important; overflow:hidden!important;
+  }
+}
+</style>
+
+<style id="zenvex-wallet-profile-polish-20261019">
+/* Wallet is for deposits, withdrawals and requests; profile is opened separately from the avatar. */
+#accountModal:not(.profile-only) .account-actions{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important;padding:10px!important;margin:0 0 14px!important;background:linear-gradient(180deg,#101923,#0d141d)!important;border:1px solid #29394a!important;border-radius:12px!important}
+#accountModal:not(.profile-only) .account-actions button{min-width:0!important;min-height:40px!important;padding:9px 7px!important;border:1px solid #344557!important;border-radius:9px!important;background:#172330!important;color:#aebdcb!important;font-size:11px!important;font-weight:800!important;letter-spacing:.1px!important}
+#accountModal:not(.profile-only) .account-actions button.active{background:linear-gradient(135deg,#d9b85c,#f1d98c)!important;color:#17140b!important;border-color:#f0d58a!important;box-shadow:0 4px 14px #d5ad3d20!important}
+#accountModal .account-modal{border:1px solid #3a4c60!important;border-radius:17px!important;background:linear-gradient(160deg,#151f2b,#0c121a 78%)!important;box-shadow:0 24px 80px #0009,inset 0 1px #ffffff0b!important;overflow:hidden!important}
+#accountModal .account-modal-head{min-height:54px!important;padding:13px 17px!important;background:linear-gradient(90deg,#1c2a38,#111a24)!important;border-bottom:1px solid #344456!important;color:#f1d889!important;font-size:14px!important;font-weight:900!important}
+#accountModal .account-body{padding:16px!important}
+#accountModal .account-note{padding:10px 12px!important;border:1px solid #4a4128!important;border-radius:10px!important;background:#211f18!important;color:#d9c98e!important;font-size:10px!important;line-height:1.55!important;margin-bottom:12px!important}
+#accountModal .account-body label{display:block!important;margin:12px 0 6px!important;color:#b8c5d3!important;font-size:10px!important;font-weight:800!important;letter-spacing:.25px!important}
+#accountModal .account-body input:not([type=file]){box-sizing:border-box!important;width:100%!important;min-height:40px!important;padding:10px 11px!important;border:1px solid #344557!important;border-radius:9px!important;background:#0d151f!important;color:#f0f5fb!important;outline:none!important}
+#accountModal .account-body input:focus{border-color:#c8a84c!important;box-shadow:0 0 0 3px #c8a84c1a!important}
+#accountModal .account-submit{min-height:40px!important;padding:10px 13px!important;border-radius:9px!important;background:linear-gradient(135deg,#d2ad4d,#f0d789)!important;color:#17140b!important;border:1px solid #f0d789!important;font-weight:900!important;box-shadow:0 5px 15px #d0ad4b14!important}
+#accountModal .zenvex-pfp-editor{display:flex!important;align-items:center!important;gap:15px!important;padding:16px!important;margin-bottom:14px!important;border:1px solid #33475b!important;border-radius:14px!important;background:linear-gradient(135deg,#1a2b3b,#111923)!important}
+#accountModal .zenvex-pfp-preview{flex:0 0 76px!important;width:76px!important;height:76px!important;min-width:76px!important;border-radius:50%!important;overflow:hidden!important;border:2px solid #d8b85e!important;box-shadow:0 0 0 4px #d8b85e16!important;display:grid!important;place-items:center!important;background:#26394b!important}
+#accountModal .zenvex-pfp-preview img{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:50%!important;display:block!important}
+#accountModal .profile-fields{padding:14px!important;border:1px solid #2c3b4b!important;border-radius:13px!important;background:#101923!important}
+#accountModal .profile-fields-title{color:#e7cb75!important;font-size:11px!important;font-weight:900!important;letter-spacing:.65px!important;text-transform:uppercase!important;margin:0 0 10px!important}
+#accountModal .profile-field-grid{gap:10px!important}
+#accountModal .profile-local-note{font-size:10px!important;line-height:1.5!important;color:#8293a5!important;margin-top:8px!important}
+#accountModal .wallet-address{border-color:#34495d!important;border-radius:10px!important;background:#0c151f!important;padding:12px!important;line-height:1.6!important}
+@media(min-width:761px){
+  .chartcol{position:relative!important;border:1px solid #344456!important;border-radius:11px!important;padding:8px!important;background:linear-gradient(180deg,#111a24,#0c121a)!important;box-shadow:inset 0 1px #ffffff08!important;gap:8px!important;}
+  .chartcol>div:has(>.chart-tools){border:1px solid #2e3c4d!important;border-radius:9px!important;overflow:hidden!important;background:#0c131c!important;min-height:0!important;}
+  .chart-shell{border:1px solid #344456!important;border-radius:0 0 8px 8px!important;}
+  .chart-foot{background:#111a24!important;border-top:1px solid #344456!important;flex-wrap:wrap!important;row-gap:6px!important;}
+  .history-panel{border:1px solid #3a4b5e!important;box-shadow:0 8px 24px #0002!important;}
+}
+</style>
+
+
+<style id="zenvex-mobile-remove-weekend-feed-label-and-expand-chart-final">
+@media (max-width:760px){
+  /* Remove the extra simulated/weekend status wording from the mobile chart area. */
+  .warning{display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;}
+  .chart-foot>span:has(#marketStatus),
+  .chart-foot>span:last-child{display:none!important;}
+  /* Give the chart the recovered vertical space and avoid side gutters. */
+  .main,.workspace,.chartcol{padding-left:0!important;padding-right:0!important;margin-left:0!important;margin-right:0!important;}
+  .workspace,.chartcol,.chart-shell,.chart{width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;}
+  .chart-shell{border-left:0!important;border-right:0!important;border-radius:0!important;}
+  .chart{flex:1 1 auto!important;}
+  #chartSvg{width:100%!important;max-width:100%!important;}
+  .chart-foot{padding:4px 7px!important;gap:4px 7px!important;}
+}
+</style>
+
+<style id="zenvex-binomo-chart-fit-countdown-pips-final">
+@media (max-width:760px){
+  .main{padding:0!important;gap:0!important}
+  .workspace{display:flex!important;flex-direction:column!important;gap:0!important;margin:0!important}
+  .chartcol{width:100%!important;gap:0!important;padding:0!important}
+  .chartcol>div:has(>.chart-tools){width:100%!important;margin:0!important;border-radius:0!important}
+  .chart-tools{border-radius:0!important;padding:5px 7px!important}
+  .chart-shell{width:100%!important;max-width:100%!important;margin:0!important;border-left:0!important;border-right:0!important;border-radius:0!important}
+  .chart{width:100%!important;height:clamp(430px,64svh,690px)!important;min-height:430px!important;max-height:none!important}
+  #chartSvg{display:block!important;width:100%!important;height:100%!important;overflow:hidden!important}
+  .chart-foot{border-radius:0!important;padding:5px 7px!important}
+}
+@media (min-width:761px){
+  .chartcol,.chart-shell,#chartSvg{min-width:0}
+}
+</style>

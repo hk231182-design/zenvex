@@ -1640,8 +1640,119 @@ tbody tr:hover td{background:#ffffff03}
   }
 }
 </style>
+
+<style id="zenvex-auth-ui-v1">
+#zenvexAuthGate{position:fixed;inset:0;z-index:999999;display:flex;align-items:center;justify-content:center;padding:18px;background:radial-gradient(ellipse at 50% 0%,#293344 0%,#10151d 52%,#080b10 100%);color:#f4f6fa;font-family:inherit;overflow:auto}
+#zenvexAuthGate *{box-sizing:border-box}#zenvexAuthGate[hidden]{display:none!important}
+.zx-auth-wrap{width:min(100%,430px);margin:auto}.zx-auth-brand{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 20px}.zx-auth-mark{width:48px;height:48px;display:grid;place-items:center;border:1px solid #b89547;border-radius:14px;background:linear-gradient(145deg,#242a33,#11151b);color:#e7bf62;font-weight:900;font-size:26px;box-shadow:0 8px 25px #0005}.zx-auth-word{font-size:25px;letter-spacing:2.2px;font-weight:850;color:#f5f5f5}.zx-auth-word span{color:#e7bf62}.zx-auth-subbrand{font-size:9px;letter-spacing:2.4px;color:#93a0b1;margin-top:3px}
+.zx-auth-card{border:1px solid #343d4b;border-radius:22px;padding:25px;background:linear-gradient(160deg,#1a202a,#10151d);box-shadow:0 25px 80px #0008,inset 0 1px #ffffff08}.zx-auth-heading{font-size:25px;font-weight:750;letter-spacing:-.5px;margin:0 0 7px}.zx-auth-description{font-size:13px;line-height:1.55;color:#9ba7b7;margin:0 0 20px}.zx-auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:4px;border-radius:11px;background:#0c1118;border:1px solid #2b3440;margin-bottom:19px}.zx-auth-tabs button{height:38px;border:0;border-radius:8px;background:transparent;color:#96a1b0;font:600 13px sans-serif;cursor:pointer}.zx-auth-tabs button.active{background:#27303b;color:#f2cf7b;box-shadow:inset 0 0 0 1px #5e4c2c}.zx-auth-field{display:block;margin:0 0 13px}.zx-auth-field>span{display:block;font-size:12px;color:#c5ccd6;margin-bottom:7px}.zx-auth-input-wrap{display:flex;align-items:center;gap:9px;border:1px solid #3a4553;background:#0e141c;border-radius:10px;padding:0 12px;min-height:47px;transition:border-color .15s}.zx-auth-input-wrap:focus-within{border-color:#caa451;box-shadow:0 0 0 3px #caa45116}.zx-auth-input-wrap .zx-auth-field-icon{color:#8b97a8;font-size:15px}.zx-auth-input-wrap input{width:100%;min-width:0;background:transparent;border:0;outline:0;color:#f5f6f8;font:14px sans-serif;padding:12px 0}.zx-auth-input-wrap input::placeholder{color:#6f7b8c}.zx-auth-eye{border:0;background:transparent;color:#aeb7c4;cursor:pointer;padding:6px;font-size:14px}.zx-auth-forgot{display:flex;justify-content:flex-end;margin:-3px 0 16px}.zx-auth-forgot button,.zx-auth-switch button{border:0;background:transparent;color:#e5bd61;font:inherit;cursor:pointer;padding:0}.zx-auth-primary{width:100%;min-height:47px;border:1px solid #f1d17d;border-radius:10px;background:linear-gradient(115deg,#f1d17d,#c69a3c);color:#17140c;font-size:14px;font-weight:800;letter-spacing:.2px;cursor:pointer;box-shadow:0 7px 18px #c69a3c20}.zx-auth-primary:disabled{opacity:.65;cursor:wait}.zx-auth-divider{display:flex;align-items:center;gap:12px;color:#758194;font-size:10px;letter-spacing:1.4px;margin:18px 0}.zx-auth-divider:before,.zx-auth-divider:after{content:"";height:1px;flex:1;background:#303a47}.zx-auth-google{width:100%;min-height:47px;display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid #46505d;border-radius:10px;background:#171d26;color:#f3f5f7;font-size:13px;font-weight:650;cursor:pointer}.zx-auth-google:hover{background:#202833;border-color:#687485}.zx-google-g{width:19px;height:19px;display:grid;place-items:center;border-radius:50%;background:#fff;color:#4285f4;font:bold 14px Arial}.zx-auth-switch{text-align:center;font-size:12px;color:#98a4b3;margin:18px 0 0}.zx-auth-note{margin-top:17px;text-align:center;color:#778394;font-size:10px;line-height:1.55}.zx-auth-message{display:none;margin:0 0 13px;border:1px solid #755e2c;background:#332b1b;color:#f4d98f;border-radius:9px;padding:10px 11px;font-size:12px;line-height:1.5}.zx-auth-message.show{display:block}.zx-auth-terms{font-size:10px;line-height:1.5;color:#8491a1;margin:2px 0 14px}.zx-auth-preview{display:block;text-align:center;margin:15px 0 0;color:#8794a5;font-size:11px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}.zx-auth-preview:hover{color:#e6c36e}
+@media(max-width:480px){#zenvexAuthGate{padding:16px 13px;align-items:center}.zx-auth-card{padding:22px 18px;border-radius:19px}.zx-auth-brand{margin-bottom:16px}.zx-auth-heading{font-size:23px}}
+</style>
+
+
+<style id="zenvex-auth-premium-polish-v2">
+/* Auth-only visual refinement; existing trading interface and logic remain untouched. */
+#zenvexAuthGate{
+ background:
+  radial-gradient(ellipse at 12% 18%,rgba(203,160,67,.13),transparent 32%),
+  radial-gradient(ellipse at 88% 82%,rgba(71,99,143,.16),transparent 34%),
+  radial-gradient(ellipse at 50% -8%,#2a3444 0%,#111720 48%,#080b10 100%);
+ padding:clamp(14px,3vw,28px);
+}
+#zenvexAuthGate:before,#zenvexAuthGate:after{content:"";position:fixed;pointer-events:none;border:1px solid rgba(222,187,105,.09);border-radius:50%;width:420px;height:420px;opacity:.5}
+#zenvexAuthGate:before{top:-285px;right:-130px;box-shadow:0 0 0 28px rgba(222,187,105,.018),0 0 0 58px rgba(222,187,105,.014)}
+#zenvexAuthGate:after{bottom:-325px;left:-175px;width:510px;height:510px;box-shadow:0 0 0 34px rgba(125,151,190,.025),0 0 0 70px rgba(125,151,190,.018)}
+#zenvexAuthGate .zx-auth-wrap{position:relative;z-index:1;width:min(100%,444px)}
+#zenvexAuthGate .zx-auth-brand{justify-content:flex-start;gap:13px;margin:0 0 22px;padding:0 4px}
+#zenvexAuthGate .zx-auth-mark{position:relative;width:53px;height:53px;border-radius:16px;border:1px solid #c5a052;background:linear-gradient(145deg,#303440 0%,#161b23 66%,#10141b 100%);color:#f2d27e;font-size:29px;box-shadow:0 8px 25px #0006,inset 0 1px #fff2,0 0 25px #d4aa4b14}
+#zenvexAuthGate .zx-auth-mark:after{content:"";position:absolute;inset:4px;border:1px solid #d4b66a36;border-radius:11px}
+#zenvexAuthGate .zx-auth-word{font-size:27px;letter-spacing:2.5px;line-height:1.05}
+#zenvexAuthGate .zx-auth-subbrand{font-size:9px;letter-spacing:2.25px;margin-top:6px;color:#a2adbd}
+#zenvexAuthGate .zx-auth-card{position:relative;overflow:hidden;border:1px solid #3b4655;border-radius:25px;padding:clamp(23px,5vw,31px);background:linear-gradient(150deg,rgba(29,36,47,.98),rgba(15,20,28,.99) 74%);box-shadow:0 30px 90px #0009,0 8px 28px #0004,inset 0 1px #ffffff0b;backdrop-filter:blur(18px)}
+#zenvexAuthGate .zx-auth-card:before{content:"";position:absolute;top:0;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,#e5c574a8,transparent)}
+#zenvexAuthGate .zx-auth-eyebrow{display:flex;align-items:center;gap:8px;margin:0 0 17px;color:#c5a75d;font-size:9px;font-weight:800;letter-spacing:1.75px}
+#zenvexAuthGate .zx-auth-live-dot{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:#d9b75f;box-shadow:0 0 0 4px #d9b75f17,0 0 12px #d9b75f75}
+#zenvexAuthGate .zx-auth-eyebrow-line{height:1px;flex:1;background:linear-gradient(90deg,#a987444c,transparent)}
+#zenvexAuthGate .zx-auth-heading{font-size:clamp(25px,5vw,29px);line-height:1.18;letter-spacing:-.8px;margin:0 0 9px;color:#f7f8fa}
+#zenvexAuthGate .zx-auth-description{font-size:13px;line-height:1.65;color:#a5b0bf;margin:0 0 23px;max-width:330px}
+#zenvexAuthGate .zx-auth-tabs{gap:5px;padding:4px;border-radius:12px;background:#0b1017;border:1px solid #313b49;margin-bottom:22px}
+#zenvexAuthGate .zx-auth-tabs button{height:41px;border-radius:9px;font-size:13px;transition:background .18s ease,color .18s ease,box-shadow .18s ease}
+#zenvexAuthGate .zx-auth-tabs button.active{background:linear-gradient(135deg,#303644,#242b36);color:#f2d17a;box-shadow:inset 0 0 0 1px #8f733b65,0 2px 8px #0002}
+#zenvexAuthGate .zx-auth-field{margin-bottom:16px}
+#zenvexAuthGate .zx-auth-field>span{font-size:11px;font-weight:650;letter-spacing:.2px;color:#d5dbe4;margin-bottom:8px}
+#zenvexAuthGate .zx-auth-input-wrap{min-height:51px;gap:11px;border:1px solid #3d4858;background:linear-gradient(180deg,#0e141d,#0c1118);border-radius:12px;padding:0 14px;box-shadow:inset 0 1px 3px #0002;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease}
+#zenvexAuthGate .zx-auth-input-wrap:focus-within{border-color:#d1ad58;background:#101720;box-shadow:0 0 0 3px #caa4511e,0 4px 16px #0002}
+#zenvexAuthGate .zx-auth-input-wrap .zx-auth-field-icon{font-size:16px;color:#a7b1bf;width:17px;text-align:center}
+#zenvexAuthGate .zx-auth-input-wrap input{font-size:13px;letter-spacing:.1px;padding:14px 0}
+#zenvexAuthGate .zx-auth-input-wrap input::placeholder{color:#778395}
+#zenvexAuthGate .zx-auth-eye{font-size:16px;border-radius:7px}
+#zenvexAuthGate .zx-auth-eye:hover{background:#ffffff0b;color:#f0d17a}
+#zenvexAuthGate .zx-auth-forgot{margin:-2px 1px 18px}
+#zenvexAuthGate .zx-auth-forgot button{font-size:11px;font-weight:650;text-underline-offset:3px}
+#zenvexAuthGate .zx-auth-forgot button:hover,#zenvexAuthGate .zx-auth-switch button:hover{color:#ffe39a;text-decoration:underline;text-underline-offset:3px}
+#zenvexAuthGate .zx-auth-primary{min-height:51px;border-radius:12px;border:1px solid #f4d989;background:linear-gradient(110deg,#f6dfa0 0%,#e3bd62 44%,#c99a3e 100%);font-size:13px;font-weight:850;letter-spacing:.35px;box-shadow:0 8px 23px #c69a3c24,inset 0 1px #fff9;transition:transform .16s ease,filter .16s ease,box-shadow .16s ease}
+#zenvexAuthGate .zx-auth-primary:hover{filter:brightness(1.055);box-shadow:0 10px 28px #c69a3c35,inset 0 1px #fff9;transform:translateY(-1px)}
+#zenvexAuthGate .zx-auth-primary:active{transform:translateY(0)}
+#zenvexAuthGate .zx-auth-divider{margin:21px 0;color:#8995a5;font-size:9px;letter-spacing:1.8px}
+#zenvexAuthGate .zx-auth-divider:before,#zenvexAuthGate .zx-auth-divider:after{background:linear-gradient(90deg,transparent,#3b4654)}
+#zenvexAuthGate .zx-auth-divider:after{transform:scaleX(-1)}
+#zenvexAuthGate .zx-auth-google{min-height:51px;gap:11px;border:1px solid #4a5666;border-radius:12px;background:linear-gradient(180deg,#202733,#171d26);font-size:12px;font-weight:700;letter-spacing:.1px;box-shadow:inset 0 1px #ffffff08;transition:border-color .18s ease,background .18s ease,transform .18s ease}
+#zenvexAuthGate .zx-auth-google:hover{background:linear-gradient(180deg,#293240,#1b222d);border-color:#7c8797;transform:translateY(-1px)}
+#zenvexAuthGate .zx-google-icon{width:18px;height:18px;flex:0 0 18px;background:#fff;border-radius:50%;padding:3px}
+#zenvexAuthGate .zx-auth-switch{font-size:12px;margin:21px 0 0;color:#a7b1bf}
+#zenvexAuthGate .zx-auth-switch button{font-weight:800;margin-left:3px}
+#zenvexAuthGate .zx-auth-preview{display:inline-block;margin:17px auto 0;position:relative;left:50%;transform:translateX(-50%);font-size:10px;color:#9ba7b6;text-decoration:none;border-bottom:1px dashed #596574;padding-bottom:2px}
+#zenvexAuthGate .zx-auth-preview:hover{color:#e6c36e;border-color:#e6c36e}
+#zenvexAuthGate .zx-auth-note{border-top:1px solid #ffffff0b;padding-top:14px;margin-top:18px;font-size:10px;line-height:1.7;color:#8793a3}
+#zenvexAuthGate .zx-auth-message{border-radius:11px;padding:12px 13px;font-size:12px}
+#zenvexAuthGate button:focus-visible,#zenvexAuthGate a:focus-visible{outline:2px solid #e8c76f;outline-offset:3px}
+@media(max-width:480px){
+ #zenvexAuthGate{padding:14px 12px;align-items:flex-start}
+ #zenvexAuthGate .zx-auth-wrap{margin:auto;width:100%;max-width:420px}
+ #zenvexAuthGate .zx-auth-brand{margin:5px 0 17px;padding-left:3px}
+ #zenvexAuthGate .zx-auth-mark{width:47px;height:47px;border-radius:14px;font-size:25px}
+ #zenvexAuthGate .zx-auth-word{font-size:24px}
+ #zenvexAuthGate .zx-auth-card{padding:22px 18px;border-radius:21px}
+ #zenvexAuthGate .zx-auth-eyebrow{margin-bottom:14px;font-size:8px}
+ #zenvexAuthGate .zx-auth-heading{font-size:25px}
+ #zenvexAuthGate .zx-auth-description{font-size:12px;margin-bottom:19px}
+ #zenvexAuthGate .zx-auth-tabs{margin-bottom:19px}
+ #zenvexAuthGate .zx-auth-field{margin-bottom:14px}
+ #zenvexAuthGate .zx-auth-input-wrap,#zenvexAuthGate .zx-auth-primary,#zenvexAuthGate .zx-auth-google{min-height:49px}
+}
+@media(max-height:720px){#zenvexAuthGate{align-items:flex-start}#zenvexAuthGate .zx-auth-wrap{margin:auto}#zenvexAuthGate .zx-auth-brand{margin-bottom:13px}#zenvexAuthGate .zx-auth-card{padding-top:19px;padding-bottom:19px}#zenvexAuthGate .zx-auth-eyebrow{margin-bottom:11px}#zenvexAuthGate .zx-auth-description{margin-bottom:16px}#zenvexAuthGate .zx-auth-tabs{margin-bottom:15px}#zenvexAuthGate .zx-auth-field{margin-bottom:11px}#zenvexAuthGate .zx-auth-divider{margin:15px 0}#zenvexAuthGate .zx-auth-switch{margin-top:15px}#zenvexAuthGate .zx-auth-note{margin-top:13px;padding-top:10px}}
+@media(prefers-reduced-motion:reduce){#zenvexAuthGate *{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
 </head>
 <body>
+
+<div id="zenvexAuthGate" role="dialog" aria-modal="true" aria-labelledby="zxAuthHeading">
+ <div class="zx-auth-wrap">
+  <div class="zx-auth-brand"><div class="zx-auth-mark">Z</div><div><div class="zx-auth-word">ZENVEX<span>.</span></div><div class="zx-auth-subbrand">BROKER · TRADING PLATFORM</div></div></div>
+  <section class="zx-auth-card">
+   <div class="zx-auth-eyebrow"><span class="zx-auth-live-dot"></span><span>SECURE ACCOUNT ACCESS</span><span class="zx-auth-eyebrow-line"></span></div>
+   <h1 class="zx-auth-heading" id="zxAuthHeading">Welcome back</h1>
+   <p class="zx-auth-description" id="zxAuthDescription">Log in to continue to your ZENVEX account.</p>
+   <div class="zx-auth-tabs" role="tablist" aria-label="Authentication mode"><button type="button" class="active" id="zxLoginTab" role="tab" aria-selected="true">Log In</button><button type="button" id="zxRegisterTab" role="tab" aria-selected="false">Register</button></div>
+   <div class="zx-auth-message" id="zxAuthMessage" role="status" aria-live="polite"></div>
+   <form id="zxAuthForm" novalidate>
+    <label class="zx-auth-field" id="zxNameField" hidden><span>Full name</span><div class="zx-auth-input-wrap"><span class="zx-auth-field-icon">♙</span><input id="zxFullName" name="name" autocomplete="name" placeholder="Enter your full name"></div></label>
+    <label class="zx-auth-field"><span>Email address</span><div class="zx-auth-input-wrap"><span class="zx-auth-field-icon">✉</span><input id="zxEmail" name="email" type="email" autocomplete="email" placeholder="Enter your email" required></div></label>
+    <label class="zx-auth-field"><span>Password</span><div class="zx-auth-input-wrap"><span class="zx-auth-field-icon">▣</span><input id="zxPassword" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" minlength="8" required><button class="zx-auth-eye" type="button" id="zxPasswordToggle" aria-label="Show password">◉</button></div></label>
+    <div id="zxForgotRow" class="zx-auth-forgot"><button type="button" id="zxForgotPassword">Forgot password?</button></div>
+    <p class="zx-auth-terms" id="zxAuthTerms" hidden>By creating an account, you agree to the ZENVEX Terms & Conditions and Privacy Policy.</p>
+    <button class="zx-auth-primary" id="zxAuthSubmit" type="submit">Log In</button>
+   </form>
+   <div class="zx-auth-divider">OR</div>
+   <button type="button" class="zx-auth-google" id="zxGoogleAuth"><svg class="zx-google-icon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.75 7.18l7.73 6C44.43 37.96 46.98 31.84 46.98 24.55z"/><path fill="#FBBC05" d="M10.53 28.59A14.4 14.4 0 0 1 9.75 24c0-1.59.27-3.13.76-4.59l-7.98-6.19A23.9 23.9 0 0 0 0 24c0 3.88.93 7.55 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.9-5.8l-7.73-6c-2.14 1.44-4.89 2.3-8.17 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg><span id="zxGoogleLabel">Continue with Google</span></button>
+   <p class="zx-auth-switch"><span id="zxSwitchText">New to ZENVEX?</span> <button type="button" id="zxSwitchMode">Register</button></p>
+   <a class="zx-auth-preview" href="#" id="zxDemoPreview">Explore demo interface only</a>
+   <p class="zx-auth-note">Secure sign-in · Your password is sent only to the configured ZENVEX backend.<br>Demo preview does not create or verify an account.</p>
+  </section>
+ </div>
+</div>
+
 <header class="top"><div class="brand"><div class="brand-mark">Z</div><span>ZENVEX<em>.</em></span></div><nav class="topnav"><span class="on">◈ Trade</span><span>▤ History</span><span>◉ Support</span></nav><div class="spacer"></div><div class="header-money-group"><button type="button" class="balance-refresh" id="balanceRefresh" aria-label="Refresh balance" title="Refresh balance">↻</button><div class="balance"><button type="button" id="accountModeToggle" class="account-mode-toggle" aria-haspopup="true" aria-expanded="false">DEMO ACCOUNT ▾</button><strong id="balance">$10,000.00</strong><div id="accountModeMenu" class="account-mode-menu" hidden><button type="button" data-account-mode="demo">Demo Account</button><button type="button" data-account-mode="real">Real Account</button></div></div><button class="add-funds" id="openAccount">Wallet</button></div><button class="profile" id="profileButton" aria-label="Profile">Z</button></header>
 <div class="warning">ZENVEX DEMO · Market prices appear only when a data source is available. No broker account or real trading connection is active.</div>
 <div class="layout"><aside class="rail"><button class="active" type="button" title="Chart" aria-label="Chart"><svg class="rail-chart-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16"/><path d="M7 15V9h3v6zM14 12V5h3v7z"/><path d="M6 7l4-3 4 2 5-3"/></svg></button><button title="Assets" id="railAssets">◫</button><button title="History" id="railHistory">▤</button><button title="Statistics" id="railStats">▥</button><button type="button" title="Leaderboard" aria-label="Open ZENVEX Leaderboard" id="railLeaderboard" class="rail-leaderboard"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10M17 4v5a5 5 0 0 1-10 0V4M5 8H2v1a4 4 0 0 0 4 4M19 8h3v1a4 4 0 0 1-4 4M12 14v3"/></svg></button><div style="flex:1"></div><button title="Support" aria-label="Open ZENVEX Support" id="settings"><svg class="rail-support-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="12" width="4" height="7" rx="2"/><rect x="17" y="12" width="4" height="7" rx="2"/><path d="M19 19a3 3 0 0 1-3 3h-3"/></svg></button></aside>
@@ -4095,6 +4206,24 @@ button:focus-visible,[role="button"]:focus-visible{outline:2px solid #e3c36d!imp
 #price,#change,#marketStatus{font-variant-numeric:tabular-nums;}
 @media(prefers-reduced-motion:no-preference){#price,#change{transition:color .12s linear;}}
 </style>
+
+<script id="zenvex-auth-ui-v1-script">
+(()=>{
+ const $=id=>document.getElementById(id); const gate=$('zenvexAuthGate'); if(!gate)return;
+ let mode='login';
+ function message(text){const el=$('zxAuthMessage');el.textContent=text;el.classList.add('show')}
+ function clearMessage(){const el=$('zxAuthMessage');el.textContent='';el.classList.remove('show')}
+ function setMode(next){mode=next;clearMessage();const reg=mode==='register';$('zxLoginTab').classList.toggle('active',!reg);$('zxRegisterTab').classList.toggle('active',reg);$('zxLoginTab').setAttribute('aria-selected',String(!reg));$('zxRegisterTab').setAttribute('aria-selected',String(reg));$('zxNameField').hidden=!reg;$('zxAuthTerms').hidden=!reg;$('zxForgotRow').hidden=reg;$('zxAuthHeading').textContent=reg?'Create your account':'Welcome back';$('zxAuthDescription').textContent=reg?'Register to start your ZENVEX trading journey.':'Log in to continue to your ZENVEX account.';$('zxAuthSubmit').textContent=reg?'Create Account':'Log In';$('zxGoogleLabel').textContent=reg?'Sign up with Google':'Continue with Google';$('zxSwitchText').textContent=reg?'Already have an account?':'New to ZENVEX?';$('zxSwitchMode').textContent=reg?'Log In':'Register';$('zxPassword').autocomplete=reg?'new-password':'current-password';}
+ $('zxLoginTab').addEventListener('click',()=>setMode('login'));$('zxRegisterTab').addEventListener('click',()=>setMode('register'));$('zxSwitchMode').addEventListener('click',()=>setMode(mode==='login'?'register':'login'));
+ $('zxPasswordToggle').addEventListener('click',()=>{const i=$('zxPassword');i.type=i.type==='password'?'text':'password';$('zxPasswordToggle').setAttribute('aria-label',i.type==='password'?'Show password':'Hide password')});
+ $('zxGoogleAuth').addEventListener('click',()=>{clearMessage();const base=(window.ZENVEX_API_BASE||'').replace(/\/$/,'');if(!base){message('Google sign-in is not connected yet. Configure the ZENVEX backend URL and Google OAuth credentials to continue securely.');return}window.location.href=base+'/auth/google'});
+ $('zxAuthForm').addEventListener('submit',async e=>{e.preventDefault();clearMessage();const email=$('zxEmail').value.trim(),password=$('zxPassword').value;const name=$('zxFullName').value.trim();if(!email||!$('zxEmail').checkValidity()){message('Enter a valid email address.');return}if(password.length<8){message('Password must be at least 8 characters. Use at least 8 characters.');return}if(mode==='register'&&!name){message('Enter your full name to create an account.');return}const base=(window.ZENVEX_API_BASE||'').replace(/\/$/,'');if(!base){message('Authentication backend is not connected yet. Your details have not been saved. Configure the backend before using real registration or login.');return}const btn=$('zxAuthSubmit');btn.disabled=true;btn.textContent=mode==='register'?'Creating account…':'Signing in…';try{const endpoint=mode==='register'?'/auth/register':'/auth/login';const payload=mode==='register'?{name,email,password}:{email,password};const r=await fetch(base+endpoint,{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});let data={};try{data=await r.json()}catch(_){}if(!r.ok)throw new Error(data.detail||data.message||('Authentication failed ('+r.status+').'));if(data.redirect_url){window.location.href=data.redirect_url;return}if(data.access_token){message('Signed in, but secure session handling needs to be confirmed with the backend configuration.');return}message(data.message||'Request accepted by backend. Confirm the configured authentication response before proceeding.')}catch(err){message(err.message||'Could not connect to the authentication service.')}finally{btn.disabled=false;btn.textContent=mode==='register'?'Create Account':'Log In'}});
+ $('zxForgotPassword').addEventListener('click',()=>{clearMessage();const base=(window.ZENVEX_API_BASE||'').replace(/\/$/,'');const email=$('zxEmail').value.trim();if(!email||!$('zxEmail').checkValidity()){message('Enter your email address first. Password reset requires a configured backend email flow.');return}if(!base){message('Password reset is not connected yet. Your email has not been submitted.');return}message('Password reset route must be configured on the ZENVEX backend before a reset email can be sent.')});
+ $('zxDemoPreview').addEventListener('click',e=>{e.preventDefault();gate.hidden=true;document.body.dataset.zenvexDemoPreview='true'});
+ window.addEventListener('pageshow',()=>{if(!sessionStorage.getItem('zenvexAuthDismissed'))gate.hidden=false});
+})();
+</script>
+
 </body>
 </html>
 
